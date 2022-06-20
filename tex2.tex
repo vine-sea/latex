@@ -2364,11 +2364,20 @@ $\ma{
 
 $\mb{*利用曲面的参数方程求曲面的面积}$\p
 
-$\fcz{
+$\ma{\fcz{
     x=x\mf{u,v}\\
     y=y\mf{u,v}\\
     z=z\mf{u,v}\\
-}\mf{u,v}\in D$
+}\mf{u,v}\in D\\
+x,y,z \mt{在}D\mt{内连续一阶}\\
+\da{\mf{x,y}}{\mf{u,v}},\da{\mf{y,z}}{\mf{u,v}},\da{\mf{z,x}}{\mf{u,v}}\mt{不全为零}\\
+}\Rightarrow \ma{
+    A=\iint_D\sqrt{EG-F^2}dudv\\
+    E=x_u^2+y_u^2+z_u^2\\
+    F=x_ux_v+y_uy_v+z_uz_v\\
+    G=x_v^2+y_v^2+z_v^2
+}
+$
 
 
 
