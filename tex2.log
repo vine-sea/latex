@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.22)  20 JUN 2022 00:14
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.22)  20 JUN 2022 22:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -842,17 +842,22 @@ Missing character: There is no 开 (U+5F00) in font [lmroman10-regular]:mapping=
 Missing character: There is no 较 (U+8F83) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 远 (U+8FDC) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no 点 (U+70B9) in font [lmroman10-regular]:mapping=tex-text;!
-[12] [13] [14] [15]
+[12] [13] [14]
+Overfull \hbox (1.11102pt too wide) in paragraph at lines 2344--2354
+[]$[] [] [] [][] \OML/cmm/m/it/10.53937 f [] dxdydz \OT1/cmr/m/n/10.53937 = [] [] [][] \OML/cmm/m/it/10.53937 f [] r[] [] 'drd'd^^R$ 
+ []
+
+[15] [16]
 Missing character: There is no ; ("3B) in font nullfont!
 Missing character: There is no ; ("3B) in font nullfont!
- [16] (./tex2.aux) ) 
+ [17] (./tex2.aux) ) 
 Here is how much of TeX's memory you used:
  20312 strings out of 476919
  474177 string characters out of 5825423
- 799662 words of memory out of 5000000
+ 799668 words of memory out of 5000000
  39925 multiletter control sequences out of 15000+600000
  412696 words of font info for 94 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  113i,21n,116p,1186b,589s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on tex2.pdf (22 pages).
+Output written on tex2.pdf (23 pages).

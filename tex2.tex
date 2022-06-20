@@ -2314,6 +2314,65 @@ $
 
 \subsection{三重积分}
 
+\subsubsection{三重积分的概念}
+$\ma{f\mf{x,y,z},\mt{有界闭区域}\Omega ,\\
+\mt{分割成} \Delta v_1,\Delta v_2,\cdots,\Delta v_n,\\}\Rightarrow
+\iiint_D f\mf{x,y,z}dv=\iiint_D f\mf{x,y,z}dxdydz=\lim_{\lambda \rightarrow 0}\sum f\mf{\xi_i,\eta_i,\zeta_i }\Delta v_i
+$
+\subsubsection{三重积分的计算}
+\mb{利用直角坐标系计算}\p
+$\ma{F\mf{x_0,y_0}=\int_{z_1\mf{x_0,y_0}}^{z_2\mf{x_0,y_0}}f\mf{x_0,y_0,z}dz\\
+\iiint_{\Omega}f\mf{x,y,z}dv\ma{
+=\iint_{D_{xy}} F\mf{x,y}d\sigma=\iint_{D_{xy}}\mfc{\int_{z_1\mf{x,y}}^{z_2\mf{x,y}}f\mf{x,y,z}dz}d\sigma
+=\int_a^b dx \int_{y_1\mf{x}}^{y_2\mf{x}} dy \int_{z_1\mf{x,y}}^{z_2\mf{x,y}} f\mf{x,y,z}dz\\
+=\int_{c_1}^{c_2}dz\iint_{D_z}f\mf{x,y,z}dxdy
+}
+}$
+
+\mb{利用柱坐标系计算}\p
+$\ma{\fcz{
+    x=r\cos \theta\\
+    y=r\sin \theta\\
+    z=z
+}\\
+dv=rdrd\theta dz\\
+}\Rightarrow \iiint_{\Omega}f\mf{x,y,z}dxdydz=\iiint_{\Omega}f\mf{r\cos \theta,r\sin \theta,z}rdrd\theta dz$
+
+
+
+\mb{利用球面坐标计算}\p
+$\ma{
+    \fcz{
+        x=OP \cos \theta =r \sin \varphi \cos \theta\\
+        y=OP \sin \theta =r \sin \varphi \sin \theta\\ 
+        z=r \cos \varphi
+    } \\
+    \varphi \mt{,Z轴}; \theta \mt{,X轴}\\
+    dv=r^2\sin \varphi dr d \varphi d\theta
+}\iiint_{\Omega}f\mf{x,y,z}dxdydz=\iiint_{\Omega}f\mf{r \sin \varphi \cos \theta,r \sin \varphi \sin \theta,r \cos \varphi}r^2\sin \varphi dr d \varphi d\theta
+$
+
+
+\subsection{重积分的应用}
+
+$\ma{
+    \mt{曲面} S: z=f\mf{x,y}\\
+    \mfa{\mf{f_x,f_y,-1}\cdot\mf{0,0,1}}=1=\sqrt{{f_x}^2+{f_y}^2+{-1}^2}\cdot1\cdot\cos\theta,\\
+    \cos \theta=\frac{1}{\sqrt{{f_x}^2+{f_y}^2+\mf{-1}^2}}\\
+    \frac{d\sigma}{dA}=\cos \theta ,\frac{\sum \sigma_k}{\sum A_k}=\cos \theta,dA=\frac{1}{\cos \theta}d\sigma
+}A=\iint_{D}\sqrt{{f_x}^2+{f_y}^2+1 }d\sigma$
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

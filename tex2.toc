@@ -74,4 +74,8 @@
 \contentsline {subsubsection}{\numberline {10.2.1}直角坐标计算二重积分}{14}{}%
 \contentsline {subsubsection}{\numberline {10.2.2}极坐标计算二重积分}{14}{}%
 \contentsline {subsubsection}{\numberline {10.2.3}二重积分换元法}{15}{}%
+\contentsline {subsection}{\numberline {10.3}三重积分}{15}{}%
+\contentsline {subsubsection}{\numberline {10.3.1}三重积分的概念}{15}{}%
+\contentsline {subsubsection}{\numberline {10.3.2}三重积分的计算}{15}{}%
+\contentsline {subsection}{\numberline {10.4}重积分的应用}{16}{}%
 \contentsfinish 
