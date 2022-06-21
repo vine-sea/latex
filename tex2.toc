@@ -78,4 +78,5 @@
 \contentsline {subsubsection}{\numberline {10.3.1}三重积分的概念}{15}{}%
 \contentsline {subsubsection}{\numberline {10.3.2}三重积分的计算}{15}{}%
 \contentsline {subsection}{\numberline {10.4}重积分的应用}{15}{}%
+\contentsline {subsection}{\numberline {10.5}含参变量的积分}{16}{}%
 \contentsfinish 

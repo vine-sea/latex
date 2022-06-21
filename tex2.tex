@@ -57,6 +57,9 @@
     \right|
 }
 
+\newcommand{\ba}[1]{\overline{#1}}
+\newcommand{\meq}[2]{\xlongequal[#2]{#1}}
+
 
 \title{This is Start}
 \author{Vine}
@@ -2380,9 +2383,64 @@ x,y,z \mt{在}D\mt{内连续一阶}\\
 $
 
 
+$\mb{质心}$\p
+
+$\ma{\ba{x}=\frac{M_y}{M}=\frac{\sum m_ix_i}{\sum m_i},\\
+\ba{y}=\frac{M_x}{M}=\frac{\sum m_iy_i}{\sum m_i},\\
+M_y,M_x\mt{净距},M\mt{质点系总质量}\\
+}\Rightarrow \ma{
+    dM_y=x\mu\mf{x,y}d\sigma,M_y=\iint_Dx\mu\mf{x,y}d\sigma\\
+    dM_x=y\mu\mf{x,y}d\sigma,M_x=\iint_Dy\mu\mf{x,y}d\sigma\\
+    dM=\mu\mf{x,y}d\sigma,M=\iint_D\mu\mf{x,y}d\sigma\\
+    \ba{x}=\frac{M_y}{M}=\frac{\iint_Dx\mu\mf{x,y}d\sigma}{\iint_D\mu\mf{x,y}d\sigma} \meq{\mu\mf{x,y}=c}{A=\iint_D d\sigma} \frac{1}{A}\iint_D x\mu\mf{x,y}d\sigma\\
+    \ba{y}=\frac{M_x}{M}=\frac{\iint_Dy\mu\mf{x,y}d\sigma}{\iint_D\mu\mf{x,y}d\sigma} \meq{\mu\mf{x,y}=c}{A=\iint_D d\sigma}  \frac{1}{A}\iint_D y\mu\mf{x,y}d\sigma
+}$
+
+$M=\iiint_\Omega \rho \mf{x,y,z}dv,
+\fcz{
+\ba{x}=\frac{1}{M}\iiint_\Omega x\rho\mf{x,y,z}dv,\\
+\ba{y}=\frac{1}{M}\iiint_\Omega y\rho\mf{x,y,z}dv,\\
+\ba{z}=\frac{1}{M}\iiint_\Omega z\rho\mf{x,y,z}dv,\\
+}
+$
+
+$\mb{转动惯量}$\p
+
+$\ma{I_x=\sum y_i^2m_i,\\
+    I_y=\sum x_i^2m_i\\
+}\Rightarrow \ma{
+    dI_x=y^2\mu\mf{x,y}d\sigma\\
+    dI_y=x^2\mu\mf{x,y}d\sigma\\
+    I_x=\iint_D y^2\mu\mf{x,y}d\sigma\\
+    I_y=\iint_D x^2\mu\mf{x,y}d\sigma
+}
+$
+
+$\ma{I_x=\iiint_\Omega \mf{y^2+z^2}\rho\mf{x,y,z}dv\\
+I_y=\iiint_\Omega \mf{x^2+z^2}\rho\mf{x,y,z}dv\\
+I_z=\iiint_\Omega \mf{y^2+x^2}\rho\mf{x,y,z}dv\\
+}$
+
+$\mb{引力}$\p
+$\ma{F=G\frac{mM}{r^2}\\
+    \mf{\cos \alpha,\cos \beta,\cos \gamma}=\mf{\frac{x-x_0}{r},\frac{y-y_0}{r},\frac{z-z_0}{r}}\\
+    F=\mf{\mfa{F}\cos \alpha,\mfa{F}\cos \beta,\mfa{F}\cos \gamma}\meq{\mfa{dF}=G\frac{1\cdot \rho\mf{x,y,z}dv}{r^2}}{}
+    \mf{\iiint_\Omega \frac{G\rho\mf{x,y,z}\mf{x-x_0}}{r^2\cdot r}dv,,}
+
+}$
 
 
 
+
+\subsection{含参变量的积分}
+
+$\ma{f\mf{x,y},R=\mfc{a,b}\times\mfc{c,d}=\mfb{\mfc{x,y}|x\in \mfc{a,b},y\in \mfc{c,d}}\\
+    \varphi\mf{x}=\int_c^df\mf{x,y}dy \q \mf{a \leqslant x \leqslant b} \mt{含参数变量积分}\\
+    f\mf{x,y}\mt{在}R\mt{连续,}\varphi\mf{x}\mt{在}\mfc{a,b}\mt{连续}\\
+    f\mf{x,y}\mt{在}R\mt{连续,}\int_a^bdx\int_c^df\mf{x,y}dy=\int_c^ddy\int_a^bf\mf{x,y}dx\\
+    f\mf{x,y},f_x\mf{x,y}\mt{在}R\mt{连续,}\varphi\mf{x}\mt{在}\mfc{a,b}\mt{可微,}\varphi^{'}\mf{x}=\frac{d}{dx}\int_c^df\mf{x,y}dy=
+     \int_c^df_x\mf{x,y}dy
+}$
 
 
 
