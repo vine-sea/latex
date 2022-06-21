@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.22)  22 JUN 2022 00:15
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.22)  22 JUN 2022 00:46
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -847,7 +847,9 @@ Overfull \hbox (1.11102pt too wide) in paragraph at lines 2347--2357
 []$[] [] [] [][] \OML/cmm/m/it/10.53937 f [] dxdydz \OT1/cmr/m/n/10.53937 = [] [] [][] \OML/cmm/m/it/10.53937 f [] r[] [] 'drd'd^^R$ 
  []
 
-[15] [16]
+[15]
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+ [16]
 Missing character: There is no ; ("3B) in font nullfont!
 Missing character: There is no ; ("3B) in font nullfont!
  [17] (./tex2.aux) ) 
