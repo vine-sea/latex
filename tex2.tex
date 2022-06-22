@@ -59,6 +59,7 @@
 
 \newcommand{\ba}[1]{\overline{#1}}
 \newcommand{\meq}[2]{\xlongequal[#2]{#1}}
+\newcommand{\mseq}{\approx }
 
 
 \title{This is Start}
@@ -2435,11 +2436,11 @@ $\ma{F=G\frac{mM}{r^2}\\
 \subsection{含参变量的积分}
 
 $\ma{f\mf{x,y},R=\mfc{a,b}\times\mfc{c,d}=\mfb{\mfc{x,y}|x\in \mfc{a,b},y\in \mfc{c,d}}\\
-    \varphi\mf{x}=\int_c^df\mf{x,y}dy \q \mf{a \leqslant x \leqslant b} \mt{含参数变量积分}\\
+    \varphi\mf{x}=\int_c^df\mf{x,y}dy \q \mf{a \leqslant x \leqslant b} \mb{含参数变量积分}\\
     f\mf{x,y}\mt{在}R\mt{连续,}\varphi\mf{x}\mt{在}\mfc{a,b}\mt{连续}\\
     f\mf{x,y}\mt{在}R\mt{连续,}\int_a^bdx\int_c^df\mf{x,y}dy=\int_c^ddy\int_a^bf\mf{x,y}dx\\
     f\mf{x,y},f_x\mf{x,y}\mt{在}R\mt{连续,}\varphi\mf{x}\mt{在}\mfc{a,b}\mt{可微,}\varphi^{'}\mf{x}=\frac{d}{dx}\int_c^df\mf{x,y}dy=\int_c^df_x\mf{x,y}dy\\
-    \Phi\mf{x}=\int_{\alpha\mf{x}}^{\beta\mf{x}}f\mf{x,y}dy\\
+    \Phi\mf{x}=\int_{\alpha\mf{x}}^{\beta\mf{x}}f\mf{x,y}dy\q \mf{a \leqslant x \leqslant b} \mb{含参数变量积分}\\
     f\mf{x,y}\mt{在}R\mt{连续,}\alpha\mf{x},\beta\mf{x}\mt{在}\mfc{a,b}\mt{连续,}c\leqslant \alpha\mf{x},\beta\mf{x}\leqslant d,\Phi\mf{x}\mt{在}\mfc{a,b}\mt{连续,}\\
     f\mf{x,y},f_x\mf{x,y}\mt{在}R\mt{连续,}\alpha\mf{x},\beta\mf{x}\mt{在}\mfc{a,b}\mt{可微,}c\leqslant \alpha\mf{x},\beta\mf{x}\leqslant d，\Phi\mf{x}\mt{在}\mfc{a,b}\mt{可微,}\\
     \q \q \Phi^{'}\mf{x}=\frac{d}{dx}\int_{\alpha\mf{x}}^{\beta\mf{x}}f\mf{x,y}dy=\int_{\alpha\mf{x}}^{\beta\mf{x}}f_x\mf{x,y}dy+
@@ -2448,61 +2449,189 @@ $\ma{f\mf{x,y},R=\mfc{a,b}\times\mfc{c,d}=\mfb{\mfc{x,y}|x\in \mfc{a,b},y\in \mf
 
 
 
+\section{曲线积分与曲面积分}
+
+\subsection{对弧长的曲线积分}
+\subsubsection{对弧长的曲线积分的概念与性质}
+\mb{曲柄构件的质量}\p
+$\ma{
+    m  &\mseq \sum \mu\mf{\xi_i,\eta_i}\Delta s_i\\
+     &=\lim_{\lambda \rightarrow 0}\sum \mu\mf{\xi_i,\eta_i}\Delta s_i
+}$
+
+$\ma{f\mf{x,y}\mt{在直线}L\mt{上有界},\\
+L\mt{插入点}M_1,M_2,\cdots,M_{n-1}\mt{分割弧}\Delta s_i,\\
+}\Rightarrow
+\ma{\int_Lf\mf{x,y}ds=\lim_{\lambda \rightarrow 0}\sum f\mf{\xi_i,\eta_i}\Delta s_i,\\ 
+\mb{函数对弧长积分，第一类曲线积分}}$\p
+
+$\int_\Gamma f\mf{x,y,z}ds=\lim_{\lambda \rightarrow 0}\sum f\mf{\xi_i,\eta_i,\zeta_i}\Delta s_i$
+
+$\mt{封闭曲线}L,\int_Lf\mf{x,y}ds=\oint_Lf\mf{x,y}ds $
+
+$\mt{分段光滑}\int_{L_1+L_2}f\mf{x,y}ds=\int_{L_1 }f\mf{x,y}ds+\int_{ L_2}f\mf{x,y}ds$
+
+$\mt{常数}\alpha ,\beta,\int_L \mfc{\alpha f\mf{x,y}+\beta g\mf{x,y}} ds=\alpha\int_L f\mf{x,y}ds+\beta\int_L g\mf{x,y}ds$
+
+$\mt{曲线}L\mt{上}f\mf{x,y}\leqslant g\mf{x,y}, \int_L f\mf{x,y}ds \leqslant \int_L g\mf{x,y}ds$
+
+$\ma{-\mfa{c} \leqslant a \leqslant \mfa{c} ,\\ \mfa{a}\leqslant \mfa{c}}\Rightarrow   \ma{-\int \mfa{c}ds \leqslant &\int ads \leqslant \int \mfa{c}ds\\ &\mfa{\int ads}\leqslant \int \mfa{c}ds} \xrightarrow{a=c=f\mf{x,y} } \mfa{\int f\mf{x,y}ds}\leqslant \int \mfa{f\mf{x,y}}ds$
+
+\subsubsection{对弧长的曲线积分的计算法}
+
+
+$\ma{
+    f\mf{x,y}\mt{在}\mt{曲线}L\mt{连续}\\
+    L:\fcz{x=\varphi\mf{t}\\
+            y=\psi\mf{t}}   t\in \mfc{\alpha,\beta}\\
+    \varphi\mf{t},\psi\mf{t},\mt{在} \mfc{\alpha,\beta}\mt{连续一阶导}\\
+    {\varphi^{'}}^2\mf{t}+{\psi^{'}}^2\mf{t} \neq 0\\
+}\Rightarrow \ma{
+    \int_Lf\mf{x,y}ds&=\lim_{\lambda \rightarrow 0}\sum f\mf{\varphi\mf{t},\psi\mf{t}}\sqrt{{\varphi^{'}}^2\mf{t}+{\psi^{'}}^2\mf{t}}\Delta t_i\\
+    &=\int_\alpha^\beta f\mf{\varphi\mf{t},\psi\mf{t}}\sqrt{{\varphi^{'}}^2\mf{t}+{\psi^{'}}^2\mf{t}}dt
+}$
+
+
+$\ma{
+    y=\psi\mf{x} \rightarrow \fcz{
+        x=\varphi\mf{x}=x\\
+        y=\psi\mf{x}
+    }\rightarrow \sqrt{{\varphi^{'}}^2\mf{x}+{\psi^{'}}^2\mf{x}}=\sqrt{1+{\psi^{'}}^2\mf{x}}\\
+
+    x=\varphi\mf{y} \rightarrow \fcz{
+       
+        x=\varphi\mf{y}\\
+        y=\psi\mf{y}=y
+    }\rightarrow \sqrt{{\varphi^{'}}^2\mf{y}+{\psi^{'}}^2\mf{y}}=\sqrt{1+{\varphi^{'}}^2\mf{y}}\\
+}$
+
+
+$\fcz{
+    x=\varphi\mf{t}\\
+    y=\psi\mf{t} \\
+    z=\omega\mf{t}
+}t\in \mfc{\alpha,\beta} \rightarrow \int_\Gamma f\mf{x,y,z}ds=\int_\Gamma f\mf{\varphi\mf{t},\psi\mf{t},\omega\mf{t}}\sqrt{{\varphi^{'}}^2\mf{t}+{\psi^{'}}^2\mf{t}+{\omega^{'}}^2\mf{t}}dt$
 
 
 
+\subsection{对坐标的曲线积分}
+
+\subsubsection{对坐标的曲线积分的概念与性质}
+
+\mb{变力沿曲线所作的功}\p
+$\ma{
+    W&=\sum \Delta W \mseq \sum \mfc{P\mf{\xi_i,\eta_i}\Delta x_i+Q\mf{\xi_i,\eta_i} \Delta y_i}\\
+    &=\lim_{\lambda \rightarrow 0}\sum \mfc{P\mf{\xi_i,\eta_i}\Delta x_i+Q\mf{\xi_i,\eta_i} \Delta y_i}\\
+    &\mb{F}\mf{x,y}=\mf{P\mf{x,y,z},Q\mf{x,y,z}}\\
+    &\mb{A}\mf{x,y,z}=\mf{P\mf{x,y,z},Q\mf{x,y,z},R\mf{x,y,z}}\\
+    &d \mb{r}_\mb{2}=\mf{dx,dy}\\
+    &d \mb{r}_\mb{3}=\mf{dx,dy,dz}
+
+}\rightarrow \ma{
+    \int_L P\mf{x,y}dx=\lim_{\lambda \rightarrow 0}\sum P\mf{\xi_i,\eta_i}\Delta x_i\\
+    \int_L P\mf{x,y}dy=\lim_{\lambda \rightarrow 0}\sum Q\mf{\xi_i,\eta_i}\Delta y_i\\
+    \mb{第二类曲线积分}\\
+    W=\int_L \mb{F}\mf{x,y}\cdot d \mb{r}_\mb{2}\\
+    W_3=\int_\Gamma \mb{A}\mf{x,y,z} \cdot d \mb{r}_\mb{3}
+}$
 
 
+$\int_L \alpha \mb{F}_1 + \beta \mb{F}_2 \cdot d \mb{r}_2=\alpha\int_L   \mb{F}_1 \cdot d \mb{r}_2+\beta \int_L   \mb{F}_2 \cdot d \mb{r}_2$
+
+$\int_L\mb{F}\cdot d \mb{r}_2=\int_{L_1}\mb{F}\cdot d \mb{r}_2+\int_{L_2}\mb{F}\cdot d \mb{r}_2$
+
+$\int_L\mb{F}\cdot d \mb{r}=-\int_{L^-}\mb{F}\cdot d \mb{r}$
+
+\subsubsection{对坐标的曲线积分的计算法}
+
+$\ma{
+    P\mf{x,y},Q\mf{x,y}\mt{在}L\mt{连续}\\
+    L:\fcz{x=\varphi\mf{t}\\y=\psi\mf{t}}\\
+    \varphi\mf{t},\psi\mf{t}\mt{在}\mfc{\alpha,\beta}\mt{连续一阶导}\\
+    {\varphi^{'}}^2\mf{t}+{\psi^{'}}^2\mf{t}\neq 0
+}\rightarrow \int_L P\mf{x,y}dx+ Q\mf{x,y}dy=\int_\alpha^\beta \mfc{P\mf{\varphi\mf{t},\psi\mf{t}}\varphi^{'}+ Q\mf{\varphi\mf{t},\psi\mf{t}}\psi^{'}}dt$
 
 
-\newpage
-\section*{tikz test}
+$\ma{
+    x=\varphi\mf{y} \rightarrow L:\fcz{x=\varphi\mf{y}\\y=y}\rightarrow 
+     \int_L P\mf{x,y}dx+ Q\mf{x,y}dy=\int_\alpha^\beta \mfc{P\mf{\varphi\mf{y},y}\varphi^{'}\mf{y}+ Q\mf{\varphi\mf{y},y}}dy\\
+    y=\psi\mf{x} \rightarrow L:\fcz{x=x\\y=\psi\mf{x}}\rightarrow
+     \int_L P\mf{x,y}dx+ Q\mf{x,y}dy=\int_\alpha^\beta \mfc{P\mf{x,\psi\mf{x}}+ Q\mf{x,\psi\mf{x}}\psi^{'}\mf{x}}dx\\
+}$
 
-\tikz\draw[<->](0pt,0pt)--(3,0);
-\tikz\draw[o-stealth](0pt,0pt)--(3,0);
+$\Gamma:\fcz{x=\varphi\mf{t}\\
+y=\psi\mf{t}\\
+z=\omega\mf{t}} \rightarrow \int_\Gamma \mf{P,Q,R}\cdot \mf{dx,dy,dz}=\int_\Gamma P \varphi^{’} +Q\psi^{'}+R\omega^{'}dt$
+
+\subsection{两类曲线积分的关系}
+
+\noindent
+$\ma{L:\fcz{x=\varphi\mf{t}\\y=\psi\mf{t}}\\
+\mt{记}k=\sqrt{{\varphi^{'}}^2\mf{t}+{\psi^{'}}^2\mf{t}}\\
+\mt{切向量}n=\mf{\cos \alpha,\cos \beta}=\mf{\frac{\varphi^{'}}{k},\frac{\psi^{'}}{k}}\\
+}\rightarrow \ma{\ma{
+    \int_L\mfc{P\cos\alpha+Q\cos\beta}ds&=\int_L\mfc{P\frac{\varphi^{'}}{k}+Q\frac{\psi^{'}}{k}}kdt\\
+    &=\int_L\mfc{P\varphi^{'}+Q\psi^{'}}dt
+}\\
+\int_L \mf{P,Q}\cdot\mf{\cos \alpha,\cos \beta}ds=\int \mf{P,Q} \cdot \mf{dx,dy}=\int \mf{P,Q} dr\\
+\int_L \mb{F}\cdot n ds=\int_L \mb{F}_n ds=\int_L \mb{F} \cdot dr\\
+\int_L \mf{P,Q,R}\cdot\mf{\cos \alpha,\cos \beta,\cos \gamma}ds=\int \mf{P,Q,R} \cdot \mf{dx,dy,dz}=\int \mf{P,Q,R} dr\\
+\int_\Gamma \mb{A}\cdot n ds=\int_\Gamma \mb{A}_n ds=\int_\Gamma \mb{A} \cdot dr\\
+dr=nds \mt{有向曲线元}
+}$
+
+
+\subsection{格林公式及其应用}
+
+
+% \newpage
+% \section*{tikz test}
+
+% \tikz\draw[<->](0pt,0pt)--(3,0);
+% \tikz\draw[o-stealth](0pt,0pt)--(3,0);
  
-\tp{
-    \tpo{a}{(0,0)};
-    \tpo{b}{(3,0)};
-    \draw[<->](a)--(b);
-}
+% \tp{
+%     \tpo{a}{(0,0)};
+%     \tpo{b}{(3,0)};
+%     \draw[<->](a)--(b);
+% }
 
 
-\tp{
-\draw[style= dashed]  (2,0.5) circle (0.5);
-\draw[fill=green]  (1,1) ellipse (0.5 and 1); 
-\draw[fill=blue]  (0,0) rectangle (1 , 1); 
-}
+% \tp{
+% \draw[style= dashed]  (2,0.5) circle (0.5);
+% \draw[fill=green]  (1,1) ellipse (0.5 and 1); 
+% \draw[fill=blue]  (0,0) rectangle (1 , 1); 
+% }
 
-\tp{
-    \draw(0,0)--(90:1)arc(90:390:1)--cycle;
-    \draw(60:5pt)-- +(30:1)arc(30:90:1)-- cycle;
-}
+% \tp{
+%     \draw(0,0)--(90:1)arc(90:390:1)--cycle;
+%     \draw(60:5pt)-- +(30:1)arc(30:90:1)-- cycle;
+% }
 
-\tp{
-    \draw(0,0)--(2,2);
-    \draw(2,0)--(0,2);
-    \draw \tip{0}{0}{2}{2}{2}{0}{0}{2} circle (.3)
-    % scale rotate xslant
-    [shift={(.45,.45)}] \tip{0}{0}{2}{2}{2}{0}{0}{2} circle (.3)
-    [shift={(.45,.45)}] \tip{0}{0}{2}{2}{2}{0}{0}{2} circle (.3);
-}
-\tp{
-    \coordinate [label=0:$a$] (a) at (0,0);
-    \coordinate [label=0:$b$] (b) at (2.5,3);
-    \coordinate [label=0:$d$] (d) at (0,-1);
-    \coordinate [label=0:$e$] (e) at (2,3);
-    \coordinate [label=0:$c$] (c) at (intersection of a--b and d--e);
-    \draw (a)--(b)  (d)--(e);
-    \foreach \p in {a,b,c,d,e} \fill [opacity = 0.75] (\p) circle (2pt);
-
-
-}
-
-\tikz\path[fill=green!30] (1,1)--(2,2)--(3,1)--cycle;
+% \tp{
+%     \draw(0,0)--(2,2);
+%     \draw(2,0)--(0,2);
+%     \draw \tip{0}{0}{2}{2}{2}{0}{0}{2} circle (.3)
+%     % scale rotate xslant
+%     [shift={(.45,.45)}] \tip{0}{0}{2}{2}{2}{0}{0}{2} circle (.3)
+%     [shift={(.45,.45)}] \tip{0}{0}{2}{2}{2}{0}{0}{2} circle (.3);
+% }
+% \tp{
+%     \coordinate [label=0:$a$] (a) at (0,0);
+%     \coordinate [label=0:$b$] (b) at (2.5,3);
+%     \coordinate [label=0:$d$] (d) at (0,-1);
+%     \coordinate [label=0:$e$] (e) at (2,3);
+%     \coordinate [label=0:$c$] (c) at (intersection of a--b and d--e);
+%     \draw (a)--(b)  (d)--(e);
+%     \foreach \p in {a,b,c,d,e} \fill [opacity = 0.75] (\p) circle (2pt);
 
 
-\newpage
+% }
+
+% \tikz\path[fill=green!30] (1,1)--(2,2)--(3,1)--cycle;
+
+
+% \newpage
 
 
 \end{document}
