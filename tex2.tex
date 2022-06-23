@@ -2582,6 +2582,77 @@ dr=nds \mt{有向曲线元}
 
 
 \subsection{格林公式及其应用}
+\subsubsection{格林公式}
+
+D内任意封闭曲线所围部分都属于D,\mb{单连通}，非单连通\mb{复连通}
+
+边界曲线正向，左边是D\p
+$\iint_D\mf{\da{Q}{x}-\da{P}{y}}dxdy=-\iint_D\mfa{\ma{
+    P & Q\\
+    \da{ }{  x}  &\da{ }{  y}\\
+}}=\oint_LPdx+Qdy$
+
+\tp{
+    \tpo{O}{(0,0)};
+    \tpo{x}{(3,0)};
+    \tpo{y}{(0,3)};
+    \draw[->](O)--(x);
+    \draw[->](O)--(y);
+    \draw[->](.5,2) -- +(0,-1.5)arc(225:315:1)-- +(0,1.5)arc(45:135:1);
+
+
+    \tpo{O1}{(4,0)};
+    \tpo{x1}{(7,0)};
+    \tpo{y1}{(4,3)};
+    \draw[->](O1)--(x1);
+    \draw[->](O1)--(y1);
+    \draw[->](4.5,2)arc(135:225:1)--+(2,0)arc(-45:45:1)--+(-2,0);
+
+}
+
+
+
+
+
+$\iint_D \da{P}{y}dxdy=\int_a^b\mfc{\int_{{\varphi}_1\mf{x}}^{{\varphi}_2\mf{x}} \da{Q}{y}dy }dx=\int_a^b P\mf{x,\varphi_2\mf{x}}-P\mf{x,\varphi_1\mf{x}}dx$
+
+$\iint_D \da{Q}{x}dxdy=\int_c^d\mfc{\int_{{\psi}_1\mf{y}}^{{\psi}_2\mf{y}} \da{Q}{x}dx }dy=\int_c^d Q\mf{\psi_2\mf{y},y}-Q\mf{\psi_1\mf{y},y}dy$
+
+
+$\ma{\oint Pdx=\int_{L_1}Pdx+\int_{L_2}Pdx+\int_{L_3}Pdx+\int_{L_4}Pdx\\
+    = \int_{L_1}P\mf{x,\varphi_2\mf{x}}dx+
+    \int_{L_2}P\mf{x,\varphi_1\mf{x}}dx\\
+    =\int _b^aP\mf{x,\varphi_2\mf{x}}dx+\int _a^bP\mf{x,\varphi_1\mf{x}}dx\\
+    =\int_a^b P\mf{x,\varphi_1\mf{x}}-P\mf{x,\varphi_2\mf{x}}dx\\
+    =-\mf{\int_a^b P\mf{x,\varphi_2\mf{x}}-P\mf{x,\varphi_1\mf{x}}dx}\\
+    L_1:y=\varphi_2\mf{x},x \in \mfc{b,a}\\
+    L_2:y=\varphi_1\mf{x},x \in \mfc{a,b}\\
+    L_3:x=a,y \in \mfc{d ,c}\\
+    L_4:x=b,y \in \mfc{a,b}\\
+}$
+
+$\ma{\oint Qdy=\int_{L1}Qdy+\int_{L2}Qdy+\int_{L3}Qdy+\int_{L4}Qdy\\
+    =\int_{L_3}Q\mf{\psi_1,y}dy+\int_{L_4}Q\mf{\psi_2,y}dy\\
+    =\int_d^cQ\mf{\psi_1,y}dy+\int_c^dQ\mf{\psi_2,y}dy \\
+    =\int_c^d Q\mf{\psi_2,y}-Q\mf{\psi_1,y}dy\\
+L_1:y= d,x \in \mfc{b,a}\\
+L_2:y= c,x \in \mfc{a,b}\\
+L_3:x= \psi_1\mf{y}\\
+L_4:x= \psi_2\mf{y}\\
+}$
+
+非标准分割\p
+
+
+\subsubsection{平面上曲线积分与路径无关的条件}
+
+区域G内任意点A,B,任意A到B曲线$if \q \int_{L_1}Pdx+Qdy=\int_{L_2}Pdx+Qdy ,then \q \mt{曲线积分}\int_{L}Pdx+Qdy\mt{在G内与路径无关,}
+\int_{L_1-L_2}Pdx+Qdy=0$
+
+
+$if \q \mt{单连通区域}G，P,Q\mt{在G内连续一阶偏导数},then \q \mt{曲线积分}\int_{L}Pdx+Qdy\mt{在G内与路径无关} \Leftrightarrow \da{P}{y}=\da{Q}{x}$
+
+
 
 
 % \newpage
