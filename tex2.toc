@@ -86,8 +86,28 @@
 \contentsline {subsection}{\numberline {11.2}对坐标的曲线积分}{17}{}%
 \contentsline {subsubsection}{\numberline {11.2.1}对坐标的曲线积分的概念与性质}{17}{}%
 \contentsline {subsubsection}{\numberline {11.2.2}对坐标的曲线积分的计算法}{18}{}%
-\contentsline {subsection}{\numberline {11.3}两类曲线积分的关系}{18}{}%
-\contentsline {subsection}{\numberline {11.4}格林公式及其应用}{18}{}%
-\contentsline {subsubsection}{\numberline {11.4.1}格林公式}{18}{}%
-\contentsline {subsubsection}{\numberline {11.4.2}平面上曲线积分与路径无关的条件}{19}{}%
+\contentsline {subsubsection}{\numberline {11.2.3}两类曲线积分的关系}{18}{}%
+\contentsline {subsection}{\numberline {11.3}格林公式及其应用}{18}{}%
+\contentsline {subsubsection}{\numberline {11.3.1}格林公式}{18}{}%
+\contentsline {subsubsection}{\numberline {11.3.2}平面上曲线积分与路径无关的条件}{19}{}%
+\contentsline {subsubsection}{\numberline {11.3.3}二元函数的全微分求积}{19}{}%
+\contentsline {subsubsection}{\numberline {11.3.4}曲线积分的基本定理}{19}{}%
+\contentsline {subsection}{\numberline {11.4}对面积的曲面积分}{19}{}%
+\contentsline {subsubsection}{\numberline {11.4.1}对面积的曲面积分的概念与性质}{19}{}%
+\contentsline {subsubsection}{\numberline {11.4.2}对面积的曲面积分的计算法}{20}{}%
+\contentsline {subsection}{\numberline {11.5}对坐标的曲面积分}{20}{}%
+\contentsline {subsubsection}{\numberline {11.5.1}对坐标的曲面积分的概念与性质}{20}{}%
+\contentsline {subsubsection}{\numberline {11.5.2}对坐标的曲面积分的计算法}{20}{}%
+\contentsline {subsubsection}{\numberline {11.5.3}两类曲面积分之间的关系}{20}{}%
+\contentsline {subsection}{\numberline {11.6}高斯公式 $\hskip 1em\relax $ 通量与散度}{20}{}%
+\contentsline {subsubsection}{\numberline {11.6.1}高斯公式}{20}{}%
+\contentsline {subsubsection}{\numberline {11.6.2}沿任意闭曲面的曲面积分为零的条件}{21}{}%
+\contentsline {subsubsection}{\numberline {11.6.3}通量与散度}{21}{}%
+\contentsline {subsection}{\numberline {11.7}斯托克斯公式 $\hskip 1em\relax ^*$ 环流量与旋度}{22}{}%
+\contentsline {subsubsection}{\numberline {11.7.1}斯托克斯公式}{22}{}%
+\contentsline {subsubsection}{\numberline {11.7.2}空间曲线积分与路径无关的条件}{22}{}%
+\contentsline {subsubsection}{\numberline {11.7.3}环流量与旋度}{22}{}%
+\contentsline {section}{\numberline {12}无穷级数}{24}{}%
+\contentsline {subsection}{\numberline {12.1}常数项级数的概念和性质}{24}{}%
+\contentsline {subsubsection}{\numberline {12.1.1}数项级数的概念}{24}{}%
 \contentsfinish 

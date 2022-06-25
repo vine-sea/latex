@@ -45,6 +45,8 @@
 
 \newcommand{\da}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\db}[2]{\frac{d #1}{d #2}}
+
+
 \newcommand{\fcz}[1] {
     \left\{
         \begin{array}{llll} #1 \end{array}
@@ -61,6 +63,9 @@
 \newcommand{\meq}[2]{\xlongequal[#2]{#1}}
 \newcommand{\mseq}{\approx }
 
+
+\def\ooint{\displaystyle{{\bigcirc}\kern-12.5pt{\int}\kern-7.5pt{\int}}}
+\def\oooint{\displaystyle{{\bigcirc}\kern-12.3pt{\int}\kern-7pt{\int}\kern-7pt{\int}}}
 
 \title{This is Start}
 \author{Vine}
@@ -2563,7 +2568,7 @@ $\Gamma:\fcz{x=\varphi\mf{t}\\
 y=\psi\mf{t}\\
 z=\omega\mf{t}} \rightarrow \int_\Gamma \mf{P,Q,R}\cdot \mf{dx,dy,dz}=\int_\Gamma P \varphi^{’} +Q\psi^{'}+R\omega^{'}dt$
 
-\subsection{两类曲线积分的关系}
+\subsubsection{两类曲线积分的关系}
 
 \noindent
 $\ma{L:\fcz{x=\varphi\mf{t}\\y=\psi\mf{t}}\\
@@ -2646,11 +2651,360 @@ L_4:x= \psi_2\mf{y}\\
 
 \subsubsection{平面上曲线积分与路径无关的条件}
 
-区域G内任意点A,B,任意A到B曲线$if \q \int_{L_1}Pdx+Qdy=\int_{L_2}Pdx+Qdy ,then \q \mt{曲线积分}\int_{L}Pdx+Qdy\mt{在G内与路径无关,}
-\int_{L_1-L_2}Pdx+Qdy=0$
+区域G内任意点A,B,任意A到B曲线,\p
+$if \q \int_{L_1}Pdx+Qdy=\int_{L_2}Pdx+Qdy ,then \q \mt{曲线积分}\int_{L}Pdx+Qdy\mt{在G内与路径无关,}
+\oint_{L_1-L_2}Pdx+Qdy=0$
 
 
-$if \q \mt{单连通区域}G，P,Q\mt{在G内连续一阶偏导数},then \q \mt{曲线积分}\int_{L}Pdx+Qdy\mt{在G内与路径无关} \Leftrightarrow \da{P}{y}=\da{Q}{x}$
+$if \q \mt{单连通区域}G,P,Q\mt{在G内连续一阶偏导数},then \q \mt{曲线积分}\int_{L}Pdx+Qdy\mt{在G内与}\mb{路径无关} \Leftrightarrow \da{P}{y}=\da{Q}{x}$
+
+奇点\p
+
+
+\subsubsection{二元函数的全微分求积}
+
+单连通区域$G,P\mf{x,y},Q\mf{x,y}$在G内具有一阶连续偏，\p
+$F dx+Q dy$在G内为某一函数$\mu\mf{x,y}$的全微分$\Leftrightarrow \da{P}{y}=\da{Q}{x}$\p
+曲线积分$\int_LPdx+Qdy$在G内与路径无关$\Leftrightarrow \exists \mu\mf{x,y},du=Pdx+Qdy$\p
+
+
+\subsubsection*{全微分方程}
+微分方程$P\mf{x,y}dx+Q\mf{x,y}dy=0$左端是某函数$\mu{\mf{x,y}}$全微分,\mb{全微分方程}\\
+
+
+\subsubsection{曲线积分的基本定理}
+
+曲线积分$\int_L\mb{F}\cdot d\mb{r}$在区域G内与积分路径无关，向量场\mb{F}为保守场
+
+$F\mf{x,y}=\mf{P\mf{x,y}+Q\mf{x,y}}$是区域G内向量场,$P\mf{x,y},Q\mf{x,y}$在G内连续，且存在数量函数使得$F=\nabla f$,则曲线积分$\int_L\mb{F}\cdot d\mb{r}$在G内与路径无关，且$\int_L\mb{F}\cdot d\mb{r}=f\mf{B}-f\mf{A}$\mb{曲线积分基本公式}
+
+
+\subsection{对面积的曲面积分}
+
+\subsubsection{对面积的曲面积分的概念与性质}
+
+
+光滑曲面$\Sigma$,函数$f\mf{x,y,z}$在$\Sigma$有界，任意分割n小块$\Delta S_i$,无关面分法，点取法，极限$\lim_{\lambda \rightarrow 0}\sum f\mf{\xi_i,\eta_i,\zeta_i}\Delta S_i=\iint_\Sigma f\mf{x,y,z}dS$\mb{第一类曲面积分}
+
+
+
+\subsubsection{对面积的曲面积分的计算法}
+
+曲面$\Sigma : z=z\mf{x,y},n=\mf{-z_x,-z_y,1}=\mf{\frac{-z_x}{\sqrt{{z_x}^2+{z_y}^2+1}},\frac{-z_y}{\sqrt{{z_x}^2+{z_y}^2+1}},\frac{1}{\sqrt{{z_x}^2+{z_y}^2+1}}}$\p
+
+$\ma{
+    \mfa{n\cdot \mf{1,0,0}}=\frac{z_x}{\sqrt{{z_x}^2+{z_y}^2+1}}=\cos \alpha &\Delta S_i\cos \alpha=\mf{\Delta \sigma_i}_{yz}  &\Delta S_i=\frac{1}{\cos \alpha} \mf{\Delta \sigma_i}_{yz} \\
+    \mfa{n\cdot \mf{0,1,0}}=\frac{z_y}{\sqrt{{z_x}^2+{z_y}^2+1}}=\cos \beta  &\Delta S_i\cos \beta=\mf{\Delta \sigma_i}_{xz}  &\Delta S_i=\frac{1}{\cos \beta} \mf{\Delta \sigma_i}_{xz} \\
+    \mfa{n\cdot \mf{0,0,1}}=\frac{1}{\sqrt{{z_x}^2+{z_y}^2+1}}=\cos \gamma &\Delta S_i\cos \gamma=\mf{\Delta \sigma_i}_{xy}  &\Delta S_i=\frac{1}{\cos \gamma}  \mf{\Delta \sigma_i}_{xy}\\
+}$
+
+
+$\lim_{\lambda \rightarrow 0}\sum f\mf{\xi_i,\eta_i,\zeta_i}\Delta S_i=\lim_{\lambda \rightarrow 0}\sum f\mf{\xi_i,\eta_i,\zeta_i}\frac{1}{\cos \gamma}  \mf{\Delta \sigma_i}_{xy}$
+
+$\int_\Sigma f\mf{x,y,z}dS=\iint_{D_{xy}}f\mfc{x,y,\mf{x,y}}\sqrt{{z_x}^2+{z_y}^2+1}dxdy$
+
+
+\subsection{对坐标的曲面积分}
+\subsubsection{对坐标的曲面积分的概念与性质}
+
+$\Delta S$单位法向量n ,$n \cdot \mf{0,0,1}=\cos \gamma \Rightarrow \Delta S \mt{在}xOy\mt{面投影}\mf{\Delta S}_{xy}=\fcz{  
+    \mf{ \Delta \sigma}_{xy},&\cos \gamma>0\\
+    -\mf{ \Delta \sigma}_{xy},&\cos \gamma<0\\
+    0,&\cos \gamma=0
+}$
+
+
+\mb{流向曲面一侧的流量}\p
+$Av\cdot n$
+
+光滑有向曲面$\Sigma$,函数$R\mf{x,y,z}$在$\Sigma$有界，任意分割$\Sigma$为$\Delta S_i,$
+$\ma{
+\Delta S_i\mt{在}xOy\mt{面投影为}\mf{\Delta S_i}_{xy}\\ %R
+\Delta S_i\mt{在}xOz\mt{面投影为}\mf{\Delta S_i}_{xz}\\ %Q
+\Delta S_i\mt{在}yOz\mt{面投影为}\mf{\Delta S_i}_{yz}\\ %R
+}$
+
+第二类曲面积分，函数在有向面上对坐标轴x,y(x,z/y,z)的积分$\fcz{
+    \iint_\Sigma R\mf{x,y,z}dxdy=\lim_{\lambda \rightarrow 0}R\mf{\xi_i,\eta_i,\zeta_i}\mf{\Delta S_i}_{xy}\\
+    \iint_\Sigma Q\mf{x,y,z}dxdz=\lim_{\lambda \rightarrow 0}Q\mf{\xi_i,\eta_i,\zeta_i}\mf{\Delta S_i}_{xz}\\
+    \iint_\Sigma P\mf{x,y,z}dydz=\lim_{\lambda \rightarrow 0}P\mf{\xi_i,\eta_i,\zeta_i}\mf{\Delta S_i}_{yz}
+}$
+
+$\iint_\Sigma \mf{P,Q,R}\cdot \mf{dydz,dxdz,dxdy}=\iint_{\Sigma_1} \mf{P,Q,R}\cdot \mf{dydz,dxdz,dxdy}+\iint_{\Sigma_2} \mf{P,Q,R}\cdot \mf{dydz,dxdz,dxdy}$
+
+$\iint_\Sigma \mf{P,Q,R}\cdot \mf{dydz,dxdz,dxdy}=-\iint_{\Sigma^-} \mf{P,Q,R}\cdot \mf{dydz,dxdz,dxdy}$
+
+$\ma{
+    \iint_{\Sigma^-}Pdydz=-\iint_{\Sigma}Pdydz\\
+    \iint_{\Sigma^-}Pdxdz=-\iint_{\Sigma}Pdxdz\\
+    \iint_{\Sigma^-}Pdxdy=-\iint_{\Sigma}Pdxdy\\
+}$
+
+
+\subsubsection{对坐标的曲面积分的计算法}
+$\Sigma : z=z\mf{x,y},\mf{\Delta S_i}_{xy}=\pm\mf{\Delta \sigma}_{xy},\iint_\Sigma R\mf{x,y,z}dxdy=\pm \iint_{D_{xy}}R\mf{x,y,z\mf{x,y}}dxdy$
+
+\subsubsection{两类曲面积分之间的关系}
+
+
+
+
+$\Sigma : z=z\mf{x,y},\Sigma$法向量$\mb{n}=\mf{\frac{-z_x}{\mfa{n}},\frac{-z_y}{\mfa{n}},\frac{1}{\mfa{n}}}=\mf{\cos \alpha,\cos \beta,\cos \gamma}$
+
+
+
+$\iint_\Sigma \mf{P,Q,R} \cdot \mf{dydz,dxdz,dxdy}=\iint_\Sigma\mf{P,Q,R}\cdot\mf{\cos \alpha,\cos \beta,\cos \gamma}dS$
+
+
+
+
+
+
+
+
+
+$\iint_\Sigma \mb{A} \cdot d \mb{S} =\iint_\Sigma \mb{A} \cdot \mb{n} d S =\iint_\Sigma \mb{A}_n  d S$
+
+$d \mb{S}=\mb{n}dS$有向曲面元
+
+
+\subsection{高斯公式 $\q$ 通量与散度}
+
+\subsubsection{高斯公式}
+
+空间闭区域$\Omega$由分片光滑闭曲面(有向，曲面外侧)$\Sigma$组成，$P\mf{x,y,z},Q\mf{x,y,z},R\mf{x,y,z}$在$\Omega$上有一阶连续偏导数，$\Sigma $方向余弦$n=\mf{\cos \alpha,\cos \beta,\cos \gamma}$则
+
+$$\iint_\Omega\mf{\da{P}{x}+\da{Q}{y}+\da{R}{z}}dv=\ooint_\Sigma\mf{P,Q,R}\cdot \mf{dydz,dxdz,dxdy} =\ooint_\Sigma\mf{P,Q,R}\cdot \mf{\cos \alpha,\cos \beta,\cos \gamma}dS$$
+
+
+
+\noindent
+$\ma{
+    \ma{
+        \iiint_\Omega \da{R}{z}dv &=  \iint_{D_{xy}}\mfb{\int_{z_1\mf{x,y}}^{z_2\mf{x,y}}\da{R}{z}dz}dxdy\\
+         &=\iint_{D_{xy}}\mfb{R\mf{x,y,z_2}-R\mf{x,y,z_1}}dxdy
+    }\\
+    \ma{ \ooint_\Sigma R\mf{x,y,z}dxdy &=\iint_{\Sigma_1}R dxdy+\iint_{\Sigma_2}R dxdy+\iint_{\Sigma_3}R dxdy\\
+        &= \iint_{\Sigma_1}R\mf{x,y,z}dxdy+\iint_{\Sigma_2}R\mf{x,y,z}dxdy+0\\
+        &=-\iint_{D_{xy}}R\mf{x,y,z_1}dxdy +\iint_{D_{xy}}R\mf{x,y,z_2}dxdy
+    }
+
+}\Rightarrow \ma{
+    \iint_\Omega \da{P}{x}dv=\ooint_\Sigma P dydz\\
+    \iint_\Omega \da{Q}{y}dv=\ooint_\Sigma Q dxdz\\
+    \iint_\Omega \da{R}{z}dv=\ooint_\Sigma R dxdy\\
+}$
+
+不规则体积分割\p
+
+
+函数$u\mf{x,y,z},v\mf{x,y,z}$在闭区域$\Omega$上具有一二阶连续偏导数，
+
+则$\iint_\Omega u \Delta vdxdydz=\ooint_{\Sigma}u\da{v}{n}dS-\iiint_{\Omega}\mf{
+    \da{u}{x}\da{v}{x}+\da{u}{y}\da{v}{y}+\da{u}{y}\da{v}{y}
+}$\mb{格林第一公式},$\Sigma$为闭区域 $\Omega$ 边界曲面,$\da{v}{n}$为函数$v\mf{x,y,z}$沿$\Sigma$外法线方向的方向导数,$\Delta=\da{^2}{x^2}+\da{^2}{y^2}+\da{^2}{z^2}$称为\mb{拉普拉斯算子}
+
+$\ma{\ooint_{\Sigma}u\da{v}{n}dS&=\ooint_\Sigma u\mf{\da{v}{x}\cos \alpha + \da{v}{y}\cos \beta +\da{v}{z}\cos \gamma }dS\\
+    &=\ooint_{\Sigma}\mfc{ \mf{u\da{v}{x}}\cos \alpha  + \mf{u\da{v}{y}}\cos \beta +\mf{u\da{v}{z}}\cos \gamma   }dS\\
+    &=\iiint_{\Omega}\mfc{ \da{}{x}\mf{u\da{v}{x}}  + \da{}{y}\mf{u\da{v}{y}}+\da{}{z}\mf{u\da{v}{z}} }dxdydz\\
+    &=\iiint_{\Omega}\mfc{ u\da{^2v}{x^2}+u\da{^2v}{y^2}+u\da{^2v}{z^2}+\da{u}{x}\da{v}{x}+\da{u}{y}\da{v}{y} + \da{u}{z}\da{v}{z}}dxdydz\\
+    &=\iiint_{\Omega}\mfc{ u\Delta v +\da{u}{x}\da{v}{x}+\da{u}{y}\da{v}{y} + \da{u}{z}\da{v}{z}}dxdydz\\
+    &=\iiint_{\Omega} u\Delta vdxdydz+\iiint_{\Omega} \da{u}{x}\da{v}{x}+\da{u}{y}\da{v}{y} + \da{u}{z}\da{v}{z}dxdydz
+}$
+
+
+
+\subsubsection{沿任意闭曲面的曲面积分为零的条件}
+
+空间区域G,G内任意闭曲面所围区域完全属于G,\mb{空间二维单连通}
+
+空间区域G,G内任意闭曲线总可以张成(做曲面)完全属于G,\mb{空间一维单连通}
+
+二维单连通区域G，若P,Q,R,在G内具有一阶连续偏导数，则曲面积分 $\iint_\Sigma Pdydz +Qdxdz+Rdxdy$在G内与选取曲面选取无关，只与边界曲线有关$\Leftrightarrow \da{P}{x}+\da{Q}{y}+\da{R}{z}=0$
+
+
+\subsubsection{通量与散度}
+$\ma{
+    \mt{向量场}\mb{A}\mf{x,y,z}=\mf{P,Q,R}\\
+    \mt{有向曲面}\Sigma,\mt{法向量}\mb{n}\\
+    \mt{通量}\iint_\Sigma \mb{A}\cdot \mb{n} dS
+}$
+
+
+$\mt{速度场} v\mf{x,y,z}=\mf{P,Q,R} \q \ma{\iiint_\Omega \mf{\da{P}{x}+ \da{Q}{y}+\da{P}{y}}dv &=\ooint_\Sigma v_n dS\\
+    \frac{1}{V}\iiint_\Omega \mf{\da{P}{x}+ \da{Q}{y}+\da{P}{y}}dv &=\frac{1}{V}\ooint_\Sigma v_n dS\\
+    \mf{\da{P}{x}+ \da{Q}{y}+\da{P}{y}}|_{\mf{\xi,\eta,\zeta}} &=\frac{1}{V}\ooint_\Sigma v_n dS \q \mf{\xi,\eta,\zeta} \in \Omega\\ 
+    \da{P}{x}+ \da{Q}{y}+\da{P}{y}&=\lim_{\Omega \rightarrow M} \frac{1}{V}\ooint_\Sigma v_n dS=\mt{div} v\mf{M}=\Delta \cdot \mb{A}\\     
+}$
+
+
+
+$ \q \q  \mt{速度场}v\mt{在点}M\mt{的通量密度,源头强度}\mb{散度}$
+
+$\mt{div} \mb{V}$处处为零，\mb{无源场}
+
+散度体积分，通量面积分\p
+
+
+
+
+\subsection{斯托克斯公式 $\q ^*$ 环流量与旋度}
+\subsubsection{斯托克斯公式}
+
+分段光滑空间有向闭曲线$\Gamma, \Gamma$张成分片光滑有向曲面$\Sigma$，符合右手定则
+若P,Q,R在曲面$\Sigma$上具有一阶连续偏导数，则$\iint_\Sigma \mf{\da{R}{y}-\da{Q}{z}}dydz+\mf{\da{P}{z}-\da{R}{x}}dxdz +\mf{\da{Q}{x}-\da{P}{y}}dxdy=\oint_\Gamma Pdx+Qdy+Rdz$
+
+
+$\mt{曲面}\Sigma :z=z\mf{x,y}, \mt{法向量}n=\mf{\cos \alpha,\cos \beta,\cos \gamma}=\mf{-\frac{z_x}{\mfa{n}}, -\frac{z_y}{\mfa{n}}，\frac{1}{\mfa{n}} }$
+
+$\ma{\ma{\iint_\Sigma \da{P}{z}dzdx-\da{P}{y}dydx &=\iint_\Sigma \mf{\da{P}{z}\cos \beta-\da{P}{y}\cos \gamma} dS\\
+     &\meq{\cos \beta=-f_y \cos \gamma}{}-\iint_\Sigma \mf{\da{P}{z}f_y+\da{P}{y}}\cos \gamma dS\\
+     &=-\iint_{D_{xy}} \mf{\da{P}{z}f_y+\da{P}{y}} dxdy\\
+     &=-\iint_{D_{xy}}  \da{P}{y} dxdy\\
+     &=\oint_L Pdx 
+}\\
+    \iint_\Sigma \da{Q}{x}dxdy-\da{Q}{z}dzdy=\oint_\Gamma Qdy\\
+    \iint_\Sigma \da{R}{y}dydz-\da{R}{x}dxdz=\oint_\Gamma Rdz\\
+}$
+
+
+$\iint_\Sigma \mfa{\ma{
+    dydz &dxdz &dxdy\\
+    \da{}{x}  &\da{}{y}  &\da{}{z}\\
+    P &Q &R
+}}\ma{=\mfa{\ma{
+     \cos \alpha  & \cos \beta  &\cos \gamma\\
+    \da{}{x}  &\da{}{y}  &\da{}{z}\\
+    P &Q &R
+}}dS=\oint_\Gamma Pdx +Qdy +Rdz\\
+    \meq{}{} \mfa{\ma{
+        \cos \alpha  & \cos \beta  &1\\
+    \da{}{x}  &\da{}{y}  &0\\
+    P &Q &0
+    }}dS=\oint_\Gamma Pdx +Qdy 
+}
+$
+
+\subsubsection{空间曲线积分与路径无关的条件}
+
+一维单连通区域G，若函数P,Q,R在G内具有一阶连续偏导数，
+
+\q \q 则曲线积分$\int_\Gamma Pdx+Qdy+Rdz$在G内与路径无关$\Leftrightarrow \fcz{
+    \da{P}{y}=\da{Q}{x}\\
+    \da{Q}{z}=\da{R}{y}\\
+    \da{R}{x}=\da{P}{z}
+}$
+
+
+一维单连通区域G，若函数P,Q,R在G内具有一阶连续偏导数，
+
+\q \q 则存在$u\mf{x,y,z},du=Pdx+Qdy+Rdz \Leftrightarrow \ma{ \fcz{
+    \da{P}{y}=\da{Q}{x}\\
+    \da{Q}{z}=\da{R}{y}\\
+    \da{R}{x}=\da{P}{z}
+}\\
+    \ma{
+        u\mf{x,y,z} &=\int_{\mf{x_0,y_0,z_0}}^{\mf{x,y,z}}Pdx+Qdy+Rdz\\
+                     &=\int_{x_0}^{x}Pdx+\int_{y_0}^{y}Qdy+\int_{z_0}^{z}Rdz
+    }
+}$
+
+
+
+\subsubsection{环流量与旋度}
+
+向量场$\mb{A}=\mf{P,Q,R}$,分段光滑有向闭曲线$\Gamma$,单位切向量$\tau$ ,则$\oint_\Gamma \mb{A} \cdot \tau ds$称为$A$沿$\tau$\mb{环流量}
+
+
+$\mb{rot A}=\Delta \times \mb{A}=\mfa{\ma{
+    i &j &k\\
+    \da{}{x} &\da{}{y} &\da{}{z} \\
+    P &Q &R
+}}$\mb{旋度}
+
+
+
+旋度处处为零，\mb{无旋场}
+
+无旋，无源，\mb{调和场}
+
+
+$\Sigma$单位法向量$n=\mf{\cos \alpha ,\cos \beta, \cos \gamma}$
+
+$\mb{rot A}\cdot n=\Delta \times \mb{A} \cdot n=\mfa{\ma{
+    \cos \alpha &\cos \beta &\cos \gamma\\
+    \da{}{x} &\da{}{y} &\da{}{z} \\
+    P &Q &R
+}}$ 
+
+
+$\iint_\Sigma \mb{rot A}\cdot \mb{n}dS=\oint_\Gamma \mb{A} \cdot \tau ds$
+ 
+旋度通量，环流量
+
+
+\tpa{
+    \draw  (.5,0) circle (0.5);
+    \draw (.5,0)--(.5,1);
+    \draw (.5,-1)--(.5,-.5);
+}
+
+$r=\mh{OM}{\rightarrow} ,\omega=\mf{0,0,w}, v=\omega \times r,v=\hls{
+    i &j &k\\
+    0 &0 &w\\
+    x &y &z
+}=\mf{-w y,w x,0},\mb{rot v}=\hls{
+    i &j &k\\
+    \da{}{x} &\da{}{y} &\da{}{z}\\
+    -w y &w x &0
+}=\mf{0,0,2w}=2\omega$
+
+
+\newpage
+
+\section{无穷级数}
+
+\subsection{常数项级数的概念和性质}
+
+\subsubsection{数项级数的概念}
+
+数列 $\mu_1,\mu_2,\mu_3,\dots+\mu_n,\dots$，表达式 $\mu_1+\mu_2+\mu_3+\dots+\mu_n+\dots$称为(常数项)无穷级数,简称\mb{(常数项)级数}，记为$\sum_{i=1}^\infty\mu_i=
+\mu_1+\mu_2+\mu_3+\dots+\mu_n+\dots$,第n项$\mu_n$叫做级数的一般项
+
+
+$S_n=\sum_{i=1}^n\mu_i=\mu_1,\mu_2,\mu_3,\dots+\mu_n$ 级数部分和
+
+新数列 $\mfb{S_n} \q S_1,S_2,\dots,S_n,\dots$
+
+
+\noindent
+无穷级数$\sum_{i=1}^\infty\mu_i$，无穷级数的部分和数列$\mfb{S_n}$，$\ma{
+    \lim_{n \rightarrow \infty} S_n=s \Rightarrow \sum_{i=1}^\infty\mu_i \mt{收敛},s=\mu_1+\mu_2+\mu_3+\dots+\mu_n+\dots\\
+    \lim_{n \rightarrow \infty} S_n=\infty \mt{(不存在)} \Rightarrow \sum_{i=1}^\infty\mu_i \mt{发散}\\
+}$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% $\mfa{\ma{
+%      \cos \alpha  & \cos \beta  &1\\
+%     \da{}{x}  &\da{}{y}  &0\\
+%     P &Q &0
+% }}dS=\oint_\Gamma Pdx +Qdy $
+
+
+
 
 
 
