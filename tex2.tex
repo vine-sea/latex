@@ -17,6 +17,12 @@
 \newcommand{\mt}[1]{\text{#1}}
 \newcommand{\mb}[1]{\textbf{#1}}
 \newcommand{\md}[1]{\displaystyle{#1}}
+
+\newcommand{\mda}[1]{$\displaystyle{ #1 }$}
+
+
+
+
 \newcommand{\mf}[1]{\left( #1\right)}
 \newcommand{\mfa}[1]{\left| #1\right|}
 \newcommand{\mfb}[1]{\left\{ #1\right\}}
@@ -2982,6 +2988,78 @@ $S_n=\sum_{i=1}^n\mu_i=\mu_1,\mu_2,\mu_3,\dots+\mu_n$ 级数部分和
     \lim_{n \rightarrow \infty} S_n=s \Rightarrow \sum_{i=1}^\infty\mu_i \mt{收敛},s=\mu_1+\mu_2+\mu_3+\dots+\mu_n+\dots\\
     \lim_{n \rightarrow \infty} S_n=\infty \mt{(不存在)} \Rightarrow \sum_{i=1}^\infty\mu_i \mt{发散}\\
 }$
+
+    
+$r_n=s-S_n=S_{n+1}+S_{n+2}+\dots$余项
+
+$\md{\sum_{i=1}^\infty \mu_i=\lim_{n \rightarrow \infty}S_n=\lim_{n \rightarrow \infty}\sum_{i=1}^\infty \mu_i}$
+
+\mda{\sum_{i=1}^\infty aq^i=a+aq+aq^2+\dots+aq^i+\dots}等比级数,\mda{\ma{S_n=a+aq+\dots+aq^{n-1}=\frac{a-aq^n}{1-q}\mt{部分和数列}\\
+\mfa{q}\geqslant 1,\mt{发散},\mfa{q}\leqslant 1,\mt{收敛}
+}}
+
+\mda{S_n=S_1+\mf{S_2-S_1}+\dots+\mf{S_n-S_{n-1}}+...=S_1+\sum_{i=2}^\infty=\sum_{i=1}^\infty \mu_i }
+
+\subsubsection{收敛级数的基本性质}
+
+级数\mda{\sum_{n=1}^\infty\mu_n}收敛于s,则级数\mda{\sum_{n=1}^\infty k\mu_n}收敛于s,和为ks,数乘同敛散
+
+级数\mda{\sum_{n=1}^\infty\mu_n}与\mda{\sum_{n=1}^\infty v_n}分别收敛于$s$与$\sigma$,级数\mda{\sum_{n=1}^\infty \mf{\mu_n \pm v_n}}也收敛,和为$s\pm \sigma$,收敛和收敛
+
+级数中去掉，加上，改变有限项，不会改变级数的收敛性
+
+级数\mda{\sum_{n=1}^\infty\mu_n}收敛于s，任意项加括号组成的级数仍收敛，和为s,括号发散源发散
+
+级数\mda{\sum_{n=1}^\infty\mu_n}收敛于s(必要条件),一般项趋近0，即\mda{\lim_{n \rightarrow \infty}\mu_n=0}
+
+调和级数\mda{\sum_{n=1}^\infty \frac{1}{n}}发散
+
+\subsubsection{柯西审敛原理}
+
+级数\mda{\sum_{n=1}^\infty\mu_n}收敛 $\Leftrightarrow \forall \varepsilon>0,\exists N>0,when \q n>N,\forall p \in Z^+ ,\mfa{\mu_{n+1} +\mu_{n+2}+\dots+\mu_{n+p}}<\varepsilon$
+
+\subsection{常数项级数审敛法}
+
+各项是正数或零的级数\mb{正项级数}
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n}收敛于s $\Leftrightarrow$ 部分和数列 $\mfb{S_n}$有界
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\sum_{n=1}^\infty v_n},$\mu_n\leqslant v_n$,\mda{\sum_{n=1}^\infty v_n}收敛，\mda{\sum_{n=1}^\infty\mu_n}收敛；\mda{\sum_{n=1}^\infty\mu_n}发散,\mda{\sum_{n=1}^\infty v_n}发散
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\sum_{n=1}^\infty v_n},存在正整数N,$ \q\mu_n\leqslant kv_n\mf{n> N}$,\mda{\sum_{n=1}^\infty v_n}收敛，\mda{\sum_{n=1}^\infty\mu_n}收敛；\mda{\sum_{n=1}^\infty\mu_n}发散,\mda{\sum_{n=1}^\infty v_n}发散
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\ma{
+    if \q \lim_{n \rightarrow \infty}\frac{\mu_n}{v_n}=l,{0\leqslant l < \infty}, {\sum_{n=1}^\infty v_n}\mt{收敛,则} {\sum_{n=1}^\infty \mu_n}\mt{收敛}\\
+    if \q \lim_{n \rightarrow \infty}\frac{\mu_n}{v_n}=l,\mfb{l>0,+\infty},{\sum_{n=1}^\infty v_n}\mt{发散,则},则{\sum_{n=1}^\infty \mu_n}\mt{发散}\\
+}}
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\lim_{n \rightarrow \infty}\frac{\mu_{n+1}}{\mu_n}=\rho},$\ma{
+    if \q \rho >1 \,\mf{=\infty} \mt{发散(不可能收敛)}\\
+    if \q \rho <1 \mt{收敛}\\
+    if \q \rho =1 \mt{可能收敛}\\
+}$
+
+
+
+$\q \q when  \q \rho <1 ,\forall \rho + \varepsilon=r<1,\exists m,when \q n\geqslant m,\frac{\mu_{n+1}}{\mu_n}=\rho<\rho+\varepsilon=r<1,{\mu_{n+1}}<r{\mu_n},{\mu_{n+k}}<r^k{\mu_n}$
+
+$\q \q  $级数$\sum_{n=1}^\infty r^k\mu_n$收敛，级数$\sum_{n=1}^\infty \mu_{n+k}$收敛
+
+$\q \q \md{\sum _{n=1}^\infty \mu_n =\sum _{n=1}^\infty \mu_{n+k} + \sum _{n=1}^k\mu_n}$则级数$\sum _{n=1}^\infty \mu_n ,\sum _{n=1}^\infty \mu_{n+k}$同敛散，级数$\sum_{n=1}^\infty \mu_{n}$收敛
+
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\lim_{n \rightarrow \infty}\sqrt[n]{\mu_n}=\rho,\ma{
+    if \q \rho >1 \,\mf{=\infty} \mt{发散(不可能收敛)}\\
+    if \q \rho <1 \mt{收敛}\\
+    if \q \rho =1 \mt{可能收敛}\\
+}}
+
+    $\q \q when \q \rho<1,\mu_n < r^n \mf{r<1},\mt{级数}\md{\sum_{n=1}^{ \infty}r^n}$收敛
+
+
+
+
+
 
 
 
