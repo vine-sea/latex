@@ -3026,10 +3026,10 @@ $\md{\sum_{i=1}^\infty \mu_i=\lim_{n \rightarrow \infty}S_n=\lim_{n \rightarrow 
 
 正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\sum_{n=1}^\infty v_n},$\mu_n\leqslant v_n$,\mda{\sum_{n=1}^\infty v_n}收敛，\mda{\sum_{n=1}^\infty\mu_n}收敛；\mda{\sum_{n=1}^\infty\mu_n}发散,\mda{\sum_{n=1}^\infty v_n}发散
 
-正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\sum_{n=1}^\infty v_n},存在正整数N,$ \q\mu_n\leqslant kv_n\mf{n> N}$,\mda{\sum_{n=1}^\infty v_n}收敛，\mda{\sum_{n=1}^\infty\mu_n}收敛；\mda{\sum_{n=1}^\infty\mu_n}发散,\mda{\sum_{n=1}^\infty v_n}发散
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\sum_{n=1}^\infty v_n},存在正整数N,$ \q\mu_n\leqslant kv_n\mf{n> N,k>0}$,\mda{\sum_{n=1}^\infty v_n}收敛，\mda{\sum_{n=1}^\infty\mu_n}收敛；\mda{\sum_{n=1}^\infty\mu_n}发散,\mda{\sum_{n=1}^\infty v_n}发散
 
 正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\ma{
-    if \q \lim_{n \rightarrow \infty}\frac{\mu_n}{v_n}=l,{0\leqslant l < \infty}, {\sum_{n=1}^\infty v_n}\mt{收敛,则} {\sum_{n=1}^\infty \mu_n}\mt{收敛}\\
+    if \q \lim_{n \rightarrow \infty}\frac{\mu_n}{v_n}=l,\mfb{0\leqslant l < \infty}, {\sum_{n=1}^\infty v_n}\mt{收敛,则} {\sum_{n=1}^\infty \mu_n}\mt{收敛}\\
     if \q \lim_{n \rightarrow \infty}\frac{\mu_n}{v_n}=l,\mfb{l>0,+\infty},{\sum_{n=1}^\infty v_n}\mt{发散,则},则{\sum_{n=1}^\infty \mu_n}\mt{发散}\\
 }}
 
@@ -3054,9 +3054,37 @@ $\q \q \md{\sum _{n=1}^\infty \mu_n =\sum _{n=1}^\infty \mu_{n+k} + \sum _{n=1}^
     if \q \rho =1 \mt{可能收敛}\\
 }}
 
-    $\q \q when \q \rho<1,\mu_n < r^n \mf{r<1},\mt{级数}\md{\sum_{n=1}^{ \infty}r^n}$收敛
+$\q \q when \q \rho<1,\mu_n < r^n \mf{r<1},\mt{级数}\md{\sum_{n=1}^{ \infty}r^n}$收敛,则\mda{\sum_{n=1}^\infty\mu_n}收敛
+
+正项级数\mda{\sum_{n=1}^\infty\mu_n},\mda{\ma{
+    if \q \lim_{n \rightarrow \infty}n^p\mu_n=\frac{\mu_n}{\frac{1}{n^p}}=l,\mfb{0\leqslant l<\infty,p>1} ,\sum_{n=1}^\infty \frac{1}{n^p}  \mt{收敛,则级数} \sum_{n=1}^\infty \mu_n\mt{收敛}\\
+    if \q \lim_{n \rightarrow \infty}n\mu_n=\frac{\mu_n}{\frac{1}{n}}=l,\mfb{l>0,\infty} ,\sum_{n=1}^\infty \frac{1}{n} \mt{发散,则级数}\sum_{n=1}^\infty \mt{发散}\mu_n\\
+}}
 
 
+
+\subsection{交错级数审敛法}
+
+各项正负交错，可以写成\mda{\ma{\mu_1 -\mu_2  +\mu_3  -\mu_4 +\dots,\\
+-\mu_1 +\mu_2  -\mu_3  +\mu_4 -\dots,\\
+}}其中\mda{\mu_n>0}
+
+
+交错级数\mda{\sum_{n=1}^\infty\mu_n}满足条件：\mda{\ma{
+    (1) \q  \mu_n \geqslant \mu_{n+1} \mf{n=1,2,3,\dots}\\
+    (2) \q  \lim_{n \rightarrow \infty}\mu_n=0}
+},那么级数收敛，其和\mda{s\leqslant \mu_1},余项绝对值\mda{\mfa{r_n}\leqslant \mu_{n+1}}
+
+
+\subsection{绝对收敛与条件收敛}
+
+
+级数\mda{\sum_{n=1}^\infty\mu_n}, \mda{\ma{
+   \mt{正项级数} \sum_{n=1}^\infty \mfa{\mu_n} \mt{收敛,则级数} \sum_{n=1}^\infty\mu_n \mt{绝对收敛}\\
+   \mt{正项级数} \sum_{n=1}^\infty \mfa{\mu_n} \mt{发散,},\mt{级数} \sum_{n=1}^\infty \mu_n \mt{收敛,则级数} \sum_{n=1}^\infty\mu_n \mt{条件收敛}\\
+}}
+
+$\mt{级数} \sum_{n=1}^\infty  \mu_n \mt{绝对收敛,则级数} \sum_{n=1}^\infty\mu_n \mt{必定收敛} \q v_n=\frac{1}{2}\mf{\mu_n+\mfa{\mu_n}}$
 
 
 
