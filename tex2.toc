@@ -119,5 +119,5 @@
 \contentsline {subsubsection}{\numberline {12.2.4}绝对收敛级数的性质}{25}{}%
 \contentsline {subsection}{\numberline {12.3}幂级数}{26}{}%
 \contentsline {subsection}{\numberline {12.4}函数项级数的概念}{26}{}%
-\contentsline {subsection}{\numberline {12.5}幂级数及其收敛性}{26}{}%
+\contentsline {subsubsection}{\numberline {12.4.1}幂级数及其收敛性}{26}{}%
 \contentsfinish 
