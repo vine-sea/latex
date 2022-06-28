@@ -49,6 +49,9 @@
 \newcommand{\tpo}[2]{\coordinate  %[label=0:$ {#1} $]
  (#1) at #2; }
 
+ \newcommand{\tpoa}[3]{\coordinate  [label=0:$ {#1} $]
+ (#3) at #2; }
+
 \newcommand{\da}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\db}[2]{\frac{d #1}{d #2}}
 
@@ -3020,6 +3023,8 @@ $\md{\sum_{i=1}^\infty \mu_i=\lim_{n \rightarrow \infty}S_n=\lim_{n \rightarrow 
 
 \subsection{常数项级数审敛法}
 
+\subsubsection{正项级数及其审敛法}
+
 各项是正数或零的级数\mb{正项级数}
 
 正项级数\mda{\sum_{n=1}^\infty\mu_n}收敛于s $\Leftrightarrow$ 部分和数列 $\mfb{S_n}$有界
@@ -3063,7 +3068,7 @@ $\q \q when \q \rho<1,\mu_n < r^n \mf{r<1},\mt{级数}\md{\sum_{n=1}^{ \infty}r^
 
 
 
-\subsection{交错级数审敛法}
+\subsubsection{交错级数审敛法}
 
 各项正负交错，可以写成\mda{\ma{\mu_1 -\mu_2  +\mu_3  -\mu_4 +\dots,\\
 -\mu_1 +\mu_2  -\mu_3  +\mu_4 -\dots,\\
@@ -3076,7 +3081,7 @@ $\q \q when \q \rho<1,\mu_n < r^n \mf{r<1},\mt{级数}\md{\sum_{n=1}^{ \infty}r^
 },那么级数收敛，其和\mda{s\leqslant \mu_1},余项绝对值\mda{\mfa{r_n}\leqslant \mu_{n+1}}
 
 
-\subsection{绝对收敛与条件收敛}
+\subsubsection{绝对收敛与条件收敛}
 
 
 级数\mda{\sum_{n=1}^\infty\mu_n}, \mda{\ma{
@@ -3087,9 +3092,101 @@ $\q \q when \q \rho<1,\mu_n < r^n \mf{r<1},\mt{级数}\md{\sum_{n=1}^{ \infty}r^
 $\mt{级数} \sum_{n=1}^\infty  \mu_n \mt{绝对收敛,则级数} \sum_{n=1}^\infty\mu_n \mt{必定收敛} \q v_n=\frac{1}{2}\mf{\mu_n+\mfa{\mu_n}}$
 
 
+\subsubsection{绝对收敛级数的性质}
+
+绝对收敛级数经改变项位置后构成的级数也收敛，且与原级数有相同的和${S_n}^*\leqslant S_m \leqslant s,\mu_n=2v_n-\mfa{\mu_n}$
+
+级数$\sum \mu_n,\sum v_n$绝对收敛，和分别为$s,\sigma$,所有项的可能乘积$\mu_iv_i$
+\tpa{
+    \tpoa{\mu_3 v_1}{(0,0)}{a};
+    \tpoa{\mu_3 v_2}{(1,0)}{b};
+    \tpoa{\mu_3 v_3}{(2,0)}{c};
+    \tpoa{\cdots}{(3,0)}{d1};
+
+    \tpoa{\mu_2 v_1}{(0,.5)}{d};
+    \tpoa{\mu_2 v_2}{(1,.5)}{e};
+    \tpoa{\mu_2 v_3}{(2,.5)}{f};
+    \tpoa{\cdots}{(3,0.5)}{d2};
+
+    \tpoa{\mu_1 v_1}{(0,1)}{g};
+    \tpoa{\mu_1 v_2}{(1,1)}{h};
+    \tpoa{\mu_1 v_3}{(2,1)}{i};
+    \tpoa{\cdots}{(3,1)}{d3};
+    \tpoa{\cdots \q \,\,\cdots \q \,\,\cdots \q \,\,\,\cdots}{(0,-0.5)}{d4};
 
 
 
+
+
+
+  
+    \draw [->](b)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](c)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](d1)+(.1,-.1)-- +(-.3,-.3);
+
+    \draw [->](h)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](i)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](e)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](f)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](d3)+(.1,-.1)-- +(-.3,-.3);
+    \draw [->](d2)+(.1,-.1)-- +(-.3,-.3);
+
+
+
+    
+    \tpoa{\mu_3 v_1}{(4+1,0)}{aa};
+    \tpoa{\mu_3 v_2}{(5+1,0)}{ba};
+    \tpoa{\mu_3 v_3}{(6+1,0)}{ca};
+    \tpoa{\cdots}{(7+1,0)}{d1a};
+
+    \tpoa{\mu_2 v_1}{(4+1,.5)}{da};
+    \tpoa{\mu_2 v_2}{(5+1,.5)}{ea};
+    \tpoa{\mu_2 v_3}{(6+1,.5)}{fa};
+    \tpoa{\cdots}{(7+1,0.5)}{d2a};
+
+    \tpoa{\mu_1 v_1}{(0+5,1)}{ga};
+    \tpoa{\mu_1 v_2}{(1+5,1)}{ha};
+    \tpoa{\mu_1 v_3}{(2+5,1)}{ia};
+    \tpoa{\cdots}{(3+5,1)}{d3a};
+    \tpoa{\cdots \q \,\,\cdots \q \,\,\cdots \q \,\,\,\cdots}{(0+5,-0.5)}{d4};
+
+    \draw (ha) -- +(0,-.3)-- +(-.7,-.3);
+    \draw (ia) -- +(0,-.7)-- +(-1.7,-.7);
+    \draw (d3a) -- +(0,-1.2)-- +(-2.7,-1.2);
+
+
+
+
+    % \draw (a) (b) (c);
+}
+
+柯西乘积(级数) $\mu_1v_1+\mf{\mu_1v_2+\mu_2v_1}+\dots+\mf{ \mu_1v_n +\mu_2v_{n-1}+\dots+\mu_nv_1}+\dots$绝对收敛，和为$s\sigma$
+
+$\mu_1v_1+
+\mf{\mu_1 v_2+\mu_2 v_2+\mu_2v_1}
++\mf{\mu_1v_3+\mu_2 v_3+\mu_3v_3+ \mu_3v_2+\mu_3v_1  }+\dots
+=\mf{\mu_1+\mu_2+\dots+\mu_n}\cdot\mf{v_1+v_2+\dots+v_n}
+$
+
+\newpage
+\subsection{幂级数}
+
+\subsection{函数项级数的概念}
+
+
+区间I上函数列 $\mu_1\mf{x},\mu_2\mf{x},\mu_3\mf{x} ,\dots,\mu_n\mf{x},\dots,$
+
+表达式 $\mu_1\mf{x}+\mu_2\mf{x}+\mu_3\mf{x} +\dots+\mu_n\mf{x}+\dots,$区间I上的(函数项)无穷级数，(函数项)级数
+
+
+对于每个确定值$x_0 \in I,\mu_1\mf{x_0}+\mu_2\mf{x_0}+\mu_3\mf{x_0} +\dots+\mu_n\mf{x_0}+\dots$常数项级数，收敛点$x_0$
+
+$S\mf{x}=\mu_1\mf{x}+\mu_2\mf{x}+\mu_3\mf{x} +\dots+\mu_n\mf{x}+\dots,$和函数
+
+部分和$S_n\mf{x},\lim_{n \rightarrow \infty}S_n\mf{x}=S\mf{x}$,余项$r_n\mf{x}=S\mf{x}-S_n\mf{x},\lim_{n \rightarrow \infty}r_n\mf{x}=0$
+
+
+\subsection{幂级数及其收敛性}
 
 
 
