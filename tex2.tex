@@ -71,10 +71,17 @@
 \newcommand{\ba}[1]{\overline{#1}}
 \newcommand{\meq}[2]{\xlongequal[#2]{#1}}
 \newcommand{\mseq}{\approx }
+\newcommand{\jisu}[1]{\sum_{n=0}^\infty #1}
+\newcommand{\jixian}[1]{\lim_{n \rightarrow \infty} #1}
+
+
 
 
 \def\ooint{\displaystyle{{\bigcirc}\kern-12.5pt{\int}\kern-7.5pt{\int}}}
 \def\oooint{\displaystyle{{\bigcirc}\kern-12.3pt{\int}\kern-7pt{\int}\kern-7pt{\int}}}
+ 
+\def\isleq{\displaystyle{{<}\kern-6.5pt{?} }}
+
 
 \title{This is Start}
 \author{Vine}
@@ -3171,7 +3178,7 @@ $
 \newpage
 \subsection{幂级数}
 
-\subsection{函数项级数的概念}
+\subsubsection{函数项级数的概念}
 
 
 区间I上函数列 $\mu_1\mf{x},\mu_2\mf{x},\mu_3\mf{x} ,\dots,\mu_n\mf{x},\dots,$
@@ -3188,7 +3195,78 @@ $S\mf{x}=\mu_1\mf{x}+\mu_2\mf{x}+\mu_3\mf{x} +\dots+\mu_n\mf{x}+\dots,$和函数
 
 \subsubsection{幂级数及其收敛性}
 
+\mda{\jisu{a_n x^n}=a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots} 幂级数
 
+
+\mda{\mt{幂级数}\jisu{a_nx^n}\ma{
+    x=x_0,\mt{幂级数收敛}, if \q \mfa{x}<\mfa{x_0},\mt{幂级数绝对收敛}\\
+    x=x_0,\mt{幂级数发散}, if \q \mfa{x}>\mfa{x_0},\mt{幂级数发散}\\
+}}
+
+$\q \q \md{\jixian{a_nx_0^n}=0 \Rightarrow \mfa{a_nx_0^n}\leqslant M \Rightarrow \mfa{a_nx^n}=\mfa{a_nx_0^n}\cdot \mfa{\frac{x}{x_0}}^n}$
+
+
+$\mt{幂级数}\jisu{a_nx^n} \mt{不是一点收敛，也不是整个数轴收敛},\exists R>0,\ma{
+    \mfa{x}<R,\mt{幂级数绝对收敛}\\
+    \mfa{x}>R,\mt{幂级数发散}\\
+    \mfa{x}=\pm R,\mt{幂级数可能收敛}\\
+}$
+
+$\mt{幂级数}\jisu{a_nx^n},\jixian{\mfa{\frac{a_{n+1}}{a_n}}}=\rho,\mt{收敛半径}R=\fcz{
+    \frac{1}{\rho},&\rho \neq 0\\
+    +\infty, &\rho =0\\
+    0, &\rho=+\infty
+}$
+
+$\q \q \frac{\mfa{a_{n+1}x^{n+1}}}{\mfa{a_nx^n}}=\frac{\mfa{a_{n+1}}}{\mfa{a_n}}\mfa{x}=\rho \mfa{x}\isleq 1$
+
+
+\subsubsection{幂级数的运算}
+
+
+幂级数$\ma{
+    a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots\\
+    b_0+a_1x+b_2x^2+\cdots+b_nx^n+\cdots\\
+}$
+
+
+加减 $\mf{a_0 \pm b_0 }+\mf{a_1 \pm b_1}x+\mf{a_2 \pm b_2}x^2+\cdots+\mf{a_n \pm b_n}x^n+\cdots$ 区间取小
+
+ $\ma{
+\mt{乘} &\mf{a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots}\cdot\mf{b_0+a_1x+b_2x^2+\cdots+b_nx^n+\cdots}\\
+ &a_0b_0+\mf{a_0b_1+a_1b_0}x+\mf{a_0b_2+a_1b_1+a_2b_0}x^2+\cdots+\mf{a_0b_n+a_1b_{n-1}+\cdots+a_nb_0}x^n+\cdots\\
+ &\mt{幂级数的柯西乘积}
+}$区间取小
+
+除$\frac{a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots}{b_0+a_1x+b_2x^2+\cdots+b_nx^n+\cdots}=c_0+c_1x+c_2x^2+\cdots+c_nx^n+\cdots$区间取小
+
+\mda{\q \q \ma{
+    a_0=c_0b_0\\
+    a_1=c_0b_1+c_1b_0\\
+    a_2=c_0b_2+c_1b_1+c_2b_0\\
+    \cdots
+}}解得$c_0,c_1,c_2,\cdots,c_n,\cdots$
+
+
+幂级数$\jisu{a_nx^n}$的和函数$S_n\mf{x}$在收敛域I上连续
+
+幂级数$\jisu{a_nx^n}$的和函数$S_n\mf{x}$在收敛域I上可积，所得收敛同半径
+
+\mda{\q\q \int_0^x S\mf{t}dt=\int_0^x \mfc{\jisu{a_nt^n}}dt=\jisu{\int_0^x a_nt^ndt=\jisu{a_n\frac{x^{n+1}}{n+1}}} \mf{x \in I}
+}
+
+幂级数$\jisu{a_nx^n}$的和函数$S_n\mf{x}$在收敛域I上可导，所得收敛同半径
+
+\mda{\q\q S^{'}\mf{x}=\mf{\jisu{a_nx^n}}^{'}=\jisu{\mf{a_nx^n}^{'}}=\jisu{n a_nx^{n-1}} \mf{x \in I} }
+
+
+幂级数$\jisu{a_nx^n}$的和函数$S_n\mf{x}$在收敛域I上具有任意阶导数
+
+
+
+
+
+\subsection{函数展开成幂级数 }
 
 
 
