@@ -3270,6 +3270,60 @@ $\q \q \frac{\mfa{a_{n+1}x^{n+1}}}{\mfa{a_nx^n}}=\frac{\mfa{a_{n+1}}}{\mfa{a_n}}
 
 
 
+$f\mf{x}=\jisu{\frac{1}{n!}f^{\mf{n}}\mf{x_0}\mf{x-x_0}^n},x \in U\mf{x_0}$ 泰勒级数（极限），泰勒展开式
+
+
+函数$f\mf{x}$在$U\mf{x_0}$内具有各阶导数，$f\mf{x}$能展开成泰勒级数$\Leftrightarrow$ 余项满足$\jisu{R_n\mf{x}}=0$
+
+$f\mf{x}=\jisu{\frac{1}{n!}f^{\mf{n}}\mf{0}\mf{x-0}^n},x \in U\mf{0}$ 麦克劳林级数（极限），麦克劳林展开式
+
+$\sin^{\mf{n}}x=\sin \mf{x+n\pi}$
+
+\mda{\fcz{
+    e^x=\jisu{\frac{1}{n!}x^n},\mf{-\infty<x< \infty}\\
+    \sin x=\jisu{\frac{\mf{-1}^n}{\mf{2n+1}!} x^{2n+1}},\mf{-\infty<x< \infty} \\
+    \frac{1}{x+1}=\jisu{\mf{-1}^nx^n} ,\mf{-1<x<1}\\
+}}
+
+已知展开，运算得未知
+
+
+$\mf{1+x}^m=1+mx+\frac{m\mf{m-1}}{2!}x^2+\dots+\frac{m\mf{m-1} \cdots \mf{m-n+1}}{n!}x^n+\dots,\mf{-1<x<1}$二项展开式
+
+$\mf{1+x}^\frac{1}{2}=1+\frac{1}{2}x+\frac{\frac{1}{2}\cdot -\frac{1}{2}}{2!}x^2+\dots+\frac{\frac{1}{2}\cdot -\frac{1}{2} \cdots \frac{3-2n}{2}}{n!}x^n+\dots=\frac{\prod \mf{3-2n}}{\mf{2n}!!}x^n,\mf{-1<x<1}$二项展开式
+
+$\mf{1+x}^{-\frac{1}{2}}=1-\frac{1}{2}x+\frac{-\frac{1}{2}\cdot -\frac{3}{2}}{2!}x^2+\dots+\frac{-\frac{1}{2}\cdot -\frac{1}{2} \cdots \frac{1-2n}{2}}{n!}x^n+\dots=\frac{\prod \mf{1-2n}}{\mf{2n}!!}x^n,\mf{-1<x<1}$二项展开式
+ 
+
+证明：$\ma{F\mf{x}=\mf{1+x}^m
+=1+mx+\frac{m\mf{m-1}}{2!}x^2+\dots+\frac{m\mf{m-1} \cdots \mf{m-n+1}}{n!}x^n+\dots\\
+F^{'}\mf{x}=m\mfc{1+\frac{m-1}{1}x+\dots+\frac{\mf{m-1} \cdots \mf{m-n+1}}{\mf{n-1}!}x^{n-1}\dots}\\
+xF^{'}\mf{x}=m\mfc{x+\frac{m-1}{1}x^2+\dots+\frac{\mf{m-1} \cdots \mf{m-n+1}}{\mf{n-1}!}x^n\dots}\\
+\mf{1+x}F^{'}\mf{x}=m\mfc{1+mx+\frac{*\mf{m-n+1}}{\mf{n-1}!}x^{n-1}+\frac{*}{\mf{n-2}!}x^{n-1}+\frac{*1\mf{m-n}}{\mf{n}!}x^{n}+\frac{*1}{\mf{n-1}!}x^{n}+\dots}\\
+\mf{1+x}F^{'}\mf{x}=m\mfc{1+mx+ \frac{m*}{\mf{n-1}!}x^{n-1}+\frac{m*1}{n!}x^n+\dots}=mF\mf{x}\\
+\varphi\mf{x}=\frac{F\mf{x}}{\mf{1+x}^m},\varphi\mf{0}=F\mf{0}=1\\
+\varphi^{'}\mf{x}=\frac{F^{'}\mf{x}\mf{1+x}^m-m\mf{1+x}^{m-1}F\mf{x}}{\mf{1+x}^{2m}}=\frac{\mf{1+x}^{m-1}\mfc{\mf{1+x}F^{'}\mf{x}-mF\mf{x}}}{\mf{1+x}^{2m}}=0\\
+\varphi\mf{x}=1,F\mf{x}=\mf{1+x}^m
+}$
+
+
+
+\subsection{函数的幂级数展开应用 }
+
+\subsubsection{近似计算 }
+
+\subsubsection{微分方程的幂级数解法 }
+
+$\frac{dy}{dx}=f\mf{x,y},y=\jisu{a_nx^n}$
+
+$y^{''}+P\mf{x}y^{'}+Q\mf{x}y=0,P,Q\mt{定义域内可展开为幂级数，方程解形如}y=\jisu{a_nx^n}$
+
+
+\subsection{欧拉公式 }
+
+
+
+
 
 
 
