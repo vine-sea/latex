@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.22)  2 JUL 2022 15:45
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.22)  2 JUL 2022 18:51
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -539,80 +539,80 @@ Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
 ) (./tex2.aux)
 \openout1 = `tex2.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 107.
-LaTeX Font Info:    ... okay on input line 107.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 102.
+LaTeX Font Info:    ... okay on input line 102.
  ABD: EverySelectfont initializing macros
-LaTeX Info: Redefining \selectfont on input line 107.
+LaTeX Info: Redefining \selectfont on input line 102.
 
 Package fontspec Info: Adjusting the maths setup (use [no-math] to avoid
 (fontspec)             this).
 
 \symlegacymaths=\mathgroup6
 LaTeX Font Info:    Overwriting symbol font `legacymaths' in version `bold'
-(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 107.
-LaTeX Font Info:    Redeclaring math accent \acute on input line 107.
-LaTeX Font Info:    Redeclaring math accent \grave on input line 107.
-LaTeX Font Info:    Redeclaring math accent \ddot on input line 107.
-LaTeX Font Info:    Redeclaring math accent \tilde on input line 107.
-LaTeX Font Info:    Redeclaring math accent \bar on input line 107.
-LaTeX Font Info:    Redeclaring math accent \breve on input line 107.
-LaTeX Font Info:    Redeclaring math accent \check on input line 107.
-LaTeX Font Info:    Redeclaring math accent \hat on input line 107.
-LaTeX Font Info:    Redeclaring math accent \dot on input line 107.
-LaTeX Font Info:    Redeclaring math accent \mathring on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Delta on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Theta on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Xi on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Pi on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Phi on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Psi on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \Omega on input line 107.
-LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 107.
-LaTeX Font Info:    Redeclaring symbol font `operators' on input line 107.
+(Font)                  OT1/cmr/m/n --> OT1/cmr/bx/n on input line 102.
+LaTeX Font Info:    Redeclaring math accent \acute on input line 102.
+LaTeX Font Info:    Redeclaring math accent \grave on input line 102.
+LaTeX Font Info:    Redeclaring math accent \ddot on input line 102.
+LaTeX Font Info:    Redeclaring math accent \tilde on input line 102.
+LaTeX Font Info:    Redeclaring math accent \bar on input line 102.
+LaTeX Font Info:    Redeclaring math accent \breve on input line 102.
+LaTeX Font Info:    Redeclaring math accent \check on input line 102.
+LaTeX Font Info:    Redeclaring math accent \hat on input line 102.
+LaTeX Font Info:    Redeclaring math accent \dot on input line 102.
+LaTeX Font Info:    Redeclaring math accent \mathring on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Gamma on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Delta on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Theta on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Lambda on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Xi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Pi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Sigma on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Upsilon on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Phi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Psi on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \Omega on input line 102.
+LaTeX Font Info:    Redeclaring math symbol \mathdollar on input line 102.
+LaTeX Font Info:    Redeclaring symbol font `operators' on input line 102.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `normal' on input line 107.
+(Font)              `operators' in the math version `normal' on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 107.
+(Font)                  OT1/cmr/m/n --> TU/lmr/m/n on input line 102.
 LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
-(Font)              `operators' in the math version `bold' on input line 107.
+(Font)              `operators' in the math version `bold' on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 107.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/m/n on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 107.
+(Font)                  TU/lmr/m/n --> TU/lmr/m/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 107.
+(Font)                  OT1/cmr/m/it --> TU/lmr/m/it on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 107.
+(Font)                  OT1/cmr/bx/n --> TU/lmr/b/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 107.
+(Font)                  OT1/cmss/m/n --> TU/lmss/m/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 107.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/m/n on input line 102.
 LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 107.
+(Font)                  TU/lmr/m/n --> TU/lmr/b/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 107.
+(Font)                  OT1/cmr/bx/it --> TU/lmr/b/it on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 107.
+(Font)                  OT1/cmss/bx/n --> TU/lmss/b/n on input line 102.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 107.
+(Font)                  OT1/cmtt/m/n --> TU/lmtt/b/n on input line 102.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: xetex
@@ -648,20 +648,357 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 111.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 106.
 (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 111.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 106.
  (c:/texlive/2021/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] (./tex2.toc)
+] (./tex2.toc
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [2]
+Missing character: There is no 函 (U+51FD) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 数 (U+6570) in font [lmroman10-regular]:mapping=tex-text;!
+ [3]
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [4] [5] [6])
 \tf@toc=\write4
 \openout4 = `tex2.toc'.
 
- [2] [3]
+ [7]
+Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 週 (U+9031) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+
+Overfull \hbox (10.00406pt too wide) in paragraph at lines 233--243
+[]$[] \OMS/cmsy/m/n/10.53937 ) []$ 
+ []
+
+[8] [9]
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [10]
+Missing character: There is no 冪 (U+51AA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 冪 (U+51AA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 冪 (U+51AA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 冪 (U+51AA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 沒 (U+6C92) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 沒 (U+6C92) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 沒 (U+6C92) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 沒 (U+6C92) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [11]
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [12]
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+ [13]
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [14]
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [15]
+Missing character: There is no 裡 (U+88E1) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 儸 (U+5138) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+
+Overfull \hbox (9.78232pt too wide) in paragraph at lines 614--624
+$[][][]$ 
+ []
+
+
+Overfull \hbox (9.78232pt too wide) in paragraph at lines 627--638
+$[][][]$ 
+ []
+
+[16]
+Overfull \hbox (2.05229pt too wide) in paragraph at lines 680--688
+[]$[][]$ 
+ []
+
+[17] [18] [19]
+Missing character: There is no 在 (U+5728) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 连 (U+8FDE) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 续 (U+7EED) in font [lmroman10-regular]:mapping=tex-text;!
+ [20]
+Missing character: There is no 在 (U+5728) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 连 (U+8FDE) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 续 (U+7EED) in font [lmroman10-regular]:mapping=tex-text;!
+
+Overfull \hbox (5.99142pt too wide) in paragraph at lines 887--897
+$[] []$ 
+ []
+
+
+Overfull \hbox (4.63112pt too wide) in paragraph at lines 905--914
+[]$[] []$ 
+ []
+
+[21]
+Overfull \hbox (9.11197pt too wide) in paragraph at lines 942--946
+$\OML/cmm/m/it/10.53937 f [] []\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 a; b\OT1/cmr/m/n/10.53937 ][]\OML/cmm/m/it/10.53937 ; f [] \U/msa/m/n/10.53937 > \OT1/cmr/m/n/10.53937 0\OML/cmm/m/it/10.53937 ; x \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 a[][]$ 
+ []
+
+
+Overfull \hbox (12.5152pt too wide) in paragraph at lines 949--953
+$\OML/cmm/m/it/10.53937 f [] []\OT1/cmr/m/n/10.53937 (\OML/cmm/m/it/10.53937 a; b\OT1/cmr/m/n/10.53937 ][]\OML/cmm/m/it/10.53937 ; f [] \U/msa/m/n/10.53937 > \OT1/cmr/m/n/10.53937 0\OML/cmm/m/it/10.53937 ; x \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 a[][]$ 
+ []
+
+Missing character: There is no 函 (U+51FD) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 数 (U+6570) in font [lmroman10-regular]:mapping=tex-text;!
+[22] [23]
+Missing character: There is no 係 (U+4FC2) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Bold.otf]/OT:language=dflt;!
+ [24]
+Overfull \hbox (24.86763pt too wide) in paragraph at lines 1218--1257
+[][] 
+ []
+
+[25] [26] [27]
+Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 換 (U+63DB) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [28] [29] [30] [31]
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 線 (U+7DDA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+
+Overfull \hbox (37.67732pt too wide) in paragraph at lines 1655--1665
+[]$[][][]\OML/cmm/m/it/10.53937 ; [] 
+ []
+
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+[32]
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 內 (U+5167) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 1698.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 1704.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 1704.
+
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+[33]
+Missing character: There is no 疊 (U+758A) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 裡 (U+88E1) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 疊 (U+758A) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 裡 (U+88E1) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 疊 (U+758A) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 裡 (U+88E1) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 疊 (U+758A) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 裡 (U+88E1) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+
+Overfull \hbox (10.44872pt too wide) in paragraph at lines 1767--1770
+[]$\OML/cmm/m/it/10.53937 if[]; then []z \OT1/cmr/m/n/10.53937 = \OML/cmm/m/it/10.53937 f [] []t[][][]$ 
+ []
+
+[34]
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+Missing character: There is no 為 (U+70BA) in font [FandolSong-Regular.otf]/OT:language=dflt;!
+ [35]
+Overfull \hbox (29.54266pt too wide) in paragraph at lines 1989--2005
+[]$[] \OMS/cmsy/m/n/10.53937 ) []$ 
+ []
+
+[36]
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+ [37]
+Overfull \hbox (5.2688pt too wide) in paragraph at lines 2079--2088
+[]$[]\OML/cmm/m/it/10.53937 if []$ 
+ []
+
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 处 (U+5904) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 展 (U+5C55) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 开 (U+5F00) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 较 (U+8F83) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 远 (U+8FDC) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no 点 (U+70B9) in font [lmroman10-regular]:mapping=tex-text;!
+[38] [39] [40]
+Overfull \hbox (1.11102pt too wide) in paragraph at lines 2358--2368
+[]$[] [] [] [][] \OML/cmm/m/it/10.53937 f [] dxdydz \OT1/cmr/m/n/10.53937 = [] [] [][] \OML/cmm/m/it/10.53937 f [] r[] [] 'drd'd^^R$ 
+ []
+
+[41]
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+ [42] [43]
+Overfull \hbox (15.66696pt too wide) in paragraph at lines 2578--2592
+$[] \OMS/cmsy/m/n/10.53937 ! []$ 
+ []
+
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+Missing character: There is no ; ("3B) in font nullfont!
+[44]
+Underfull \hbox (badness 10000) in paragraph at lines 2677--2678
+
+ []
+
+
+Overfull \hbox (1.56943pt too wide) in paragraph at lines 2692--2693
+[]\TU/FandolSong-Regular(0)/m/n/10.53937 光 滑 曲 面 $\OT1/cmr/m/n/10.53937 ^^F$\TU/lmr/m/n/10.53937 , \TU/FandolSong-Regular(0)/m/n/10.53937 函 数 $\OML/cmm/m/it/10.53937 f []$ \TU/FandolSong-Regular(0)/m/n/10.53937 在 $\OT1/cmr/m/n/10.53937 ^^F$ \TU/FandolSong-Regular(0)/m/n/10.53937 有 界，|  任 意 分 割 \TU/lmr/m/n/10.53937 n \TU/FandolSong-Regular(0)/m/n/10.53937 小 块 $\OT1/cmr/m/n/10.53937 ^^A\OML/cmm/m/it/10.53937 S[]$\TU/lmr/m/n/10.53937 , \TU/FandolSong-Regular(0)/m/n/10.53937 无 关 面 分 法，|  点 取 法，|  极 限 $[][] [] \OML/cmm/m/it/10.53937 f [] \OT1/cmr/m/n/10.53937 ^^A\OML/cmm/m/it/10.53937 S[] \OT1/cmr/m/n/10.53937 =
+ []
+
+[45]
+Overfull \hbox (11.99591pt too wide) in paragraph at lines 2732--2737
+[]\TU/FandolSong-Regular(0)/m/n/10.53937 第 二 类 曲 面 积 分，|  函 数 在 有 向 面 上 对 坐 标 轴 \TU/lmr/m/n/10.53937 x,y(x,z/y,z) \TU/FandolSong-Regular(0)/m/n/10.53937 的 积 分 $[]$ 
+ []
+
+[46] [47]
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+ [48] [49] [50]
 Missing character: There is no 则 (U+5219) in font [lmroman10-regular]:mapping=tex-text;!
 Missing character: There is no ; ("3B) in font nullfont!
 Missing character: There is no ; ("3B) in font nullfont!
@@ -689,17 +1026,20 @@ Missing character: There is no ; ("3B) in font nullfont!
 Missing character: There is no ; ("3B) in font nullfont!
 Missing character: There is no ; ("3B) in font nullfont!
 Missing character: There is no ; ("3B) in font nullfont!
- [4] [5]
+ [51] [52]
 Missing character: There is no 虛 (U+865B) in font [FandolSong-Regular.otf]/OT:language=dflt;!
 Missing character: There is no 絕 (U+7D55) in font [FandolSong-Regular.otf]/OT:language=dflt;!
- [6] [7] [8] (./tex2.aux) ) 
+ [53] [54]
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+ [55] [56] (./tex2.aux) ) 
 Here is how much of TeX's memory you used:
- 20365 strings out of 476919
- 472931 string characters out of 5825423
- 809526 words of memory out of 5000000
- 39985 multiletter control sequences out of 15000+600000
- 411122 words of font info for 83 fonts, out of 8000000 for 9000
+ 20528 strings out of 476919
+ 479332 string characters out of 5825423
+ 812842 words of memory out of 5000000
+ 40133 multiletter control sequences out of 15000+600000
+ 412752 words of font info for 101 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 113i,13n,116p,1186b,608s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 113i,21n,116p,1186b,606s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on tex2.pdf (8 pages).
+Output written on tex2.pdf (56 pages).
