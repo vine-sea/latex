@@ -1,1 +1,19 @@
+\contentsline {section}{\numberline {1}绪论}{3}{}%
+\contentsline {section}{\numberline {2}线性表}{4}{}%
+\contentsline {section}{\numberline {3}栈和队列}{5}{}%
+\contentsline {section}{\numberline {4}串}{6}{}%
+\contentsline {section}{\numberline {5}数组和广义表}{7}{}%
+\contentsline {section}{\numberline {6}树和二叉树}{8}{}%
+\contentsline {section}{\numberline {7}图}{9}{}%
+\contentsline {section}{\numberline {8}动态存储管理}{10}{}%
+\contentsline {section}{\numberline {9}查找}{11}{}%
+\contentsline {section}{\numberline {10}内部排序}{12}{}%
+\contentsline {subsection}{\numberline {10.1}插入排序}{12}{}%
+\contentsline {subsubsection}{\numberline {10.1.1}直接插入}{12}{}%
+\contentsline {subsection}{\numberline {10.2}快速}{12}{}%
+\contentsline {subsection}{\numberline {10.3}选择排序}{12}{}%
+\contentsline {subsection}{\numberline {10.4}归并排序}{12}{}%
+\contentsline {subsection}{\numberline {10.5}基数排序}{12}{}%
+\contentsline {section}{\numberline {11}外部排序}{13}{}%
+\contentsline {section}{\numberline {12}文件}{14}{}%
 \contentsfinish 

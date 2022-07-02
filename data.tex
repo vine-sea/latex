@@ -12,6 +12,13 @@
 \usepackage{setspace}
 \usepackage{indentfirst}
 
+\usepackage{listings}
+
+ 
+\lstset{
+language=[ANSI]{C},
+} 
+
 
 \usetikzlibrary{arrows,backgrounds}
 
@@ -21,7 +28,7 @@
 \renewcommand{\headrulewidth}{0pt}  
 \renewcommand{\footrulewidth}{0pt}  
 \renewcommand{\headwidth}{\textwidth}
- 
+
 
 
 
@@ -34,9 +41,9 @@
 \pagestyle{fancy}
 
 
-\lhead{ }
+\lhead{Vine }
 \chead{}
-\rhead{Vine}
+\rhead{}
 
 \lfoot{}
 \cfoot{\thepage }
@@ -55,6 +62,65 @@
 \maketitle %和頁眉衝突
 \newpage
 \tableofcontents{}
+
+\newpage
+\section{绪论}
+\newpage
+\section{线性表}
+\newpage
+\section{栈和队列}
+\newpage
+\section{串}
+\newpage
+\section{数组和广义表}
+\newpage
+\section{树和二叉树}
+\newpage
+\section{图}
+\newpage
+\section{动态存储管理}
+\newpage
+\section{查找}
+
+\newpage
+\section{内部排序}
+\subsection{插入排序}
+\subsubsection{直接插入}
+
+\begin{lstlisting}
+    void InsertSort(Sqlist &L){
+        for(i=2;i<L.length;i++){
+            if(LT(L.r[i].key,L.r[i-1].key)){
+                L.r[0]=L.r[i];
+                L.r[i]=L.r[i-1];
+                for(j=i-2;LT(L.r[0].key,L.r[j].key);--j)
+                    L.r[j+1]=L.r[j];
+                L.r[j+1]=L.r[0];
+            }
+        }
+    }
+\end{lstlisting}
+
+
+\subsection{快速}
+\subsection{选择排序}
+\subsection{归并排序}
+\subsection{基数排序}
+
+\newpage
+\section{外部排序}
+\newpage
+\section{文件}
+
+
+
+
+
+
+
+
+
+
 
 
 
