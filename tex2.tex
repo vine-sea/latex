@@ -11,25 +11,21 @@
 \usepackage{titletoc}
 \usepackage{tikz}
 \usetikzlibrary{arrows,backgrounds}
+
+
+
 \newcommand{\Rmnum}[1]{\uppercase\expandafter{\romannumeral #1}} 
 \newcommand{\mR}[1]{\uppercase\expandafter{\romannumeral #1}} 
-
 \newcommand{\mt}[1]{\text{#1}}
 \newcommand{\mb}[1]{\textbf{#1}}
 \newcommand{\md}[1]{\displaystyle{#1}}
-
 \newcommand{\mda}[1]{$\displaystyle{ #1 }$}
-
-
-
-
 \newcommand{\mf}[1]{\left( #1\right)}
 \newcommand{\mfa}[1]{\left| #1\right|}
 \newcommand{\mfb}[1]{\left\{ #1\right\}}
 \newcommand{\mfc}[1]{\left[ #1 \right]}
 \newcommand{\q}{\quad}
 \newcommand{\qa}{\vspace{12 pt}}
-
 \newcommand{\mh}[2]{\overset{#2}{#1}}
 \newcommand{\mha}[1]{\overrightarrow{#1}}
 \newcommand{\p}{\par}
@@ -45,29 +41,22 @@
     \end{center}
 }
 \newcommand{\tip}[8]{(intersection of #1,#2--#3,#4 and #5,#6--#7,#8)}
-
 \newcommand{\tpo}[2]{\coordinate  %[label=0:$ {#1} $]
  (#1) at #2; }
-
  \newcommand{\tpoa}[3]{\coordinate  [label=0:$ {#1} $]
  (#3) at #2; }
-
 \newcommand{\da}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\db}[2]{\frac{d #1}{d #2}}
-
-
 \newcommand{\fcz}[1] {
     \left\{
         \begin{array}{llll} #1 \end{array}
     \right.
 }
-
 \newcommand{\hls}[1] {
     \left|
         \begin{array}{llll} #1 \end{array}
     \right|
 }
-
 \newcommand{\ba}[1]{\overline{#1}}
 \newcommand{\meq}[2]{\xlongequal[#2]{#1}}
 \newcommand{\mseq}{\approx }
@@ -3321,7 +3310,7 @@ $\frac{dy}{dx}=f\mf{x,y},y=\jisu{a_nx^n}$
 $y^{''}+P\mf{x}y^{'}+Q\mf{x}y=0,P,Q\mt{定义域内可展开为幂级数，方程解形如}y=\jisu{a_nx^n}$
 
 
-\subsection{欧拉公式 }
+\subsubsection{欧拉公式 }
 
 
 
@@ -3351,18 +3340,130 @@ $\ma{e^{yi}=1+\mf{yi}+\frac{1}{2!}\mf{yi}^2+\dots+\frac{1}{n!}\mf{yi}^n+\dots\\
 
 $z=x+yi=\rho \cos \theta + i\rho \sin \theta =\rho \mf{\cos \theta +i \sin \theta } =\rho e^{\theta i}$
 
+$e^{x+yi}=e^x\mf{\cos y + i \sin y}$
+
+$\fcz{
+    \cos y=\frac{e^{yi}+e^{-yi}}{2}\\
+    \sin y=\frac{e^{yi}-e^{-yi}}{2i}
+}$欧拉公式
+
+
+\subsection{函数项级数的一致收敛性及一致收敛函数的基本性质}
+
+
+\subsubsection{函数项级数的一致收敛性}
+
+$x +\mf{-x+x^2} +\mf{-x^2+x^3}+\dots+\mf{-x^{n-1}+x^n}+\dots \q s\mf{x}=\jixian{s_n\mf{x}}=\fcz{0,0\leqslant x<1\\1,x=1}$ 
 
 
 
+函数项级数$\jisu{u_n\mf{x}}$在区间I收敛于$s\mf{x} \Leftrightarrow \forall x_0 \in I,$数项级数$\jisu{u_n\mf{x_0}}$ 收敛于$s\mf{x_0}$
+
+$\forall \varepsilon,x_0 \in I,\exists N\mf{\varepsilon,x_0},when \q n>N,\mfa{r_n\mf{x_0}}=\mfa{\sum_{i=n+1}^\infty u_i\mf{x_0}}<\varepsilon$函数项级数收敛
+
+$\forall \varepsilon,x_0 \in I,\exists N\mf{\varepsilon },when \q n>N,\mfa{r_n\mf{x_0}}=\mfa{\sum_{i=n+1}^\infty u_i\mf{x_0}}<\varepsilon$函数项级数一致收敛
+
+
+函数项级数$\jisu{u_n\mf{x}}$在区间I满足$\ma{\mfa{u_n\mf{x}}\leqslant a_n \q \mf{n=0,1,2,\cdots}\\ \mt{正项级数} \jisu{a_n} \mt{收敛}}$函数项级数在区间I一致收敛
+
+
+\subsubsection{一致收敛级数的基本性质}
+
+在区间I，级数$\jisu{u_n\mf{x}}$一致收敛于$s\mf{x}$,各项$u_n\mf{x}$连续，$s\mf{x}$在区间I连续
+
+在区间I，级数$\jisu{u_n\mf{x}}$一致收敛于$s\mf{x}$,各项$u_n\mf{x}$连续，级数$\jisu{u_n\mf{x}}$可逐项积分
+
+$\q \int_{x_0}^xs\mf{x}dx=\int_{x_0}^xu_1\mf{x}dx+\int_{x_0}^xu_2\mf{x}dx+\dots+\int_{x_0}^xu_n\mf{x}dx+\dots\mf{x_0<x \in I}$ 右端级数在区间I一致收敛
+
+在区间I，级数$\jisu{u_n\mf{x}}$收敛于$s\mf{x}$,各项$u_n\mf{x}$具有连续导数$u_n^{'}\mf{x}$,级数$\jisu{u_n^{'}\mf{x}}$一致收敛，则级数$\jisu{u_n\mf{x}}$一致收敛，且可逐项求导
+
+$\q s{'}\mf{x}=u_1^{'}\mf{x}+u_2^{'}\mf{x}+\dots+u_n^{'}\mf{x}+\dots$
+
+幂级数$\jisu{a_nx^n}$的收敛半径 R>0,在闭区间$I \in \mf{-R,R}$，幂级数一致收敛
+
+幂级数$\jisu{a_nx^n}$的收敛半径 R>0,在闭区间$I \in \mf{-R,R}$其和函数可导，级数可逐项求导
+
+$\q s^{'}\mf{x}=\mf{\jisu{a_nx^n}}^{'}=\jisu{a_n nx^{n-1}}$右端级数与原级数同收敛半径
+
+ 
+
+\subsection{傅里叶级数 }
+三角函数组成的函数项级数(三角级数)
+
+\subsubsection{三角级数 $\q $ 三角函数的正交性 }
+
+$y=A \sin \mf{\omega t +\varphi} \q \ma{
+    A \mt{振幅}\\
+    \omega \mt{角频率}\\
+    \varphi  \mt{初相}\\
+}$
+
+
+$\ma{f\mf{t}&=A_0+\sum_{n=1}^\infty A_n \sin \mf{n\omega t +\varphi_n} \\
+    &=A_0+\sum_{n=1}^\infty A_n \cdot\mfc{\sin \mf{n\omega t} \cos \mf{\varphi _n}+\cos \mf{n\omega t} \sin \mf{\varphi _n}}\\
+    &=A_0+\sum_{n=1}^\infty \mfc{A_n \cdot\cos \mf{\varphi _n}\sin \mf{n\omega t} +A_n \cdot\sin \mf{\varphi _n}\cos \mf{n\omega t} }\\
+    &=\frac{a_0}{2}+\sum_{n=1}^\infty \mf{a_n\sin \mf{n\omega t} +b_n\cos \mf{n\omega t} }\\
+    &\meq{\omega=\frac{\pi}{l}}{}\frac{a_0}{2}+\sum_{n=1}^\infty \mfc{a_n\sin \mf{n\frac{\pi}{l} t} +b_n\cos \mf{n\frac{\pi}{l} t} }, \mf{T=2l}\\
+    &\meq{\omega t=x}{}\frac{a_0}{2}+\sum_{n=1}^\infty \mfc{a_n\sin \mf{nx} +b_n\cos \mf{nx}},  \mf{T=2\pi}
+}
+\q \ma{
+    \mt{谐波分析}\\
+    A_0 \mt{直流分量}\\
+    A_1 \sin \mf{\omega t +\varphi_1} \mt{一次谐波(基波)}\\
+}$
+
+
+三角函数系 $1,\sin x ,\cos x,\sin 2x ,\cos 2x,\dots,\sin nx ,\cos nx,\dots$任意两函数乘积在区间$\mfc{-\pi,\pi}$上积分为零 
+
+$\ma{
+    \int_{-\pi}^{\pi} \cos nx dx=0 \q \mf{n=1,2,3,\cdots}\\
+    \int_{-\pi}^{\pi} \sin nx dx=0 \q \mf{n=1,2,3,\cdots}\\
+    \int_{-\pi}^{\pi} \sin kx \cos nx dx=0 \q \mf{k,n=1,2,3,\cdots}\\
+    \int_{-\pi}^{\pi} \cos kx \cos nx dx=0 \q \mf{k,n=1,2,3,\cdots,k\neq n}\\
+    \int_{-\pi}^{\pi} \sin kx \cos nx dx=0 \q \mf{k,n=1,2,3,\cdots,k\neq n}\\
+}$
+
+$\int_{-\pi}^{\pi} 1^2dx=\frac{\pi}{2},\int_{-\pi}^{\pi} {\sin^2\mf{nx}}^2dx=\pi,\int_{-\pi}^{\pi} {\cos^2\mf{nx}}^2dx=\pi$
 
 
 
+\subsubsection{函数展开成傅里叶级数 }
+
+$\ma{
+    f\mf{x}=\frac{a_0}{2}+\sum_{n=1}^\infty \mfc{a_n\cos \mf{nx} +b_n\sin \mf{nx}}\\
+    \ma{\int_{-\pi}^\pi f\mf{x}dx&=\int_{-\pi}^\pi \frac{a_0}{2}dx+\int_{-\pi}^\pi \sum_{n=1}^\infty \mfc{a_n\cos \mf{nx} +b_n\sin \mf{nx}}dx\\
+        &=\int_{-\pi}^\pi \frac{a_0}{2}dx+ \sum_{n=1}^\infty \mfc{a_n\int_{-\pi}^\pi\cos \mf{nx}dx +b_n\int_{-\pi}^\pi\sin \mf{nx}dx}\\
+        &=\int_{-\pi}^\pi  \frac{a_0}{2}dx\\
+        &=\pi a_0
+    }\\
+
+    f\mf{x}\sin \mf{kx}=\frac{a_0}{2}\sin \mf{kx}+ \sin \mf{kx}\sum_{n=1}^\infty \mfc{a_n\cos \mf{nx} +b_n\sin \mf{nx}}\\
+    \ma{\int_{-\pi}^\pi f\mf{x}\sin \mf{kx} dx &=\int_{-\pi}^\pi\frac{a_0}{2}\sin \mf{kx} dx+ \int_{-\pi}^\pi\sin \mf{kx}\sum_{n=1}^\infty \mfc{a_n\cos \mf{nx} +b_n\sin \mf{nx}}dx\\
+        &=\int_{-\pi}^\pi\frac{a_0}{2}\sin \mf{kx} dx+ \sum_{n=1}^\infty \mfc{a_n \int_{-\pi}^\pi\sin \mf{kx}\cos \mf{nx}dx +b_n\int_{-\pi}^\pi\sin \mf{kx}\sin \mf{nx}dx}\\
+        &=b_k \int_{-\pi}^\pi\sin \mf{kx}\sin \mf{kx}dx\\
+        &=\pi b_k
+    }\\
+    f\mf{x}\cos \mf{kx}=\frac{a_0}{2}\cos \mf{kx}+ \cos \mf{kx}\sum_{n=1}^\infty \mfc{a_n\cos \mf{nx} +b_n\sin \mf{nx}}\\
+    \ma{\int_{-\pi}^\pi f\mf{x}\cos \mf{kx} dx &=\int_{-\pi}^\pi\frac{a_0}{2}\cos \mf{kx} dx+ \int_{-\pi}^\pi\cos \mf{kx}\sum_{n=1}^\infty \mfc{a_n\cos \mf{nx} +b_n\sin \mf{nx}}dx\\
+        &=\int_{-\pi}^\pi\frac{a_0}{2}\cos \mf{kx} dx+ \sum_{n=1}^\infty \mfc{a_n \int_{-\pi}^\pi\cos \mf{kx}\cos \mf{nx}dx +b_n\int_{-\pi}^\pi\cos \mf{kx}\sin \mf{nx}dx}\\
+        &=a_k \int_{-\pi}^\pi\cos \mf{kx}\cos \mf{kx}dx\\
+        &=\pi a_k
+    }
+}$
+
+傅里叶系数$\ma{
+    a_0=\frac{1}{\pi}\int_{-\pi}^\pi f\mf{x}dx\\
+    a_k=\int_{-\pi}^\pi f\mf{x}\cos \mf{kx} dx\\
+    b_k=\int_{-\pi}^\pi f\mf{x}\sin \mf{kx} dx
+}$
 
 
+$f\mf{x}$是周期为$2\pi$的周期函数，满足$\ma{
+    \mf{1}\mt{一个周期内连续，或只有有限个第一类间断点}\\
+    \mf{2}\mt{一个周期内至多只有有限个极值点}
+}$
 
-
-
-
+ 
 
 
 
