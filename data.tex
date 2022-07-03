@@ -11,6 +11,7 @@
 \usepackage{fancyhdr}
 \usepackage{setspace}
 \usepackage{indentfirst}
+\usepackage{booktabs}
 
 \usepackage{listings}
 
@@ -20,12 +21,14 @@ basicstyle=\scriptsize\tt,
 % basicstyle=\footnotesize\tt,
 keywordstyle=\color{blue}\bfseries,
 stringstyle=\color{green!50!black},
-identifierstyle=\color{brown!50!black},
+identifierstyle=\color{yellow!60!black},
 showstringspaces=false,
 commentstyle=\color{gray},
 % backgroundcolor=\color[RGB]{245,245,244},
-frameround = fftt,
-frame=shadowbox,  
+frameround = tttt,
+% frame=shadowbox,
+% frame=lines,
+frame=single,
 tabsize=2,
 xleftmargin=1cm, 
 xrightmargin=3cm,
@@ -42,9 +45,16 @@ rulesepcolor=\color{gray}
 \renewcommand{\headrulewidth}{0pt}  
 \renewcommand{\footrulewidth}{0pt}  
 \renewcommand{\headwidth}{\textwidth}
+
+\newcommand{\ma}[1]{\begin{array}{llll} #1 \end{array}}
 \newcommand{\mb}[1]{\textbf{#1}}
+\newcommand{\meq}[2]{\xlongequal[#2]{#1}}
+\newcommand{\mt}[1]{\text{#1}}
 \newcommand{\p}{\par}
  
+
+
+
 
 
 \title{Data Structure}
@@ -94,14 +104,164 @@ rulesepcolor=\color{gray}
 \section{图}
 \newpage
 \section{动态存储管理}
+
+
+
+
 \newpage
 \section{查找}
+\begin{lstlisting}[style=v1]
+//可能关键字类型
+typedef float KeyType;
+typedef int KeyType;
+typedef char *KeyType;
+//可能数据元素类型
+typedef struct{
+    KeyType key;
+    ...
+}SElemType;
+//数值比较
+#define EQ(a,b) ((a)==(b))
+#define LT(a,b) ((a)<(b))
+#define LQ(a,b) ((a)<=(b))
+//字符串比较
+#define EQ(a,b) (strcmp(!(a),(b)) )
+#define LT(a,b) (strcmp((a),(b))<0)
+#define LQ(a,b) (strcmp((a),(b))<=0)
+
+\end{lstlisting}
+
+
+
+
+\subsection{静态查找表}
+\subsubsection{顺序表的查找}
+
+\mb{顺序查找}\p
+\begin{lstlisting}[style=v1]
+typedef struct{ 
+    ElemType *elem;
+    int length;
+}SSTable;
+
+int Search_Seq(SSTable ST,KeyType key){
+    //在顺序表ST中查找关键字等于key的数据元素
+    //若找到，函数值为该元素在表中位置，否则为0
+    ST.elem[0].key=key;                           //哨兵  
+    for(i=ST.length;!EQ(ST.ele[i].key,key);--i){  //从后往前找
+        return i                                  //找不到时i=0 
+    }
+}
+\end{lstlisting}
+
+\mb{平均查找长度}\p
+
+$$\ma{ASL&=\sum_{i=1}^nP_iC_i\meq{C_i=n-i+1}{}=nP_1+(n-1)P_2+\dots+2P_{n-1}+P_n\\
+    ASL_{SS}&=\sum_{i=1}^nP_iC_i\meq{\sum_{i=1}^nP_i=1,P_i=\frac{1}{n}}{C_i=n-i+1}=\frac{1}{n}\sum_{i=1}^n(n-i+1)=\frac{n+1}{2}\\
+    ASL_{SS}^{'}&=\sum_{i=1}^nP_iC_i+Q_iD_i\meq{\sum_{i=1}^nP_i=Q_i=\frac{1}{2}}{C_i=n-i+1,D_i=n+1}\frac{1}{2n}\sum_{i=1}^n(n-i+1)+\frac{1}{2}(n+1)=\frac{3(n+1)}{4}
+}$$
+
+
+\subsubsection{有序表的查找}
+\mb{折半查找}\p
+\begin{lstlisting}[style=v1]
+int Search_Bin(SSTable ST,KeyType key){
+    //在有序表ST中折半查找关键字等于key的数据元素
+    //若找到，函数值为该元素在表中位置，否则为0
+    low=1;high=ST.length;           //置区间初值
+    while(low<=high){   
+        mid=(low+high)/2;
+        if(EQ(key,ST.elem[mid].key))return mid;        //找到待查元素
+        else if (LT(key,ST.elem[mid].key))high=mid-1;  //继续前半区间查找
+        else low=mid+1;                                //继续后半区间查找
+    }                   
+    return 0;                                          //表中不存在待查元素
+}
+\end{lstlisting}
+
+$$\ma{ASL_{bs}&=\sum_{i=1}^nP_iC_i\\
+    &=\frac{1}{n}\sum_{j=1}^h j*2^{j-1} \mt{(层高*节点数)}
+}$$
+
+
+% \newpage
+\subsubsection{静态树表的查找}
+\begin{lstlisting}[{style=v1,mathescape}]
+typedef BiTree SOSTree;             //次优查找树采用二叉链表存储结构
+int SecondOptimal(BiTree &T,ElemType R[],float sw[],int low ,int high){
+    //由有序表R[low...high]及其累计权值表sw(sw[0]==1)递归构造次优查找数T
+    i=low;min=abs(sw[high]-sw[low]);dw=sw[high]+sw[low-1];
+    for(j=low+1;j<=high;++j){               //选择最小$\Delta P_i$值
+        if(abs(dw-sw[j]-sw[j-1])<min){
+            i=j;min=abs(dw-sw[j]-sw[j-1]);
+        }
+    }
+    T=(BiTree)malloc(sizeof(BiTNode));
+    T->data=R[i];                                   //生成节点
+    if(i==low) T->lchild=NULL;                      //左子树空
+    else SecondOptimal(T->lchild,R,sw,low,i-1);     //构造左子树   
+    if(i==high) T->rchild=NULL;                     //右子树空
+    else SecondOptimal(T->rchild,R,sw,i+1,high);    //构造右子树    
+}
+
+Status CreateSOSTree(SOSTree &T,SSTable ST){
+    //有序表ST构造一棵次优查找树T，ST的数据元素含有权域weight
+    if(ST.length==0) T=NULL;
+    else{
+        FindSW(sw,ST);      //按照有序表ST中各元素的weight域求累计权值表sw
+        SecondOptimal(T,ST.elem,sw,1,ST.length);
+    }
+    return OK;
+}
+
+
+
+
+\end{lstlisting}
+
+
+
+
+
+\subsubsection{索引顺序表的查找}
+
+
+
+
+
+
+
+
+
+
+
+\subsection{动态查找表}
+\subsection{哈希表}
+
+
+
+
 
 \newpage
 \section{内部排序}
 
 
 \subsection{概述}
+
+\begin{lstlisting}[style=v1]
+ #define MAXSIZE 20
+ typedef int KeyType;
+ typedef struct{
+    KeyType key;
+    InfoType ontherinfo;
+ }RedType;
+typedef struct{
+    RedType r[MAXSIZE+1];
+    int length;
+}Sqlist;
+\end{lstlisting}
+
+
 \subsection{插入排序}
 \subsubsection{直接插入}
 
@@ -143,7 +303,7 @@ rulesepcolor=\color{gray}
 \mb{二路插入}\p
 \mb{表插入}\p
 
-% \newpage
+\newpage
 \mb{希尔排序}
 
 \begin{lstlisting}[style=v1]
@@ -238,7 +398,7 @@ rulesepcolor=\color{gray}
 \end{lstlisting}
 \subsubsection{树形排序}
 
-\newpage
+% \newpage
 \subsubsection{堆排序}
 
 
@@ -303,6 +463,110 @@ rulesepcolor=\color{gray}
 
 
 \subsection{基数排序}
+
+\subsubsection{多关键字的排序}
+
+\subsubsection{链式基数排序}
+ 
+% \newpage
+\begin{lstlisting}[style=v1]
+ #define MAX_NUM_OF_KEY 8
+ #define RADIX 10
+ #define MAX_SPACE 10000
+ typedef struct{
+    KeysType Keys[MAX_NUM_OF_KEY];
+    InfoType ontheritems;
+    int next;
+ }SLCell;
+
+ typedef struct{
+    SLCell r[MAX_SPACE];
+    int keynum;
+    int recnum;
+ }SLList;
+
+ typedef int ArrType[RADIX];
+
+
+void Distribute(SLCell &r,int i,ArrType &f,ArrType &e){
+    //静态链表L的r域中记录已按keys[0]...keys[i-1]有序
+    //本算法按第i个关键字keys[i]建立RADIX个子表，使得同一子表中记录的keys[i]相同
+    //f[0...RADIX-1],e[0...RADIX-1]分别指向各子表中第一个和最后一个记录
+    for(j=0;j<Radix;++j) f[j]=0 //各子表初始化为空
+    for(p=r[0].next;p;p=r[p].next){
+        j=ord(r.[p].keys[i]);   //ord将记录中第i个关键字映射到[0...RADIX-1]
+        if(!f[j]) f[j]=p;
+        else r[e[j]].next=p;
+        e[j]=p;                 //将p指向的结点插入第j个子表中
+    }
+}//Distribute
+
+void Collect(SLCell &r,int i,ArrType f,ArrType e){
+    //本算法按keys[i]从小至大地将f[0...RADIX-1]所指个子表依次链接成一个链表
+    //e[0...RADIX-1]为各子表的尾指针
+    for(j=0;!f[j];j=succ(j));    //找到第一个非空子表，succ为求后继函数
+    r[0].next=f[j];t=e[j];       //r[0].next指向第一个非空子表中第一个节点
+    while(j<RADIX){
+        for(j=succ(j);j<RADIX-1 && !f[j];j=succ(j));  //找到下一个非空子表
+        if(f[j] {r[t].next=f[j];t=e[j];})             //链接两个非空子表 
+    }                   
+    r[t].next=0;                                      //t指向最后一个非空子表中的最后一个节点 
+}//Collect
+
+void RadixSort(SLList &L){
+    //L是采用静态链表表示的顺序表
+    //对L作基数排序，使得L成为按关键字自小到大的有序静态链表，L.r[0]为头节点
+    for(i=0;i<L.recnum;++i) L.r[i].next=i+1;
+    L.r[L.recnum].next=0;           //将改造为静态链表
+    for(i=0;i<L.keynum;++i){        //按最低位优先依次对各关键字进行分配和收集   
+        Distribute(L.r,i,f,e);      //第i趟分配
+        Collect(L.r,i,f,e);         //第i趟收集
+    }
+}//RadixSort
+
+
+\end{lstlisting}
+
+
+\subsection{各内部排序方法的比较讨论}
+
+
+
+\begin{tabular}{ccccc}
+    \toprule
+    排序方法 & 平均时间 & 最坏情况 & 辅助存储   \\
+    \midrule
+    简单排序 & $O(n^2)$     &  $O(n^2)$ & $O(1)$  \\
+    快速排序 & $O(nlogn)$   & $O(n^2)$  & $O(logn)$  \\
+    堆排序   & $O(nlogn)$   & $O(nlogn)$  & $O(1)$  \\
+    归并排序 & $O(nlogn)$   & $O(nlogn)$  & $O(n)$  \\
+    基数排序 & $O(d(n+rd))$ & $O(d(n+rd))$  & $O(rd)$  \\
+    \bottomrule
+\end{tabular}%
+ 
+
+简单排序包括除希尔排序之外所有插入排序，起泡排序，简单选择排序，直接插入排序
+
+% \newpage
+\mb{地址向量重排算法}
+
+\begin{lstlisting}[style=v1]
+    void Rearrange(Sqlist &L,int adr[] ){
+        //adr给出顺序表的有序次序，即L.r[adr[i]]是第i小记录
+        //本算法按adr重排L.r使其有序
+        for(i=1;i<L.length;++i){
+            if(adr[i]!=i){
+                j=i;L.r[0]=L.r[i];            //暂存记录  
+                while(adr[j]!=i){             //调整L.r[adr[j]]的记录到位直到adr[j]=i为止  
+                    k=adr[j];L.r[j]=L.r[k];     
+                    adr[j]=j;j=k;
+                }
+                L.r[j]=L.r[0];adr[j]=j;       //记录按序到位 
+            }
+        }
+    }
+\end{lstlisting}
+
 
 \newpage
 \section{外部排序}
