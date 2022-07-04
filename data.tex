@@ -46,12 +46,72 @@ rulesepcolor=\color{gray}
 \renewcommand{\footrulewidth}{0pt}  
 \renewcommand{\headwidth}{\textwidth}
 
-\newcommand{\ma}[1]{\begin{array}{llll} #1 \end{array}}
-\newcommand{\mb}[1]{\textbf{#1}}
-\newcommand{\meq}[2]{\xlongequal[#2]{#1}}
-\newcommand{\mt}[1]{\text{#1}}
-\newcommand{\p}{\par}
+% \newcommand{\ma}[1]{\begin{array}{llll} #1 \end{array}}
+% \newcommand{\mb}[1]{\textbf{#1}}
+% \newcommand{\meq}[2]{\xlongequal[#2]{#1}}
+% \newcommand{\mt}[1]{\text{#1}}
+% \newcommand{\p}{\par}
  
+
+
+
+\newcommand{\Rmnum}[1]{\uppercase\expandafter{\romannumeral #1}} 
+\newcommand{\mR}[1]{\uppercase\expandafter{\romannumeral #1}} 
+\newcommand{\mt}[1]{\text{#1}}
+\newcommand{\mb}[1]{\textbf{#1}}
+\newcommand{\md}[1]{\displaystyle{#1}}
+\newcommand{\mda}[1]{$\displaystyle{ #1 }$}
+\newcommand{\mf}[1]{\left( #1\right)}
+\newcommand{\mfa}[1]{\left| #1\right|}
+\newcommand{\mfb}[1]{\left\{ #1\right\}}
+\newcommand{\mfc}[1]{\left[ #1 \right]}
+\newcommand{\q}{\quad}
+\newcommand{\qa}{\vspace{12 pt}}
+\newcommand{\mh}[2]{\overset{#2}{#1}}
+\newcommand{\mha}[1]{\overrightarrow{#1}}
+\newcommand{\p}{\par}
+\newcommand{\ma}[1]{\begin{array}{llll} #1 \end{array}}
+\newcommand{\tp}[1]{\begin{tikzpicture}  #1 \end{tikzpicture}}
+\newcommand{\tpa}[1]{
+    \begin{center}
+        \begin{tikzpicture}  
+            % [scale=1 ,show background rectangle] 
+        
+            #1 
+            \end{tikzpicture}
+    \end{center}
+}
+\newcommand{\tip}[8]{(intersection of #1,#2--#3,#4 and #5,#6--#7,#8)}
+\newcommand{\tpo}[2]{\coordinate  %[label=0:$ {#1} $]
+ (#1) at #2; }
+ \newcommand{\tpoa}[3]{\coordinate  [label=0:$ {#1} $]
+ (#3) at #2; }
+\newcommand{\da}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\db}[2]{\frac{d #1}{d #2}}
+\newcommand{\fcz}[1] {
+    \left\{
+        \begin{array}{llll} #1 \end{array}
+    \right.
+}
+\newcommand{\hls}[1] {
+    \left|
+        \begin{array}{llll} #1 \end{array}
+    \right|
+}
+\newcommand{\ba}[1]{\overline{#1}}
+\newcommand{\meq}[2]{\xlongequal[#2]{#1}}
+\newcommand{\mseq}{\approx }
+\newcommand{\jisu}[1]{\sum_{n=0}^\infty #1}
+\newcommand{\jixian}[1]{\lim_{n \rightarrow \infty} #1}
+
+
+
+
+\def\ooint{\displaystyle{{\bigcirc}\kern-12.5pt{\int}\kern-7.5pt{\int}}}
+\def\oooint{\displaystyle{{\bigcirc}\kern-12.3pt{\int}\kern-7pt{\int}\kern-7pt{\int}}}
+ 
+\def\isleq{\displaystyle{{<}\kern-6.5pt{?} }}
+
 
 
 
@@ -179,13 +239,45 @@ int Search_Bin(SSTable ST,KeyType key){
 }
 \end{lstlisting}
 
-$$\ma{ASL_{bs}&=\sum_{i=1}^nP_iC_i\\
-    &=\frac{1}{n}\sum_{j=1}^h j*2^{j-1} \mt{(层高*节点数)}
+
+
+
+$$\ma{
+    \sum_{j=1}^h j*x^{j-1}&=(\sum_{j=1}^h x^j)^{'}\\
+    &=(\frac{x-x^{h+1}}{1-x})^{'}\\
+    &=\frac{[1-(h+1)x^h](1-x)+x-x^{h+1}}{(1-x)^2}\\
+    \sum_{j=1}^h j*2^{j-1}&\meq{x=2}{}[1-(h+1)2^h](1-2)+2-2^{h+1}\\
+    &=(h+1)2^h-1+2-2\cdot 2^h\\
+    &=(h-1)2^h+1\\
+    2^{h}-1=n \Rightarrow h&=\log _2 (n+1)\\
+    ASL_{bs}&=\sum_{i=1}^nP_iC_i\\
+    &=\frac{1}{n}\sum_{j=1}^h j*2^{j-1} \mt{(层高*节点数)}\\
+    &=\frac{1}{n}[(h-1)2^h+1]\\
+    &=\frac{1}{n}[(\log _2 (n+1)-1)2^{\log _2 (n+1)}+1]\\
+    &=\frac{1}{n}[(\log _2 (n+1)-1)(n+1)+1]\\
+    &=\frac{1}{n}[(\log _2 (n+1))(n+1) -n-1+1]\\
+    &=\frac{n+1}{n}\log _2 (n+1)-1\\
+    &\approx \log _2 (n+1)-1, (n>50 )
 }$$
+
+
+
 
 
 % \newpage
 \subsubsection{静态树表的查找}
+
+$$\ma{sw_i &=\sum_{j=l}^i w_j\\
+\Delta P_i &=\mfa{\sum_{j=i+1}^h w_j -\sum_{j=l}^{i-1}w_j}\\
+           &=\mfa{(sw_h-sw_i)-(sw_{i-1}-sw_{l-1})}\\
+           &\meq{sw_{l-1}=0,w_{l-1}=0}{}\mfa{sw_h+sw_{l-1}-sw_i-sw_{i-1}}
+}$$
+
+
+
+
+
+
 \begin{lstlisting}[{style=v1,mathescape}]
 typedef BiTree SOSTree;             //次优查找树采用二叉链表存储结构
 int SecondOptimal(BiTree &T,ElemType R[],float sw[],int low ,int high){
@@ -213,9 +305,6 @@ Status CreateSOSTree(SOSTree &T,SSTable ST){
     }
     return OK;
 }
-
-
-
 
 \end{lstlisting}
 
