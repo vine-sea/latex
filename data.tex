@@ -5,7 +5,12 @@
 \usepackage{extarrows}
 \usepackage{titlesec}
 \usepackage{titletoc}
-\usepackage{tikz}
+
+\usepackage{pgf}
+\usepackage{tikz} % Required for drawing custom shapes
+\usetikzlibrary{shapes,backgrounds,arrows,automata}
+% \usetikzlibrary{arrows,backgrounds}
+% \usepackage{tikz}
 
 \usepackage{geometry}
 \usepackage{fancyhdr}
@@ -30,14 +35,14 @@ frameround = tttt,
 % frame=lines,
 frame=single,
 tabsize=2,
-xleftmargin=1cm, 
+xleftmargin=3cm, 
 xrightmargin=3cm,
 rulecolor=\color{gray},  
 rulesepcolor=\color{gray}  
 } 
 
 
-\usetikzlibrary{arrows,backgrounds}
+
 
 
 
@@ -241,8 +246,8 @@ int Search_Bin(SSTable ST,KeyType key){
 
 
 
-
-$$\ma{
+\begin{small}
+    $$\ma{
     \sum_{j=1}^h j*x^{j-1}&=(\sum_{j=1}^h x^j)^{'}\\
     &=(\frac{x-x^{h+1}}{1-x})^{'}\\
     &=\frac{[1-(h+1)x^h](1-x)+x-x^{h+1}}{(1-x)^2}\\
@@ -259,6 +264,8 @@ $$\ma{
     &=\frac{n+1}{n}\log _2 (n+1)-1\\
     &\approx \log _2 (n+1)-1, (n>50 )
 }$$
+\end{small}
+
 
 
 
@@ -272,9 +279,43 @@ $$\ma{sw_i &=\sum_{j=l}^i w_j\\
            &=\mfa{(sw_h-sw_i)-(sw_{i-1}-sw_{l-1})}\\
            &\meq{sw_{l-1}=0,w_{l-1}=0}{}\mfa{sw_h+sw_{l-1}-sw_i-sw_{i-1}}
 }$$
+\begin{center}
+    \begin{small}
+        \begin{tabular}{ccccccccccc}
+            \toprule
+            j & 0 & 1 & 2  & 3& 4& 5& 6& 7& 8& 9 \\
+            key &  & A & B  &C & D& E& F& G& H& I \\
+            \midrule
+            $w_i$        & 0 & 1 &1 &2 &5 &3 &4 &4 &3 &5  \\
+            $sw_i$       & 0 & 1 &2 &4 &9 &12 &16 &20 &23 &28 \\
+            $l=1,h=9,\Delta P_i$  & &27 &25 &22 &15 &7 &0 &8 &15 &23 \\
+            $l_1=1,h_1=5,l_1=6,h_1=9,\Delta P_i$  & &11 &9 &6 &1 &19 &  &8 &1 &7  \\
+        
+            \bottomrule
+        \end{tabular} \begin{tikzpicture}[ scale=.5,distance=20pt,box/.style={circle,draw}] 
+            \node[box] {F}
+            child {node[box] {D}
+                child {node[box] {B}
+                    child {node[box] {A}} 
+                    child {node[box] {C}} 
+                } 
+                child {node[box] {E}} 
+            } 
+            child {node[box] {H}
+                child {node[box] {G}} 
+                child {node[box] {I}} 
+            } 
+            ;
+         \end{tikzpicture}
+
+
+    \end{small}
+\end{center}
 
 
 
+
+ 
 
 
 
