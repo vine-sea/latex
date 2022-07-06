@@ -414,10 +414,13 @@ $$\begin{small}
 
 $$
 \ma{    
-    ASL_{bc}&=L_b+L_w\\
+    ASL_{bs}&=L_b+L_w\\
     &=\frac{1}{b}\sum_{j=1}^bj+\frac{1}{s}\sum_{j=1}^sj\\
     &=\frac{1+b}{2}+\frac{1+s}{2}\\
     &=\frac{1}{2}(\frac{n}{s}+s)+1\\
+    ASL_{bs}^{'}&\approxeq \log_2(\frac{n}{s}+1)-1+\frac{1+s}{2}\\
+    &\approxeq\log_2(\frac{n}{s}+1)+\frac{s}{2}-\frac{1}{2}\\
+    &\approxeq\log_2(\frac{n}{s}+1)+\frac{s}{2} 
 }
 $$
 
@@ -428,6 +431,72 @@ $$
 
 
 \subsection{动态查找表}
+
+\subsubsection{二叉排序树和平衡二叉树}
+\mb{二叉排序树及其查找过程}\p
+\mb{二叉排序树}是空树或者具有性质$\ma{
+    \mt{(1)非空左子树上所有节点小于根节点}\\
+    \mt{(2)非空右子树上所有节点大于根节点}\\
+    \mt{(3)左右子树分别为二叉排序树}\\
+}$
+
+
+\newpage
+
+\mb{二叉排序树的插入和删除}\p
+\begin{lstlisting}[style=v1]
+    Status SearchBST(BiTree T,KeyType key,BiTree f,BiTree &p){
+        //二叉排序树T中查找key
+        //成功p指向节点，返回TRUE，失败p指向访问节点，返回FALSE
+        //f指向双亲节点，初始值为NULL
+        if(!T){p=f;return FALSE;}  //查找失败
+        else if EQ(key,T->data.key){p=T;return TRUE;} //查找成功
+        else if LT(key,T->data.key) return SearchBST(T->lchild,key,T,p);
+        else  return SearchBST(T->rchild,key,T,p);
+    }
+
+    Status InsertBST(BiTree &T,ElemType e){
+        //二叉排序树T中不存在key，插入e返回TRUE
+        //否则返回FALSE
+        if(!SearchBST(T,e.key,null,p)){
+            s=(BiTree)malloc(sizeof (BiTNode));
+            s->data=e;s->lchild=s->rchild=NULL;
+            if(!p)T=s;
+            else if(LT(e.key,P->data.key))p->lchild=s;
+            else p->rchild=s;
+            return TRUE;
+        }
+        else return FALSE;
+    }
+
+
+\end{lstlisting}
+
+双亲节点$*f$删除节点$*p\ma{
+    p_L,p_R\mt{均为空树,改双*f亲指针}\\
+    p_L \, or \, p_R\mt{为空树，子树为双亲*f子树}\\
+    p_L,p_R\mt{均不为空树，}\ma{
+        (1)p_L\mt{为双亲*f左子树},p_r\mt{为}p_L\mt{最右}\\
+        (2)p_L\mt{最右*s替代}*p，\mt{删除}*s\mt{重复操作}\\
+    }
+}$
+
+
+\mb{二叉排序树的查找分析}\p
+\mb{平衡二叉树}\p
+\mb{平衡二叉树查找的分析}\p
+
+
+
+
+\subsubsection{B-树和B+树}
+\subsubsection{键树}
+
+
+
+
+
+
 \subsection{哈希表}
 
 
