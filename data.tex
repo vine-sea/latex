@@ -386,6 +386,7 @@ $$\begin{small}
                 \frac{1}{\sqrt{5}}\mfc{\frac{1 - \sqrt{5}}{- 2 }{(\frac{1- \sqrt{5}}{2})}^{n-1} + \frac{1 + \sqrt{5}}{ 2 }{(\frac{1+ \sqrt{5}}{2})}^{n-1}}\\
             }\\
             &=\frac{1}{\sqrt{5}}\mfc{ {(\frac{1+ \sqrt{5}}{2})}^{n} -  {(\frac{1- \sqrt{5}}{2})}^{n}}\\
+            &\approx  \frac{1}{\sqrt{5}} {(\frac{1+ \sqrt{5}}{2})}^{n} \\
             \fcz{
                 -s=\frac{1}{1-s}\\
                 k=\frac{(1+k)(1-s)}{s}
@@ -487,49 +488,259 @@ $$
 % \sum_{j=2}^n<\ln n
 % }$$
 
-$$\ma{
-    \int_1^n \frac{1}{x}dx=\ln n<1+\frac{1}{2}+\frac{1}{3}+\dots+\frac{1}{n-1}=k+\frac{1}{n}\\
-    \int_1^n \frac{1}{x}dx=\ln n>\frac{1}{2}+\frac{1}{3}+\frac{1}{3}+\dots+\frac{1}{n}=k-1\\
-    \int_1^n \frac{1}{x}dx=\ln n<\frac{1}{2}(1+\frac{1}{2})+\frac{1}{2}(\frac{1}{2}+\frac{1}{3})+\frac{1}{2}(\frac{1}{3}+\frac{1}{4})+\dots+\frac{1}{2}(\frac{1}{n-1}+\frac{1}{n})=k-\frac{1}{2n}-\frac{1}{2}\\
-    k=\sum_{j=1}^n \frac{1}{j}\\
-    \sum_{j=1}^n\frac{1}{j} -\ln n=\gamma\approx 0.577   \mt{(欧拉常数)}\\
-    \frac{1}{2}<\sum_{j=1}^n\frac{1}{j} -\ln n=\gamma <1 \\
-    \sum_{j=2}^n\frac{1}{j} -\ln n<0\\
-    \sum_{j=2}^n\frac{1}{j}<\ln n\\
-}$$
+ \begin{lstlisting}[style=v1]
+    Status DeleteBST(BiTree &T,KeyType key){
+        //若二叉树T中存在key，删除该节点
+        //并返回TRUE，否则返回FALSE
+        if(!T) return FALSE;            //不存在key
+        else{
+            if(EQ(key,T->data.key)) return Delete(T);  //找到key
+            else if(LT(k,T->data.key)) return DeleteBST(T->lchild,key);
+            else return DeleteBST(T->rchild,key); 
+        }
+    }
+
+    Status Delete(BiTree &p){
+        //从二叉树删除节点p，重接左子树或右子树
+        if(!p->rchild){q=p;p=p->lchild;free(q);}
+        else if(!p->lchild){q=p;p=p->rchild;free(q);}
+        else{
+            q=p;s=p->lchild;                    //左转
+            while(s->rchild){q=s;s=s->rchild;}  //右转到尽头，
+            p->data=s->data;                    //s指向p前驱，q指向s双亲
+            if(q!=p)q->rchild=s->lchild;  //重接q右子树  
+            else q->lchild=s->lchild;     //重接q右子树(左单支)
+            free(s);
+        }
+        return TRUE;
+    }
+ \end{lstlisting}
+
+\mb{二叉排序树的查找分析}\p
 
 
 
-$$\ma{
+
+$$
+\begin{small}  
+    \ma{
     \mf{\frac{a_1+a_2+\cdots+a_n}{n}}^n\geqslant a_1a_2\dots a_n\\
-    e=\lim_{n \rightarrow \infty}(1+\frac{1}{n})^n \mt{(自然常數)}\\
+    e=\lim_{n \rightarrow \infty}(1+\frac{1}{n})^n \approx 2.76 \mt{(自然常數)}\\
     s_n=(1+\frac{1}{n})^n=(\frac{1+n}{n})^n\cdot 1\leqslant\mf{\frac{\frac{n+1}{n}+\dots+\frac{n+1}{n}+1}{n+1}}^{n+1}=(\frac{n+2}{n+1})^{n+1}=s_{n+1},\mt{單增}
     \q n\geqslant 1\\
     t_n=\mf{1+\frac{1}{n}}^{n+1}=\mf{\frac{n+1}{n}}^{n+1},\mt{單減} \q n\geqslant 1\\
     \frac{1}{t_n}=\mf{\frac{n}{n+1}}^{n+1}=\mf{\frac{n}{n+1}}^{n+1}\cdot 1 \leqslant \mf{\frac{\frac{n}{n+1}+\dots +\frac{n}{n+1} +1}{n+2}}^{n+2}=\mf{\frac{n+1}{n+2}}^{n+2}=\frac{1}{t_{n+1}}
     ,t_n\geqslant t_{n+1}\\
     2=s_1<s_n<t_n<t_1=4\\
-    (1+\frac{1}{n})^n <s_{max}=e<t_{min}< (1+\frac{1}{n})^{n+1}\\
-    n\ln (1+\frac{1}{n})<1< (n+1)\ln (1+\frac{1}{n})\\
+    (1+\frac{1}{n})^n <s_{max}=e<t_{min}< (1+\frac{1}{n})^{n+1},
+    % n\ln (1+\frac{1}{n})<1< (n+1)\ln (1+\frac{1}{n})\\
     n\ln (\frac{n+1}{n})<1< (n+1)\ln (\frac{n+1}{n})\\
     \frac{1}{n+1}<\ln (\frac{n+1}{n})<\frac{1}{n}
+    }
+ \end{small}
+$$
+
+$$
+\begin{small}
+    \ma{
+    \gamma_n=1+\frac{1}{2}+\frac{1}{3}+\dots+\frac{1}{n}-\ln n\\
+    >\ln (\frac{2}{1})+\ln (\frac{3}{2})+\ln (\frac{4}{3})+\dots+\ln (\frac{n+1}{n})-\ln n\\
+    >\ln(n+1)-\ln n>0,\mt{正项}\\
+    \gamma_{n+1}-\gamma_n=\frac{1}{n+1}-\ln(n+1)+\ln n=\frac{1}{n+1}-\ln(\frac{n+1}{n})<0,\gamma_{n+1}<\gamma_n，\mt{单减}\\
+    0<\gamma_n<1\\
+    k=\sum_{j=1}^n \frac{1}{j}\\
+    \int_1^n \frac{1}{x}dx=\ln n<1+\frac{1}{2}+\frac{1}{3}+\dots+\frac{1}{n-1}=k+\frac{1}{n}\\
+    \int_1^n \frac{1}{x}dx=\ln n>\frac{1}{2}+\frac{1}{3}+\frac{1}{3}+\dots+\frac{1}{n}=k-1\\
+    \int_1^n \frac{1}{x}dx=\ln n<\frac{1}{2}(1+\frac{1}{2})+\frac{1}{2}(\frac{1}{2}+\frac{1}{3})+\frac{1}{2}(\frac{1}{3}+\frac{1}{4})+\dots+\frac{1}{2}(\frac{1}{n-1}+\frac{1}{n})=k-\frac{1}{2n}-\frac{1}{2}\\
+    
+    \frac{1}{2}<\frac{1}{2}+\frac{1}{2n}<(k-\ln n)=\gamma_n<1\\
+    k -\ln n=\gamma\approx 0.577   \mt{(欧拉常数)}\\
+    % \frac{1}{2}<\sum_{j=1}^n\frac{1}{j} -\ln n=\gamma <1 \\
+    % \sum_{j=2}^n\frac{1}{j} -\ln n<0\\
+    \sum_{j=2}^n\frac{1}{j}=k-1=\ln n+\gamma-1<\ln n\\
+    }
+\end{small}
+$$
+
+
+$$\ma{
+    P(n,i)=\frac{1}{n}[1+i\cdot (P(i)+1)+(n-i-1)\cdot (P(n-i-1)+1)]\\
+    P(n)=\frac{1}{n}\sum_{i=0}^{n-1}P(n,i)\\
+    =\frac{1}{n} \sum_{i=0}^{n-1}\frac{1}{n} [1+i\cdot (P(i)+1)+(n-i-1)\cdot (P(n-i-1)+1)]\\
+    =\frac{1}{n^2} \sum_{i=0}^{n-1}[ i\cdot P(i)+i+1+(n-i-1)\cdot P(n-i-1)+n-i-1]\\
+    =\frac{1}{n^2} \sum_{i=0}^{n-1}[ i\cdot P(i) +(n-i-1)\cdot P(n-i-1)+n ]\\
+    =1+\frac{1}{n^2} \sum_{i=0}^{n-1}[ i\cdot P(i) +(n-i-1)\cdot P(n-i-1) ]\\
+    =1+\frac{1}{n^2} [0\cdot P(0)+(n-1)\cdot P(n-1)+  1\cdot P(1)+(n-2)\cdot P(n-2)+\dots + (n-1)\cdot P(n-1) +0\cdot P(0) ]\\
+    =1+\frac{2}{n^2} \sum_{i=0}^{n-1}i\cdot P(i)\\
+    k_n=\sum_{i=0}^{n-1}i\cdot P(i),k_{n-1}=\sum_{i=0}^{n-2}i\cdot P(i)\\
+    k_n=k_{n-1}+(n-1)P(n-1)\\
+    P(n)=1+\frac{2}{n^2}k_n\\
+    P(n-1)=1+\frac{2}{(n-1)^2}k_{n-1}\\
+    \frac{n^2}{2}\mf{P(n)-1}=\frac{(n-1)^2}{2}\mf{P(n-1)-1}+(n-1)P(n-1)\\
+    P(n)= \frac{n^2-1}{n^2}P(n-1)+ \frac{2n-1}{n^2},P(1)=1,P(0)=0\\
+    \frac{n}{n+1}P(n)=\frac{n-1}{n}P(n-1)+\frac{2n-1}{n(n+1)}\\
+    s_n=\frac{n}{n+1}P(n),\delta_n=\frac{2n-1}{n(n+1)}\\
+    s_n=s_{n-1}+\delta_n\\
+    s_{n-1}=s_{n-1}+\delta_{n-1}\\
+    \dots\\
+    s_2=s_1+\delta_2\\
+    s_1=s_0+\delta_1\\
+    s_n=\sum_{j=1}^{n} \delta_j=\sum_{j=1}^{n} \frac{2j-1}{j(j+1)}=\sum_{j=1}^{n} (2j-1)(\frac{1}{j}-\frac{1}{j+1})\\
+    =\sum_{j=1}^{n} \frac{2j-1}{j} -\frac{2j-1}{j+1}\\
+    =\sum_{j=1}^{n} \frac{2j-1}{j} -\frac{2j+2-3}{j+1}\\
+    =\sum_{j=1}^{n} \frac{-1}{j} +\sum_{j=1}^{n} \frac{3}{j+1} \\
+    =\sum_{j=1}^{n} \frac{-1}{j} +\sum_{j=1}^{n} \frac{1+2}{j+1} \\
+    =\sum_{j=1}^{n} (\frac{-1}{j}+\frac{1}{j+1}) +\sum_{j=1}^{n} \frac{2}{j+1}\\
+    =-\frac{n}{n+1}+\sum_{j=1}^{n} \frac{2}{j+1}\\
+    P(n)=\frac{n+1}{n}s_n=-1+2\frac{n+1}{n} \sum_{j=1}^{n} \frac{1}{j+1}=-1+2\frac{n+1}{n} (\frac{1}{2} +\frac{1}{3}+\dots+\frac{1}{n+1}  )\\
+    =2\frac{n+1}{n} (\frac{1}{2} +\frac{1}{3}+\dots+\frac{1}{n}  ) +\frac{2}{n}-1\\
+    =2\frac{n+1}{n} (k-1)+\frac{2}{n}-1=2\frac{n+1}{n} (\ln n +\gamma-1)+\frac{2}{n}-1 \leqslant 2\frac{n+1}{n} \ln n 
 
 }$$
 
 
 
 
+\newpage
+
+
+\mb{平衡二叉树} 是空树或者具有性质 $\ma{
+    (1) \mt{左右子树都是平衡二叉树}\\
+    (2) \mt{左右子树高度差绝对值小于1}\\
+}$
+
+\mb{平衡因子}左子树高度减右子树高度
+
+\mb{失衡调整}  $\ma{
+    (1) \mt{单向右旋}\\
+    (2) \mt{单向左旋}\\
+    (3) \mt{双向旋转(先左后右)}\\
+    (4) \mt{双向旋转(先右后左)}
+}$   \mb{插入e算法描述} $\ma{
+    (1) \mt{空树,e为根节点}\\
+    (2) \mt{e等于根节点，不插入}\\
+    (3) \mt{e小于根节点，左子树无e,插入左子树}\\
+    \q \ma{
+        \mt{根节点平衡因子=-1,改为0，树深度+0}\\
+        \mt{根节点平衡因子=0,改为1，树深度+1}\\
+        \mt{根节点平衡因子=1}\\
+        \q \ma{
+            \mt{左子树根节点平衡因子=1，单向右旋}\\
+            \mt{左子树根节点平衡因子=-1，先左后右}\\
+        }
+    }\\
+    (4) \mt{e大于根节点，右子树无e,插入右子树}\\
+    \q \ma{
+        \mt{根节点平衡因子=1,改为0，树深度+0}\\
+        \mt{根节点平衡因子=0,改为1，树深度+1}\\
+        \mt{根节点平衡因子=-1}\\
+        \q \ma{
+            \mt{右子树根节点平衡因子=-1，单向左旋}\\
+            \mt{右子树根节点平衡因子=1，先右后左}\\
+        }
+    }\\
+}$ 
+
+\begin{lstlisting}[style=v1]
+    #define LH +1;
+    #define EH 0;
+    #define RH -1;
+
+    typede struct BSTNode{
+    int bf;                             //节点平衡因子
+    struct BSTNode * lchild ,*rchild;   //左右孩子指针
+    }BSTNode,*BSTree;
+
+    void R_Rotate(BSTree &p){
+        //对以*p为根的二叉排序树作右旋处理，处理后p指向新的根节点，即左子树根节点
+        lc=p->lchild;               //lc指向*p的左子树的根节点
+        p->lchild=lc->rchild;       //lc的右子树挂接为*p的左子树    
+        lc->rchild=p;p=lc;          //p指向新的根节点
+    }
+
+    void L_Rotate(BSTree &p){
+        //对以*p为根的二叉排序树作左旋处理，处理后p指向新的根节点，即右子树根节点
+        rc=p->rchild;               //rc指向*p的右子树的根节点
+        p->rchild=rc->lchild;       //rc的左子树挂接为*p的右子树    
+        rc->lchild=p;p=rc;          //p指向新的根节点
+    }
+
+    void LeftBalance(BSTree &T){
+        //对平衡二叉树T作左平衡处理，结束时T指向新的根点
+        lc=T->lchild;
+        switch(lc->bf){
+            case LH:
+                T->bf=lc-bf=EH; R_Rotate(T);break;
+            case RH:
+                rd=lc->rchild;
+                switch(rd->bf){
+                    case LH:T->bf=RH;lc->bf=Eh;break;
+                    case EH:T->bf=lc->bf=EH;break;
+                    case RH:T->bf=EH;lc->bf=LH;break;
+                }
+                rd->bf=EH;
+                L_Rotate(T->rchild);
+                R_Rotate(T);
+        }
+    }
+
+
+
+\end{lstlisting}
+
+\newpage
+
+
+\begin{lstlisting}[style=v1]
+    Status InsertAVL(BSTree &T,ElemType e,Boolean &taller){
+        //平衡二叉树T不存在e，插入返回1，否则返回0
+        //若插入失衡，则平衡处理，taller反映长高与否
+
+        if(!T){
+            T=(BSTree) malloc(sizeof(BSTNode));T->data=e;
+            T->lchild=T->rchild=NULL;T->bf=EH;taller=TRUE;
+        }
+        else{
+            if(EQ(e.key,T->data.key)){taller=FALSE;return 0;}
+            if(LT(e.key,T->data.key)){
+                if(!InsertAVL(T->lchild,e,taller)) return 0;
+                if(taller) switch(T->bf){
+                    case LH:
+                        LeftBalance(T);taller=FALSE;break;
+                    case EH:
+                        T->bf=LH;taller=TRUE;break;
+                    case RH:
+                        T->bf=EH;taller=FALSE;break;
+                }
+            }
+            else{
+                if(!InsertAVL(T->rchild,e,taller)) return 0;
+                if(taller) switch(T->bf){
+                    case LH:
+                        T->bf=EH;taller=FALSE;break;
+                    case EH:
+                        T->bf=RH;taller=TRUE;break;
+                    case RH:
+                        RightBalance(T);taller=FALSE;break;
+                }
+            }
+        }
+        return 1;
+    }
+\end{lstlisting}
 
 
 
 
 
-
-
-\mb{二叉排序树的查找分析}\p
-\mb{平衡二叉树}\p
 \mb{平衡二叉树查找的分析}\p
+$N_h$深度为h的平衡二叉树的最少节点数
 
+$N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1$
+
+$N_h=F_{h+2}-1$
+
+$F_h \approx \frac{1}{\sqrt{5}}\mf{\frac{1+\sqrt{5}}{2}}^n$
 
 
 
