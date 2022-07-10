@@ -75,6 +75,9 @@ rulesepcolor=\color{gray}
 \newcommand{\mfa}[1]{\left| #1\right|}
 \newcommand{\mfb}[1]{\left\{ #1\right\}}
 \newcommand{\mfc}[1]{\left[ #1 \right]}
+\newcommand{\mfd}[1]{ \lceil #1 \rceil}
+
+
 \newcommand{\q}{\quad}
 \newcommand{\qa}{\vspace{12 pt}}
 \newcommand{\mh}[2]{\overset{#2}{#1}}
@@ -734,23 +737,208 @@ $$\ma{
 
 
 \mb{平衡二叉树查找的分析}\p
+比较次数不超过树的深度
+
 $N_h$深度为h的平衡二叉树的最少节点数
 
-$N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1$
+% $N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1$
 
-$N_h=F_{h+2}-1$
+$
+\ma{N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1\\
+N_h=F_{h+2}-1\\
+F_h \approx \frac{1}{\sqrt{5}}\mf{\frac{1+\sqrt{5}}{2}}^h=c(\varphi)^h\\
+N_h=c(\varphi)^{h+2}-1\\
+\log (\frac{N_h+1}{c})=(h+2)\log \varphi\\
+\frac{\log (\frac{N_h+1}{c})}{\log \varphi}-2=\log _\varphi (\frac{N_h+1}{c}) -2=h
+}
+$
 
-$F_h \approx \frac{1}{\sqrt{5}}\mf{\frac{1+\sqrt{5}}{2}}^n$
+ 先排序，再构造次优查找树，生成树是二叉排序树
 
 
 
 \subsubsection{B-树和B+树}
+
+\mb{B-树及其查找}\p
+
+\mb{B-树}是平衡的多路查找树，
+
+m阶\mb{B-树}是空树或具有性质$\ma{
+    (1)\mt{每个节点至多有m棵子树}\\
+    (2)\mt{若根节点不是叶子节点，则至少有两棵子树}\\
+    (3)\mt{除根结点之外的所有非终端节点，至少包含} \lceil \frac{m}{2} \rceil\mt{棵子树}\\
+    (4)\mt{所有的非终端节点，包含信息}\\
+        \q (n,A_0,k_1,A_1,K_2,\dots,K_n,A_n),
+        K_i\mt{为关键字},A_i\mt{指向根节点的指针}\\
+        \q A_{i-1}\mt{指向子树的所有节点小于} K_i,
+        A_{i+1}\mt{指向子树的所有节点大于} K_i\\
+        \q \mt{关键字个数}n ,\lceil \frac{m}{2} \rceil -1  \leqslant n\leqslant m-1\\
+    (5)\mt{所有的叶子节点都出现在同一层次上，且不带信息}\\
+}$
+
+\newpage
+
+\begin{lstlisting}[style=v1]
+    #define m 3                     //B-树的阶
+    typedef struct BTNode{
+        int keynum;                 //关键字个数，即节点大小
+        struct BTNode * parent;     //双亲结点   
+        KeyType key[m+1];           //关键字向量，0号单元未用
+        struct BTNode * ptr[m+1];   //子树指针向量
+        Record *recptr[m+1];        //记录指针向量，0号单元未用
+    }BTNode,*BTree;
+
+    typedef struct{
+        BTNode *pt;         //指向找到的节点
+        int i;              //在节点中的关键字号    
+        int tag;            //1成功，0失败
+    }Result;                //B-树查找结果类型
+
+
+    Result SearchBTree(BTree T,KeyType K){
+        //在m阶B-树T上查找K，返回(pt,i,tag)
+        //成功返回位置，失败插入返回插入位置
+        p=T;q=NULL;found=FALSE;i=0;     //初始化，p指向待查节点，q指向p的双亲节点
+        while(p && !found){
+            i=Search(p,k);              //在p->key [1...keynum]中查找
+            if(i>0 && p->key[i]==k) found =TRUE;    //查到关键字
+            else{q=p;p=p->ptr[i];}
+        }
+        if(found) return (p,i,1);
+        else return (q,i,0);
+    }
+\end{lstlisting}
+
+\mb{B-树查找分析}\p
+
+磁盘节点，内存顺序
+
+$1,2,2\mfd{\frac{m}{2}},2\mfd{\frac{m}{2}}^2,\dots,2\mfd{\frac{m}{2}}^{n-2},\dots$
+
+N关键字B-树，深度l+1(叶子算深度)，N+1叶子节点
+
+$\ma{N+1\geqslant 2\mfd{\frac{m}{2}}^{l+1-2}\\
+    \log_{\mfd{\frac{m}{2}}} (N+1) \geqslant \log_{\mfd{\frac{m}{2}}} 2 +l-1\\
+    \log_{\mfd{\frac{m}{2}}} (\frac{N+1}{2}) +1 \geqslant  l
+}$
+
+\mb{B-树插入和删除}\p
+
+
+最底层非终端节点添加，添加后关键字个数不超过m-1完成，超过分裂
+
+\mb{节点分裂}$*p$节点含m-1关键字，插入后节点信息$(m,A_0,K_1,A_1,K_2,A_2,\dots,K_m,A_m)$
+
+$\q *p_1,(\mfd{\frac{m}{2}}-1,A_0,K_1,A_1,K_2,A_2,\dots,K_{\mfd{\frac{m}{2}}-1},A_{\mfd{\frac{m}{2}}-1}) $
+
+$\q *p_2,(m-\mfd{\frac{m}{2}},A_{\mfd{\frac{m}{2}}},K_{\mfd{\frac{m}{2}}+1},A_{\mfd{\frac{m}{2}}+1},K_{\mfd{\frac{m}{2}}+2},A_{\mfd{\frac{m}{2}}+2},\dots,K_m,A_m) $
+
+$\q key,(K_{\mfd{\frac{m}{2}}},*p_2) $ 合并到双亲
+
+\begin{lstlisting}[style=v1]
+    Status InsertBtree(BTree &T ,KeyType T,BTree q ,int i){
+        //m阶B-树，*q的key[i],key[i+1]之间插入关键字k
+        //插入后节点过大则分裂
+        x=k;ap=NULL;finished=FALSE;
+        while(q && !finished){
+            Insert(q,i,x,ap);       //将x,ap分别插入q->key[i+1],q->ptr[i+1],
+            if(q->keynum<m) finished=TRUE;      //插入完成
+            else{                               //分裂节点*q
+                s=m/2+1;splite(q,s,ap);x=q->key[s];   
+                //移动相应元素q->key[s+1..m], q->ptr[s..m]q->recptr[s+1..m]到新节点*ap
+                q=q->parent;
+                if(q) i=Search(q,x);
+            }
+        }
+        if(!finished)             //T是空树或者节点已分裂为节点*p，*ap      
+            NewRoot(T,q,x,ap);    //生成含信息(T,x,ap)的新的根节点*T,原T和ap为子树指针 
+        return OK;
+    }
+   
+\end{lstlisting}
+
+最底层非终端节点删除，删除后关键字个数不小于$\mfd{\frac{m}{2}}$完成，小于合并
+
+非终端节点$K_i$用指针$A_i$子树最小关键字Y替代$K_i$再删除Y
+
+非终端删除情况(关键字个数)$\ma{
+    (1) \mt{所在节点大于等于} \mfd{\frac{m}{2}}\\
+    (2) \mt{所在节点等于} \mfd{\frac{m}{2}}-1 ,\mt{存在兄弟节点大于} \mfd{\frac{m}{2}}-1，\mt{双亲借兄弟，靠近给自己}\\
+    (3) \mt{所在节点等于} \mfd{\frac{m}{2}}-1 ,\mt{兄弟节点都等于} \mfd{\frac{m}{2}}-1，\mt{毁灭自己，留给兄弟}
+}$
+
 \subsubsection{键树}
 
+\mb{键树}又称数字查找树，度大于2的树。元素是组成关键字的符号。关键字是数值，单词。
+
+\mb{键树}是有序树，结束符$\$$小于任何字符
+
+\mb{键树存储结构}\q
+
+    (1)孩子兄弟链表，分支节点 $(symbol,first,next)$，叶子节点$infoptr$域，双链树
+
+\begin{lstlisting}[style=v1]
+    #define MAXKEYLEN 16        //关键字最大长度
+    typedef struct{             
+        char ch[MAXKEYLEN];     //关键字
+        int num;                //关键字长度
+    }KeysType;                  //关键字类型
+
+    typedef enum{LEAF,BRANCH} NodeKind;     //节点种类：{叶子，分支}
+    typedef struct DLTNode{
+        char symbol;
+        struct DLTNode *next;              //指向兄弟节点的指针 
+        NodeKind kind;
+        union{
+            Record *infoptr;              // 叶子节点的记录指针
+            struct DLTNode *first         // 分支节点的孩子链指针 
+        }
+    }DLTNode,*DLTree;                      //双链树的类型 
+
+    Record * SearchDLTree(DLTree T,KeysType K){
+        //在非空双链树T中查找K，存在返回记录指针，失败返回空指针
+        p=-T->first;i=0;
+        while(p&& i<k.num){
+            while(p&& p->symbol !=K.ch[i]) p=p->next;       //查找第i
+            if(p&& i<K.num-1) p=p->first;                   //准备查找下一位
+            ++i;
+        }
+        if(!p) return NULL;                                 //查找成功
+        else return p->infoptr;                             //查找失败   
+    }
 
 
 
+\end{lstlisting}
 
+键树节点最大度d，深度h，双链树平均查找长度 $\frac{h}{2}(1+d)$
+
+插入删除节点，等于在树中某个节点插入删除子树
+
+(2)多重链表，单支树压缩为叶子节点，
+
+\begin{lstlisting}[style=v1]
+    typedef struct TrieNode{
+        NodeKind kind;
+        union{
+            struct{KeysType k;Record * infoptr;} lf;   //叶子节点
+            struct{TrieNode *ptr[27]; int num;} bh;    //分支节点
+        }
+    }TrieNode,*TrieTree;
+
+    Record * SearchTrie(TrieTree T,KeysType k){
+        //在键树T中查找关键字等于K的记录
+        for(p=T,i=0;                                    //对k的每个字符逐个查找
+            p&& p->kind==BRANCH && i<K.num;             //*p为分支节点
+            p=p->bh.ptr[ord(K.ch[i])],++i);              //ord 求字符在字母表中序号,$为0   
+        if(p=&& p->kind==LEAF&& p->lf.k==k) return p->lf.infoptr;  //查找成功
+        else return NULL;
+    }
+
+
+\end{lstlisting}   
+
+多重链表键树分割，无查找分析
 
 \subsection{哈希表}
 
