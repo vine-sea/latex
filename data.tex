@@ -744,8 +744,21 @@ $N_h$深度为h的平衡二叉树的最少节点数
 % $N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1$
 
 $
-\ma{N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1\\
-N_h=F_{h+2}-1\\
+\ma{
+% N_0=0,N_1=1,N_2=2,N_h=N_{h-1}+N_{h-2}+1\\
+N_{n+1}+1=N_n+1+N_{n-1}+1,N_0=0,N_1=1,N_2=2\\
+b_{n+1}=b_n+b_{n-1},b_0=1,b_1=2,b_2=3\\
+b_{n+1}-s b_n=(1-s)(b_n-s b_{n-1})=(1-s)^n(b_1-s b_0)=(2-s)(1-s)^n\\
+    \q  (s-1)s=1, s_1=\frac{1+\sqrt{5}}{2},s_2=\frac{12\sqrt{5}}{2}\\
+b_{n+1}-s_1 b_n=(2-s_1)(1-s_1)^n\\
+b_{n+1}-s_2 b_n=(2-s_2)(1-s_2)^n\\
+-(s_2-s_1)b_n=(2-s_2)(1-s_2)^n-(2-s_1)(1-s_1)^n\\
+% =(1-s_2)(1-s_2)^n-(1-s_1)(1-s_1)^n+ (1-s_2)^n-(1-s_1)^n \\
+% = (1-s_2)^{n+1}- (1-s_1)^{n+1}+ (1-s_2)^n-(1-s_1)^n \\
+s_2-s_1=-\sqrt{5},2-s_2=\frac{3+\sqrt{5}}{2},2-s_1=\frac{3-\sqrt{5}}{2},1-s_2=\frac{1+\sqrt{5}}{2},1-s_1=\frac{1-\sqrt{5}}{2}\\
+b_n=\frac{(2-s_2)}{-(s_2-s_1)}(1-s_2)^n-\frac{(2-s_1)}{-(s_2-s_1)}(1-s_1)^n\\
+b_n=\frac{1}{\sqrt{5}}\mfc{(1+\frac{1+\sqrt{5}}{2})(\frac{1+\sqrt{5}}{2})^n - (1+\frac{1-\sqrt{5}}{2})(\frac{1-\sqrt{5}}{2})^n }=F_n+F_{n+1}\\
+N_n=b_n-1=F_n+F_{n+1}-1=F_{n+2}-1\\
 F_h \approx \frac{1}{\sqrt{5}}\mf{\frac{1+\sqrt{5}}{2}}^h=c(\varphi)^h\\
 N_h=c(\varphi)^{h+2}-1\\
 \log (\frac{N_h+1}{c})=(h+2)\log \varphi\\
@@ -756,6 +769,8 @@ $
  先排序，再构造次优查找树，生成树是二叉排序树
 
 
+
+\newpage
 
 \subsubsection{B-树和B+树}
 
@@ -776,7 +791,7 @@ m阶\mb{B-树}是空树或具有性质$\ma{
     (5)\mt{所有的叶子节点都出现在同一层次上，且不带信息}\\
 }$
 
-\newpage
+% \newpage
 
 \begin{lstlisting}[style=v1]
     #define m 3                     //B-树的阶
@@ -834,6 +849,9 @@ $\q *p_1,(\mfd{\frac{m}{2}}-1,A_0,K_1,A_1,K_2,A_2,\dots,K_{\mfd{\frac{m}{2}}-1},
 $\q *p_2,(m-\mfd{\frac{m}{2}},A_{\mfd{\frac{m}{2}}},K_{\mfd{\frac{m}{2}}+1},A_{\mfd{\frac{m}{2}}+1},K_{\mfd{\frac{m}{2}}+2},A_{\mfd{\frac{m}{2}}+2},\dots,K_m,A_m) $
 
 $\q key,(K_{\mfd{\frac{m}{2}}},*p_2) $ 合并到双亲
+
+
+\newpage
 
 \begin{lstlisting}[style=v1]
     Status InsertBtree(BTree &T ,KeyType T,BTree q ,int i){
