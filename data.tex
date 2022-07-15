@@ -649,7 +649,7 @@ $$\ma{
     #define EH 0;
     #define RH -1;
 
-    typede struct BSTNode{
+    typedef struct BSTNode{
     int bf;                             //节点平衡因子
     struct BSTNode * lchild ,*rchild;   //左右孩子指针
     }BSTNode,*BSTree;
@@ -960,6 +960,113 @@ $\q key,(K_{\mfd{\frac{m}{2}}},*p_2) $ 合并到双亲
 
 \subsection{哈希表}
 
+\subsubsection{哈希表}
+
+
+$\mt{關鍵字}k,\mt{象} f(k),\mt{對應關係}f,\mb{哈希函數}$
+
+$\ma{\
+    (1) mt{哈希函數是映像}\\
+    (2) \mt{不同關鍵字同象}\mb{衝突}\\
+    (3) \mt{關鍵字象做位置，以哈希函數，衝突處理辦法映射關鍵字到連續地址} \mb{哈希表}\\
+    (4) \mt{映射過程}\mb{散列}，\mt{存儲位置}\mb{哈希地址或散列地址}
+}$
+ 
+
+\subsubsection{哈希函數構造方法}
+
+關鍵字映射到地址等概率\mb{均勻哈希函數}
+
+$\ma{
+    (1) \mt{直接定地址} H(key)=a \cdot key +b\\
+    (2) \mt{數字分析}\\
+    (3) \mt{平方取中}\\
+    (4) \mt{折疊法,(移位折疊，間界折疊)}\\
+    (5) \mt{除留餘數}  H(key)=key MOD p\mt{(質數，不小於20質因數的合數)}, p \leqslant m\mt{(表長)}\\
+    (6) \mt{隨機數}   H(key)=random(key)  
+}$
+
+\subsubsection{衝突處理方法}
+
+地址序列
+
+$\ma{
+    (1) \mt{開放定址法} H_i=(H(key)+d_i) \, MOD\,  m \q i=1,2,\dots,k (k\leqslant m)\\
+    \q \ma{
+        d_i \mt{取法} &(1) d_i=1,2,3,\cdots,m-1  \mt{，線性探測再散列}\\
+        &(2) d_i=1^2,-1^2,2^2,-2^2,3^2,\cdots,\pm k^2  \mt{，二次探測再散列}\\
+        &(3) d_i=\mt{偽隨機數列，}\mt{隨機探測再散列}
+    }\\
+    \q \mt{處理同義詞衝突產生非同義詞衝突，}\mb{二次聚集}\\
+    \q \mt{線性能填滿；平方形如}m=4j+3\mt{的素數能填滿；隨機數列}\\
+    (2) \mt{再哈希法} H_i=RH_i(key) \q i=1,2,\dots,k\\
+    (3) \mt{鏈地址法} Chain ChainHash[i]\\
+    (4) \mt{公共溢出區} HashTable[0..m-1],OverTable[0..v]
+}$
+
+
+\newpage
+\subsubsection{哈希表的查找及其分析}
+
+有記錄，且記錄等於關鍵字則查找成功
+
+\begin{lstlisting}[style=v1]
+    \\---開放地址哈希表的存儲結構
+    int Hashsize[]={997,...};       //哈希容量遞增表，一個合適的素數序列
+    typedef struct{
+        ElemType * elem;            //數據元素存儲基址，動態分配數組
+        int count;                  //當前數據元素個數    
+        int sizeindex;              //Hashsize[sizeindex]為當前容量
+    }HashTable;
+
+    #define SUCCESS 1
+    #define UNSUCCESS 0
+    #define DUPLICATE -1
+
+    Status SearchHash(HashTable H,KeyType k,int &p,int &c){
+        //在開放地址哈希表中查找關鍵碼為k的元素
+        //成功p指向节点，返回SUCCESS。失敗p指向插入位置，返回UNSUCCESS
+        //c用作衝突計數，初始值0，供建表插入時參考
+        p=Hash(k);
+        while(H.elem[p].key !=NULLKEY &&        //有記錄
+            !EQ(k,H.elem[p].key))               //關鍵字不等
+            colision(p,++c);                    //求得下一探查地址
+        if(EQ(k,H.elem[p].key)) return SUCCESS; //成功，p返回位置
+        else return UNSUCCESS;                  //失敗，p返回插入位置
+    }
+ 
+    Status InsertHash(HashTable &H,ElemType e){
+        //查找不成功插入e到H，返回OK
+        //衝突次數過大則重建哈希表
+        c=0;
+        if(SearchHash(H,e.key,c)) return DUPLICATE;     //表中有e
+        else if(c<Hashsize[H.sizeindex]/2){             //衝突次數未達到上限   
+            H.elem[p]=e;++H.count;return OK;            //插入e
+        }
+        else{
+            RecreateHashTable(H);return UNSUCCESS;      //重建哈希表
+        }
+    }
+ 
+\end{lstlisting}
+
+
+哈希表裝填因子  $\alpha=\frac{\mt{表中填入記錄數}}{\mt{哈希表長度}}$
+
+
+$\ma{
+    \mt{成功時平均查找長度}
+    &S_{nl} \approx \frac{1}{2}\mf{1+\frac{1}{1-\alpha}} \mt{線性探測再散列}\\
+    &S_{nr} \approx -\frac{1}{\alpha} \ln \mf{1 -\alpha} \mt{偽隨機探測，二次探測，再哈希}\\
+    &S_{nc} \approx 1+\frac{\alpha}{2} \mt{鏈地址法}
+}$
+
+$\ma{
+    \mt{失敗時平均查找長度}
+    &U_{nl} \approx  \frac{1}{2}\mf{1+\frac{1}{(1-\alpha)^2}} \mt{線性探測再散列} \\
+    &U_{nr} \approx  \frac{1}{1-\alpha} \mt{偽隨機探測，二次探測，再哈希}\\
+    &U_{nc} \approx  \alpha + e^{-\alpha} \mt{鏈地址法}
+}$
 
 
 

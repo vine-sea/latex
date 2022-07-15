@@ -1,10 +1,10 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.4.22)  15 JUL 2022 15:27
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.4.22)  15 JUL 2022 14:56
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**data
-(./data.tex
+**cad
+(./cad.tex
 LaTeX2e <2021-11-15> patch level 1
 L3 programming layer <2022-02-24> (c:/texlive/2022/texmf-dist/tex/latex/ctex/ctexart.cls (c:/texlive/2022/texmf-dist/tex/latex/ctex/config/ctexbackend.cfg
 File: ctexbackend.cfg 2021/12/12 v2.5.8 Backend configuration file (CTEX)
@@ -632,8 +632,8 @@ Package: listings 2020/03/24 1.8d (Carsten Heinz)
 Package: xeCJK-listings 2021/12/12 v3.8.8 xeCJK patch file for listings
 \l__xeCJK_listings_max_char_int=\count338
 \l__xeCJK_listings_flag_int=\count339
-) (./data.aux)
-\openout1 = `data.aux'.
+) (./cad.aux)
+\openout1 = `cad.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 156.
 LaTeX Font Info:    ... okay on input line 156.
@@ -743,23 +743,19 @@ LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
 \c@lstlisting=\count340
-LaTeX Font Info:    Trying to load font information for U+msa on input line 160.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 158.
 (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 160.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 158.
  (c:/texlive/2022/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) [1
 
-] (./data.toc [2])
-\tf@toc=\write4
-\openout4 = `data.toc'.
-
- [3] [4] [5] [6] [7] [8] [9] [10] [11] (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+] (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
-) (c:/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
-File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+) (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2020/03/24 1.8d listings language file
 )
 
 Package fontspec Info: Could not resolve font "FangSong/BI" (it probably
@@ -785,40 +781,15 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <6.52437> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 187.
- [12]
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 369.
-
-[13] [14]
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 528.
-
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 547.
-
-Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
-[15] [16] [17] [18] [19]
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-[20]
-Missing character: There is no 哈 (U+54C8) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 希 (U+5E0C) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 函 (U+51FD) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 數 (U+6578) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 是 (U+662F) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 映 (U+6620) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no 像 (U+50CF) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-[21] [22] [23] [24] [25] [26] [27] [28] [29] (./data.aux) ) 
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 165.
+ [2] [3] (./cad.aux) ) 
 Here is how much of TeX's memory you used:
- 24705 strings out of 476179
- 576951 string characters out of 5813072
- 1180839 words of memory out of 5000000
- 44981 multiletter control sequences out of 15000+600000
- 481855 words of font info for 118 fonts, out of 8000000 for 9000
+ 24289 strings out of 476179
+ 564147 string characters out of 5813072
+ 1136156 words of memory out of 5000000
+ 44597 multiletter control sequences out of 15000+600000
+ 475762 words of font info for 75 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 89i,19n,97p,1190b,1736s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,11n,97p,1189b,1455s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on data.pdf (29 pages).
+Output written on cad.pdf (3 pages).
