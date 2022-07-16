@@ -935,6 +935,8 @@ $\q key,(K_{\mfd{\frac{m}{2}}},*p_2) $ 合并到双亲
 
 (2)多重链表，单支树压缩为叶子节点，
 
+\newpage
+
 \begin{lstlisting}[style=v1]
     typedef struct TrieNode{
         NodeKind kind;
@@ -1067,6 +1069,91 @@ $\ma{
     &U_{nr} \approx  \frac{1}{1-\alpha} \mt{偽隨機探測，二次探測，再哈希}\\
     &U_{nc} \approx  \alpha + e^{-\alpha} \mt{鏈地址法}
 }$
+
+\mb{随机探测公式推导}\q
+
+$\ma{\mt{哈希表长度m,已装入n个记录，哈希函数均匀，处理冲突后产生地址随机}\\
+    p_i,\mt{前i地址均发生冲突}\\
+    p_i,\mt{前i-1地址均发生冲突，第i次成功}
+}$
+
+$\ma{
+    p_1=\frac{n}{m}\\
+    p_2=\frac{n}{m}\cdot \frac{n-1}{m-1}\\
+    \vdots \\
+    p_n=\frac{n}{m} \cdot \frac{n-1}{m-1} \dots \frac{n-(n-1)}{m-(n-1)}\\
+    p_{n+1}=\frac{n}{m} \cdot \frac{n-1}{m-1} \dots \frac{n-(n-1)}{m-(n-1)}\cdot \frac{n-n}{m-n}=0\\
+} 
+\ma{
+    q_1=(1-\frac{n}{m})\\
+    q_2=\frac{n}{m}\cdot (1-\frac{n-1}{m-1})\\
+    \vdots \\
+    q_n=\frac{n}{m} \cdot \frac{n-1}{m-1} \dots (1-\frac{n-(n-1)}{m-(n-1)})\\
+    q_{n+1}=p_{n+1}=\frac{n}{m} \cdot \frac{n-1}{m-1} \dots \frac{n-(n-1)}{m-(n-1)}\cdot (1-\frac{n-n}{m-n})\\
+}$
+
+$q_i=p_{i-1}-p_i,p_0=1$
+
+$\ma{ 
+    \ma{  
+        \mt{查找失败时}U_n 
+        &=\sum_{i=1}^{n+1}q_iC_i=\sum _{i=1}^{n+1}(p_{i-1}-p_i)i\\
+        &=\sum _{i=1}^{n+1}p_{i-1}i-\sum _{i=1}^{n+1}p_ii
+        &=\sum _{i=0}^{n}p_i(i+1)-\sum _{i=1}^{n+1}p_ii\\
+        &=\sum _{i=0}^{n}p_ii-\sum _{i=1}^{n+1}p_ii+\sum _{i=0}^{n}p_i
+        &=\sum _{i=1}^{n}p_ii-\sum _{i=1}^{n+1}p_ii+\sum _{i=1}^{n}p_i+1\\
+        &=-p_{n+1}(n+1)+\sum _{i=1}^{n}p_i+1
+        &=\sum _{i=1}^{n}p_i+1\\   
+    }\\
+
+    C_m^n=\binom{m}{n} \\
+    \binom{m}{n}=\frac{m}{n} \binom{m-1}{n-1} \Rightarrow \frac{m}{n}=\frac{\binom{m}{n}}{\binom{m-1}{n-1}} \Rightarrow \frac{n}{m}=\frac{\binom{m-1}{n-1}}{\binom{m}{n}}\\
+    \binom{m}{n}=\binom{m-1}{n}+\binom{m-1}{n-1} \Rightarrow  \binom{m}{n}-\binom{m-1}{n}=\binom{m-1}{n-1} \Rightarrow \binom{m+1}{n+1}-\binom{m}{n+1}=\binom{m}{n} \\
+    \ma{
+        \sum _{i=1}^{n}p_i+1=*\\
+        =1+ \frac{n}{m} + \frac{n}{m}\cdot\frac{n-1}{m-1}  +\cdots+\frac{n}{m} \cdots \frac{n-(n-1)}{m-(n-1)} \\
+        =1+\frac{\binom{m-1}{n-1}}{\binom{m}{n}}+\frac{\binom{m-1}{n-1}}{\binom{m}{n}}\cdot \frac{\binom{m-2}{n-2}}{\binom{m-1}{n-1}}+\cdots+
+        \frac{\binom{m-1}{n-1}}{\binom{m}{n}}\cdot \frac{\binom{m-2}{n-2}}{\binom{m-1}{n-1}}\cdots \cdot \frac{\binom{m-(n-1)-1}{n-(n-1)-1}}{\binom{m-(n-1)}{n-(n-1)}}\\
+        =1+\frac{1}{\binom{m}{n}}\mfc{\binom{m-1}{n-1} + \binom{m-2}{n-2}+\cdots+\binom{m-n}{n-n}}\\
+        =1+\frac{1}{\binom{m}{n}}\mfc{\binom{m-1}{m-n} + \binom{m-2}{m-n}+\cdots+\binom{m-n+1}{m-n}+\binom{m-n}{m-n}}\\
+        =1+\small\frac{1}{\binom{m}{n}}\mfc{ 
+                \binom{m}{m-n+1} \underbrace{-\binom{m-1}{m-n+1}+
+                \binom{m-1}{m-n+1}-\binom{m-2}{m-n+1}+
+                \cdots +
+                \binom{m-n+2}{m-n+1}}-\binom{m-n+1}{m-n+1}+
+                \binom{m-n}{m-n}
+            }\\
+        =1+\frac{1}{\binom{m}{n}}\cdot \binom{m}{m-n+1}
+        =1+\frac{n!(m-n)!}{m!} \cdot \frac{m!}{(m-n+1)!(n-1)!}\\
+        =1+\frac{n}{m-n+1}
+        =\frac{m+1}{m-n+1}
+        =\frac{1}{1-\frac{n}{m+1}}\\
+        \approx\frac{1}{1-\alpha}
+    }\\
+   \ma{
+        \mt{查找成功时}S_n 
+        &=\sum_{i=1}^{n-1}p_iC_i=\sum_{i=0}^{n-1}p_iU_i\\
+        &\meq{p_i=\frac{1}{n}}{}=\frac{1}{n}\sum_{i=0}^{n-1}U_i=\frac{1}{n}\sum_{i=0}^{n-1}\frac{1}{1-\frac{i}{m}}\\
+        &\mseq \frac{1}{n}\int_0^{n} \frac{1}{1-\frac{i}{m}} di
+        =\frac{m}{n}\int_0^{n} \frac{1}{1-\frac{i}{m}} d(\frac{i}{m})
+        =\frac{m}{n}\int_0^{\frac{n}{m}} \frac{1}{1-x} d(x)=\frac{1}{\alpha} \int_0^\alpha \frac{1}{1-x}dx=-\frac{1}{\alpha} \ln (1-x)|_0^\alpha\\
+        &\mseq -\frac{1}{\alpha} \ln (1-\alpha)
+    }
+    
+}
+$
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
