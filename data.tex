@@ -967,8 +967,8 @@ $\q key,(K_{\mfd{\frac{m}{2}}},*p_2) $ 合并到双亲
 
 $\mt{關鍵字}k,\mt{象} f(k),\mt{對應關係}f,\mb{哈希函數}$
 
-$\ma{\
-    (1) mt{哈希函數是映像}\\
+$\ma{
+    (1) \mt{哈希函數是映像}\\
     (2) \mt{不同關鍵字同象}\mb{衝突}\\
     (3) \mt{關鍵字象做位置，以哈希函數，衝突處理辦法映射關鍵字到連續地址} \mb{哈希表}\\
     (4) \mt{映射過程}\mb{散列}，\mt{存儲位置}\mb{哈希地址或散列地址}
@@ -1073,8 +1073,8 @@ $\ma{
 \mb{随机探测公式推导}\q
 
 $\ma{\mt{哈希表长度m,已装入n个记录，哈希函数均匀，处理冲突后产生地址随机}\\
-    p_i,\mt{前i地址均发生冲突}\\
-    p_i,\mt{前i-1地址均发生冲突，第i次成功}
+    p_i,\mt{再填入一个记录i次地址均发生冲突}\\
+    p_i,\mt{再填入一个记录i-1次地址均发生冲突，第i次成功}
 }$
 
 $\ma{
@@ -1132,7 +1132,7 @@ $\ma{
     }\\
    \ma{
         \mt{查找成功时}S_n 
-        &=\sum_{i=1}^{n-1}p_iC_i=\sum_{i=0}^{n-1}p_iU_i\\
+        &=\sum_{i=1}^{n}p_iC_i=\sum_{i=0}^{n-1}p_iU_i\\
         &\meq{p_i=\frac{1}{n}}{}=\frac{1}{n}\sum_{i=0}^{n-1}U_i=\frac{1}{n}\sum_{i=0}^{n-1}\frac{1}{1-\frac{i}{m}}\\
         &\mseq \frac{1}{n}\int_0^{n} \frac{1}{1-\frac{i}{m}} di
         =\frac{m}{n}\int_0^{n} \frac{1}{1-\frac{i}{m}} d(\frac{i}{m})
@@ -1143,8 +1143,47 @@ $\ma{
 }
 $
 
+$\small\ma{
+    P_r=\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}\\
+    \sum_{r=1}^{n+1}P_r=\sum_{r=1}^{n+1}\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}=1\\
+   \ma{
+    U_n &=\sum_{r=1}^{n+1}r P_r \\
+        &=m+1 - (m+1)\sum_{r=1}^{n+1}P_r+\sum_{r=1}^{n+1}r P_r\\
+        &=m+1 -\sum_{r=1}^{n+1}(m+1-r) P_r\\
+        &=m+1-\sum_{r=1}^{n+1}(m+1-r) \frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}\\
+        &=m+1-\frac{1}{\binom{m}{n}} \sum_{r=1}^{n+1}(m+1-r) \binom{m-r}{m-n-1}\\
+        &=m+1-\frac{1}{\binom{m}{n}} \sum_{r=1}^{n+1}(m-n) \binom{m-r+1}{m-n}\\
+        &=m+1-\frac{(m-n)}{\binom{m}{n}}\mfc{ \binom{m}{m-n}+\dots+ \binom{m-n+1}{m-n}+\binom{m-n}{m-n} }\\
+        &=m+1-\frac{(m-n)}{\binom{m}{n}}\mfc{\binom{m+1}{m-n+1} \underbrace{-\binom{m}{m-n+1} +\binom{m}{m-n+1}-\binom{m-1}{m-n+1} +\dots+ \binom{m-n+2}{m-n+1}} -\binom{m-n+1}{m-n+1} +\binom{m-n}{m-n} }\\
+        &=m+1-\frac{(m-n)}{\binom{m}{n}}\binom{m+1}{m-n+1}
+        =m+1-(m-n)\frac{m+1}{m+1-n}
+        =(m+1)(1-\frac{m-n}{m-n+1})\\
+        &=\frac{m+1}{m-n+1}
+        =\frac{1}{1-\frac{n}{m+1}} \mseq \frac{1}{1-\alpha}
+    
+    
+    }\\
+    \ma{
+        S_n&=\frac{1}{n}\sum_{k=0}^{n-1} U_k\\
+            &=\frac{1}{n}\mfc{\frac{m+1}{m+1} +\frac{m+1}{m} +\dots+ \frac{m+1}{m-n+2} } \\
+            &=\frac{m+1}{n}(H_{m+1}-H_{m-n+1})\\
+            &=\frac{m+1}{n}(\ln {\frac{1-m-1}{1-m-1+n}} )=\frac{m+1}{n}(\ln {\frac{-m}{-m+n}} )=-\frac{m+1}{n}(\ln {\frac{-m+n}{-m}} )=-\frac{m+1}{n}(\ln {\frac{m-n}{m}} )
+            &\mseq -\frac{1}{\alpha} \ln \mf{1-\alpha}
+    }
+}$
 
 
+
+
+
+
+
+
+
+
+
+
+非链地址处理冲突的哈希表中删除记录，填入特殊符号
 
 
 
