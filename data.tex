@@ -8,7 +8,7 @@
 
 \usepackage{pgf}
 \usepackage{tikz} % Required for drawing custom shapes
-\usetikzlibrary{shapes,backgrounds,arrows,automata}
+\usetikzlibrary{shapes,backgrounds,arrows,automata,decorations.pathreplacing,calligraphy}
 % \usetikzlibrary{arrows,backgrounds}
 % \usepackage{tikz}
 
@@ -17,6 +17,7 @@
 \usepackage{setspace}
 \usepackage{indentfirst}
 \usepackage{booktabs}
+% \usepackage{decoration}
 
 % \usepackage{ctex}
 \usepackage{listings}
@@ -1143,6 +1144,16 @@ $\ma{
 }
 $
 
+\tp{
+    \draw[fill=blue]  (0,0) rectangle (.5cm , .5cm); 
+    \draw[xshift=.5cm]  (0,0) rectangle (.5cm , .5cm); 
+    \draw[xshift=1cm]  (0,0) rectangle (3.5cm , .5cm); 
+    \draw[xshift=4.5cm,fill=blue]  (0,0) rectangle (1.5cm , .5cm); 
+
+    % \node [xshift=.5cm,yshift=-.1cm] at (0, 0) {$\underbrace{\hspace{1cm}}$};
+    \draw[decorate,decoration={brace,mirror,raise=3pt},blue] (0,0) -- (1,0);
+}
+
 $\small\ma{
     P_r=\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}\\
     \sum_{r=1}^{n+1}P_r=\sum_{r=1}^{n+1}\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}=1\\
@@ -1167,18 +1178,10 @@ $\small\ma{
         S_n&=\frac{1}{n}\sum_{k=0}^{n-1} U_k\\
             &=\frac{1}{n}\mfc{\frac{m+1}{m+1} +\frac{m+1}{m} +\dots+ \frac{m+1}{m-n+2} } \\
             &=\frac{m+1}{n}(H_{m+1}-H_{m-n+1})\\
-            &=\frac{m+1}{n}(\ln {\frac{1-m-1}{1-m-1+n}} )=\frac{m+1}{n}(\ln {\frac{-m}{-m+n}} )=-\frac{m+1}{n}(\ln {\frac{-m+n}{-m}} )=-\frac{m+1}{n}(\ln {\frac{m-n}{m}} )
+            &=\frac{m+1}{n}(\ln {\frac{m+1}{m+1-n}} )\\
             &\mseq -\frac{1}{\alpha} \ln \mf{1-\alpha}
     }
 }$
-
-
-
-
-
-
-
-
 
 
 
