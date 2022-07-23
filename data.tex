@@ -488,26 +488,22 @@ n边2e顶点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
         for(v=0;v<G.vexnum;++v) visited[v]=FALSE;
         InitQueue(Q);                               //置空的辅助队列Q
         for(v=0;v<G.vexnum;++v)
-            if(!visited[v]){                        //尚未访问
+            if(!visited[v]){                        //v尚未访问
                 visited[v]=TRUE;Visit(v);
-                EnQueue(Q,v);
+                EnQueue(Q,v);                       //v入队列
                 while(!QueueEmpty(Q)){
                     DeQueue(Q,u);                   //队头元素出队并置为u
                     for(w=FirstAdjVex(G,u);w>=0;w=NextAdjVex(G,u,w))
-                        if(!visited[w]){
+                        if(!visited[w]){            //w为u的尚未访问的邻接点
                             visited[w]=TRUE; Visit(w);
                             EnQueue(Q,w);
                         }
                 }
             }
     }//BFSTraverse
-
 \end{lstlisting}
-
-
-
+ 
 \subsection{图的连通性问题}
-
 
 \subsubsection{无向图的连通分量和生成树}
 
