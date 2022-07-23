@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.4.22)  22 JUL 2022 11:23
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.7.2)  23 JUL 2022 19:33
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -792,7 +792,7 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 \tf@toc=\write4
 \openout4 = `data.toc'.
 
- [3] [4] [5] [6] [7] [8] [9] [10] [11] (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
+ [3] [4] [5] [6] [7] [8] [9] [10] (c:/texlive/2022/texmf-dist/tex/latex/listings/lstlang1.sty
 File: lstlang1.sty 2020/03/24 1.8d listings language file
 ) (c:/texlive/2022/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
@@ -821,46 +821,46 @@ Package fontspec Info: Font family 'FangSong(0)' created for font 'FangSong'
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
 
 LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <6.52437> not available
-(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 188.
- [12]
+(Font)              Font shape `TU/lmtt/b/n' tried instead on input line 276.
+ [11] [12] [13] [14]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 370.
+LaTeX Font Warning: Command \small invalid in math mode on input line 609.
 
-[13] [14]
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
+[15] [16]
+Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 529.
+LaTeX Font Warning: Command \small invalid in math mode on input line 768.
 
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 548.
+LaTeX Font Warning: Command \small invalid in math mode on input line 787.
 
 Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
-[15] [16] [17] [18] [19]
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-[20]
-Missing character: There is no ， (U+FF0C) in font [lmroman10-regular]:mapping=tex-text;!
-[21]
-
-LaTeX Font Warning: Command \small invalid in math mode on input line 1144.
-
+[17] [18] [19] [20] [21]
+Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
+Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
 [22]
+Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
+[23]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 1157.
+LaTeX Font Warning: Command \small invalid in math mode on input line 1383.
+
+[24]
+
+LaTeX Font Warning: Command \small invalid in math mode on input line 1407.
 
 
-Overfull \hbox (9.63806pt too wide) in paragraph at lines 1157--1185
+Overfull \hbox (6.6268pt too wide) in paragraph at lines 1407--1435
 []$[]$ 
  []
 
-[23] [24] [25] [26] [27] [28] [29] [30] (./data.aux) ) 
+[25] [26] [27] [28] [29] [30] [31] [32] (./data.aux) ) 
 Here is how much of TeX's memory you used:
- 26137 strings out of 476179
- 615777 string characters out of 5813072
- 1209751 words of memory out of 5000000
- 46393 multiletter control sequences out of 15000+600000
- 481855 words of font info for 118 fonts, out of 8000000 for 9000
+ 26284 strings out of 476179
+ 617665 string characters out of 5813073
+ 1210886 words of memory out of 5000000
+ 46538 multiletter control sequences out of 15000+600000
+ 481863 words of font info for 119 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
- 89i,26n,97p,1190b,1198s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 89i,26n,97p,1190b,1200s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on data.pdf (30 pages).
+Output written on data.pdf (32 pages).

@@ -98,8 +98,8 @@ rulesepcolor=\color{gray}
 \newcommand{\tip}[8]{(intersection of #1,#2--#3,#4 and #5,#6--#7,#8)}
 \newcommand{\tpo}[2]{\coordinate  %[label=0:$ {#1} $]
  (#1) at #2; }
- \newcommand{\tpoa}[3]{\coordinate  [label=0:$ {#1} $]
- (#3) at #2; }
+ \newcommand{\tpoa}[3]{\coordinate  [label=0:$ {#3} $]
+ (#1) at #2; }
 \newcommand{\da}[2]{\frac{\partial #1}{\partial #2}}
 \newcommand{\db}[2]{\frac{d #1}{d #2}}
 \newcommand{\fcz}[1] {
@@ -176,6 +176,249 @@ rulesepcolor=\color{gray}
 \section{树和二叉树}
 \newpage
 \section{图}
+
+\subsection{定义}
+
+顶点(Vertex)
+
+弧(Arc),$<v,w>$  \small\tp{
+     \node[black,draw,shape=circle,name=v] at (0,0) {v}; 
+     \node[black,draw,shape=circle,name=w] at (1,0) {w}; 
+     \draw [->] (v)--(w);
+}
+
+有向图(Digraph),$G_1=(\{v_1,v_2,v_3\},\{<v_1,v_2> ,<v_1,v_3>, <v_2,v_3>\} )$
+
+边(Edge),$(v,w)$ \small\tp{
+    \node[black,draw,shape=circle,name=v] at (0,0) {v}; 
+    \node[black,draw,shape=circle,name=w] at (1,0) {w}; 
+    \draw (v)--(w);
+}
+
+无向图(Undigraph),$G_1=(\{v_1,v_2,v_3\},\{(v_1,v_2) ,(v_1,v_3), (v_2,v_3)\} )$
+
+通路$P(v,w)$
+
+顶点数目n
+
+弧或边数目e,无向完全图e=$\frac{1}{2}n(n-1)$,有向完全图e=$n(n-1)$,
+
+稀疏图，稠密图
+
+$G=(V,\{E\}),G^{'}=(V^{'},\{E^{'}\}),if \q V^{'} \subseteq V,W^{'} \subseteq W,G^{'}\mt{为} G\mt{子图}$
+
+\qa
+
+无向图$(v,v^{'}) \in E,\q v,v^{'}$互为邻接点。$(v,v^{'})$依附于顶点。$(v,v^{'}) \mt{和}v,v^{'}$相关联
+
+无向图节点的度(和节点关联的边的数目)
+
+无向图路径，顶点序列$(v=v_{i,0},v_{i,1},\dots,v_{i,m}=v^{'}),(v_{i,j-1},v_{i,j}) \in E,1\leqslant j\leqslant m$
+
+路径，连通，连通图
+
+连通分量，极大连通子图
+
+连通图的生成树，极小连通子图，全节点，n-1边.(n点，n-1边不一定是生成树)
+
+非连通图$n,e<n-1$
+
+存在环$n,e>n-1$
+
+
+\qa
+
+有向图$<v,v^{'}> \in A,\q v$邻接到$v^{'}$ 。$<v,v^{'}> \mt{和}v,v^{'}$相关联。
+
+节点的入度(以节点为头的弧的数目，InDegree),ID。 节点的出度(以节点为尾的弧的数目，OutDegree),OD。
+
+有向图节点的度$TD=ID+OD$
+
+有向图路径，顶点序列$(v=v_{i,0},v_{i,1},\dots,v_{i,m}=v^{'}),<v_{i,j-1},v_{i,j}> \in A,1\leqslant j\leqslant m$
+
+强连通图
+
+强连通分量
+
+有向树，有向图恰好有一个节点入度为0，其余节点入度为1
+
+有向图的生产森林，若干棵有向树，含有全部节点，只有足以构成若干不相交的有向树的弧
+
+
+
+\qa
+
+边或者弧$e=\frac{1}{2}\sum_{i=1}^n TD(v_i)$ 
+
+路径的长度，路径上边或者弧的数目
+
+回路或环，路径上首尾点相同
+
+简单路径，路径上顶点不重复
+
+简单回路或环，除首尾点，路径上顶点不重复
+
+顶点在图中位置，人为的随意排列中的位置
+
+\subsection{图的存储结构}
+树的最大和最小度差别很大
+
+
+\newpage
+
+\subsubsection{数组表示法}
+
+
+\begin{lstlisting}[style=v1]
+    //-----图的数组(邻接矩阵)存储表示------
+    #define INFINITY  INT_MAX
+    #define MAX_VERTEX_NUM 20
+    typedef enum{DG,DN,UDG,UDN} GraphKind;
+    typedef struct ArcCell{
+        VRType adj;         //VRType 顶点关系类型，对无权图用1或0表示是否相邻，带权图则为权值
+        InfoType *info;     //弧相关信息的指针    
+    }ArcCell，AdjMatrix[MAX_VERTEX_NUM][MAX_VERTEX_NUM];
+
+    typedef struct{
+        VertexType ves[MAX_VERTEX_NUM]; //顶点向量
+        AdjMatrix arcs;                 //邻接矩阵
+        int     vexnum,arcnum;          //图的当前顶点数和弧数
+        GraphKind kind;                 //图的种类标志
+    }MGraph;
+
+
+
+\end{lstlisting}
+
+无向图，$TD(v_i)=\sum_{j=0}^{n-1}A[i][j] ,(n=MAX\_VERTEX\_NUM)$
+
+有向图，$TD(v_i)=OD(v_i)+ID(v_i)=\sum_{j=0}^{n-1}A[i][j] +\sum_{i=0}^{n-1}A[i][j] ,,(n=MAX\_VERTEX\_NUM)$
+
+网，$A[i][j]=\fcz{
+    w_{i,j}  ,\q  \mt{若} <v_i,v_j> or (v_i,v_j) \in VR\\
+    \infty ,\q \mt{反之}
+}$
+
+构造无向网复杂度 $o(n^2+e\cdot n)$,初始化耗费$o(n^2)$ 
+
+
+\begin{lstlisting}[style=v1]
+
+    Status CreateGraph(MGraph &G){
+        scanf(&G.kind);
+        switch(G.kind){
+            case DG: return CreateDG(G);
+            case DN: return CreateDN(G);
+            case UDG: return CreateUDG(G);
+            case UDN: return CreateUDN(G);
+            default :return ERROR;
+        }
+    }//GreateGraph
+
+    Status CreateUDN(MGraph &G){
+        //采用数组(邻接矩阵)表示法，构造无向网G
+        scanf(&G.vexnum,&G.arcnum,&IncInfo);        //IncInfo 为0则各弧不含其他信息
+        for(i=0;i<G.vexnum;++i) scanf(&G.vexs[i]);  //构造顶点向量
+        for(i=0;i<G.vexnum;++i)                     //初始化邻接矩阵
+            for(j=0;j<G.vexnum;++j) G.arcs[j][j]={INFTY,NULL};      //{adj,info}
+        for(k=0;k<G.arcnum;++k){                    //构造邻接矩阵
+            scanf(&v1,&v2,&w);                      //输入一条边依附的顶点及权值
+            i=LocateVex(G,v1); j=LocateVex(G,v2);   //确定v1和v2在G中位置,在数组
+            G.arcs[i][j].adj=w;
+            if(IncInfo) Input(* G.arcs[i][j].info)  //若弧含有相关信息，则输入
+            G.arcs[j][i]=G.arcs[i][j];              //置<v1,v2>的对称弧<v2,v1>
+        }
+        return OK;
+    }//CreateUDN
+\end{lstlisting}    
+
+
+\newpage
+
+\subsubsection{邻接表(Adjacency List)表示法}
+
+\begin{lstlisting}[style=v1]
+    //------图的邻接表存储表示------
+    #define MAX_VERTEX_NUM 20
+    typedef struct ArcNode{
+        int adjvex;                 //该弧所指向的顶点的位置
+        struct ArcNode *nextarc;    //指向下一条弧的指针
+        InfoType *info;             //该弧相关信息的指针    
+    }ArcNode;
+
+    typedef struct VNode{
+        VertexType data;            //顶点信息
+        ArcNode * firstarc;         //指向第一条依附该节点的指针    
+    }VNode,AdjList[MAX_VERTEX_NUM];
+
+    typedef struct{
+        AdjList vetices;
+        int vexnum,arcnum;           //图的当前节点和弧数   
+        int kind;                    //图的种类标志   
+    }ALGraph;
+\end{lstlisting}
+
+
+n边2e节点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
+
+出度，第i各链表节点数
+
+入度，遍历链表
+
+逆邻接表
+
+建立邻接表时间复杂度$o(n+e)$ 或者$o(n\cdot e)$
+
+
+\subsubsection{十字链表(Orthogonal List)}
+
+有向图的存储结构
+
+\begin{lstlisting}[style=v1]
+    #define MAX_VERTEX_NUM 20
+    typedef struct ArcBox{
+        int tailvex,headvex;            //该弧的尾和头顶点的位置
+        struct ArcBox *hlink,*tlink;    //分别为弧头相同和狐尾相同的弧和链域
+        InfoType    *info;              //该弧相关信息的指针
+    }ArcBox;
+
+    typedef struct VexNode{
+        VertexType data;
+        ArcBox      *firstin,*firstout; //分别指向该顶点第一条入弧和出弧          
+    }VexNode;
+
+    typedef struct{
+        VexNode xlist[MAX_VERTEX_NUM];  //表头向量
+        int vexnum,arcnum;              //有向图的当前顶点数和弧数
+    }OLGraph;
+\end{lstlisting}
+
+
+\subsubsection{邻接多重表(Adjacency Multlist)}
+
+无向图的存储结构
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 \section{动态存储管理}
 
@@ -1147,15 +1390,26 @@ $
 \tp{
     \draw[fill=blue]  (0,0) rectangle (.5cm , .5cm); 
     \draw[xshift=.5cm]  (0,0) rectangle (.5cm , .5cm); 
-    \draw[xshift=1cm]  (0,0) rectangle (3.5cm , .5cm); 
-    \draw[xshift=4.5cm,fill=blue]  (0,0) rectangle (1.5cm , .5cm); 
+    \draw[xshift=1cm,fill=gray]  (0,0) rectangle (3.5cm , .5cm); 
+    % \draw[xshift=4.5cm,fill=blue]  (0,0) rectangle (1.5cm , .5cm); 
 
     % \node [xshift=.5cm,yshift=-.1cm] at (0, 0) {$\underbrace{\hspace{1cm}}$};
-    \draw[decorate,decoration={brace,mirror,raise=3pt},blue] (0,0) -- (1,0);
+
+    \draw[yshift=.5cm, decorate,decoration={brace,raise=3pt}] (0,0) -- (.5,0);
+
+
+    \draw[decorate,decoration={brace,mirror,raise=3pt}] (0,0) -- (1,0);
+    \draw[xshift=1cm,decorate,decoration={brace,mirror,raise=3pt}] (0,0) -- (3.5,0);
+
+    \node [xshift=.5cm,yshift=-.4cm] at (0, 0) {$r$};
+    \node [xshift=2.75cm,yshift=-.4cm] at (0, 0) {$m-r$};
+
+    \node [xshift=.25cm,yshift=.9cm] at (0, 0) {$r-1$};
+
 }
 
 $\small\ma{
-    P_r=\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}\\
+    P_r=\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}},
     \sum_{r=1}^{n+1}P_r=\sum_{r=1}^{n+1}\frac{\binom{m-r}{n-r+1}}{\binom{m}{n}}=1\\
    \ma{
     U_n &=\sum_{r=1}^{n+1}r P_r \\
