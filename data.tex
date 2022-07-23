@@ -211,7 +211,7 @@ $G=(V,\{E\}),G^{'}=(V^{'},\{E^{'}\}),if \q V^{'} \subseteq V,W^{'} \subseteq W,G
 
 无向图$(v,v^{'}) \in E,\q v,v^{'}$互为邻接点。$(v,v^{'})$依附于顶点。$(v,v^{'}) \mt{和}v,v^{'}$相关联
 
-无向图节点的度(和节点关联的边的数目)
+无向图顶点的度(和顶点关联的边的数目)
 
 无向图路径，顶点序列$(v=v_{i,0},v_{i,1},\dots,v_{i,m}=v^{'}),(v_{i,j-1},v_{i,j}) \in E,1\leqslant j\leqslant m$
 
@@ -219,7 +219,7 @@ $G=(V,\{E\}),G^{'}=(V^{'},\{E^{'}\}),if \q V^{'} \subseteq V,W^{'} \subseteq W,G
 
 连通分量，极大连通子图
 
-连通图的生成树，极小连通子图，全节点，n-1边.(n点，n-1边不一定是生成树)
+连通图的生成树，极小连通子图，全顶点，n-1边.(n点，n-1边不一定是生成树)
 
 非连通图$n,e<n-1$
 
@@ -230,9 +230,9 @@ $G=(V,\{E\}),G^{'}=(V^{'},\{E^{'}\}),if \q V^{'} \subseteq V,W^{'} \subseteq W,G
 
 有向图$<v,v^{'}> \in A,\q v$邻接到$v^{'}$ 。$<v,v^{'}> \mt{和}v,v^{'}$相关联。
 
-节点的入度(以节点为头的弧的数目，InDegree),ID。 节点的出度(以节点为尾的弧的数目，OutDegree),OD。
+顶点的入度(以顶点为头的弧的数目，InDegree),ID。 顶点的出度(以顶点为尾的弧的数目，OutDegree),OD。
 
-有向图节点的度$TD=ID+OD$
+有向图顶点的度$TD=ID+OD$
 
 有向图路径，顶点序列$(v=v_{i,0},v_{i,1},\dots,v_{i,m}=v^{'}),<v_{i,j-1},v_{i,j}> \in A,1\leqslant j\leqslant m$
 
@@ -240,9 +240,9 @@ $G=(V,\{E\}),G^{'}=(V^{'},\{E^{'}\}),if \q V^{'} \subseteq V,W^{'} \subseteq W,G
 
 强连通分量
 
-有向树，有向图恰好有一个节点入度为0，其余节点入度为1
+有向树，有向图恰好有一个顶点入度为0，其余顶点入度为1
 
-有向图的生产森林，若干棵有向树，含有全部节点，只有足以构成若干不相交的有向树的弧
+有向图的生产森林，若干棵有向树，含有全部顶点，只有足以构成若干不相交的有向树的弧
 
 
 
@@ -348,20 +348,20 @@ $G=(V,\{E\}),G^{'}=(V^{'},\{E^{'}\}),if \q V^{'} \subseteq V,W^{'} \subseteq W,G
 
     typedef struct VNode{
         VertexType data;            //顶点信息
-        ArcNode * firstarc;         //指向第一条依附该节点的指针    
+        ArcNode * firstarc;         //指向第一条依附该顶点的指针    
     }VNode,AdjList[MAX_VERTEX_NUM];
 
     typedef struct{
         AdjList vetices;
-        int vexnum,arcnum;           //图的当前节点和弧数   
+        int vexnum,arcnum;           //图的当前顶点和弧数   
         int kind;                    //图的种类标志   
     }ALGraph;
 \end{lstlisting}
 
 
-n边2e节点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
+n边2e顶点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
 
-出度，第i各链表节点数
+出度，第i各链表顶点数
 
 入度，遍历链表
 
@@ -404,7 +404,7 @@ n边2e节点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
             scanf(&v1,&v2);                                         //输入一条弧的始点和终点
             i=LocateVex(G,v1);j=LocateVex(G,v2);                    //确定v1,v2位置
             p=(ArcBox *) malloc (sizeof(ArcBox));                   //假定有足够空间
-            *p={i,j,G.xlist[j].firstin,i,G.xlist[i].firstout,NULL }; //对弧节点赋值 
+            *p={i,j,G.xlist[j].firstin,i,G.xlist[i].firstout,NULL }; //对弧顶点赋值 
             G.xlist[j].firstin=G.xlist[i].firstout=p;                //完成在入弧和出弧链头的插入
             if(IncInfo) Input(*p->info);                             //若弧含有相关信息，则输入      
         }
@@ -440,6 +440,76 @@ n边2e节点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
 
 \end{lstlisting}
 
+\subsection{图的遍历}
+
+从图的某一顶点出发，访遍图的每一顶点，每个顶点仅被访问一次
+
+辅助数组$visited[0 \dots n-1]$
+
+\subsubsection{深度优先搜索}
+
+树的先根遍历
+
+\begin{lstlisting}[style=v1] 
+    Boolean visited[MAX];           //访问标志数组
+    Status (* VisitFunc)(int v);    //函数变量
+
+    void DFSTraverse(Graph G,Status (* Visit)(int v)){
+        //对图作深度优先遍历
+        VisitFunc=Visit;                            //使用全局变量VisitFunc,使DFS不必使用函数指针参数
+        for(v=0;v<G.vexnum;++v) visited[v]=FALSE;   //访问标志数组初始化
+        for(v=0;v<G.vexnum;++v) 
+            if(!visited[w]) DFS(G,v);               //对尚未访问的顶点调用DFS
+    }
+
+    void DFS(Graph G,int v){
+        //从第v个顶点出发递归地深度优先遍历图G
+        visited[v]=TRUE;VisitFunc(v);                       //访问第v个顶点
+        for(w=FirstAdjVex(G,v);w>=0; w=NextAdjVex(G,v,w))
+            if(!visited[w]) DFS(G,w);                       //对v的未访问的邻接点w递归调用DFS
+    }
+
+\end{lstlisting}
+
+二维数组表示，查找邻接点时间$o(n^2)$
+
+邻接表存储，查找邻接表时间$o(e)$,深度优先搜索遍历时间$o(n+e)$
+ 
+
+\newpage
+
+\subsubsection{广度优先搜索}
+
+树的层次遍历
+
+\begin{lstlisting}[style=v1]
+    void BFSTraverse(Graph G,Status (* Visit)(int v)){
+        //按广度优先非递归遍历图G。使用辅助队列Q和访问标志数组visite。
+        for(v=0;v<G.vexnum;++v) visited[v]=FALSE;
+        InitQueue(Q);                               //置空的辅助队列Q
+        for(v=0;v<G.vexnum;++v)
+            if(!visited[v]){                        //尚未访问
+                visited[v]=TRUE;Visit(v);
+                EnQueue(Q,v);
+                while(!QueueEmpty(Q)){
+                    DeQueue(Q,u);                   //队头元素出队并置为u
+                    for(w=FirstAdjVex(G,u);w>=0;w=NextAdjVex(G,u,w))
+                        if(!visited[w]){
+                            visited[w]=TRUE; Visit(w);
+                            EnQueue(Q,w);
+                        }
+                }
+            }
+    }//BFSTraverse
+
+\end{lstlisting}
+
+
+
+\subsection{图的连通性问题}
+
+
+\subsubsection{无向图的连通分量和生成树}
 
 
 
@@ -449,9 +519,10 @@ n边2e节点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
 
 
 
+\subsection{有向无环图及其应用}
 
 
-
+\subsection{最短路径}
 
 
 
