@@ -16,6 +16,7 @@
 \contentsline {subsubsection}{\numberline {7.3.2}广度优先搜索}{14}{}%
 \contentsline {subsection}{\numberline {7.4}图的连通性问题}{14}{}%
 \contentsline {subsubsection}{\numberline {7.4.1}无向图的连通分量和生成树}{14}{}%
+\contentsline {subsubsection}{\numberline {7.4.2}有向图的强连通分量}{14}{}%
 \contentsline {subsection}{\numberline {7.5}有向无环图及其应用}{14}{}%
 \contentsline {subsection}{\numberline {7.6}最短路径}{14}{}%
 \contentsline {section}{\numberline {8}动态存储管理}{15}{}%
