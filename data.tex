@@ -426,14 +426,17 @@ n边2e节点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
         VisitIf  mark;              //访问标记
         int     ivex,jvex;          //该边依附的两个顶点的位置
         struct EBox  *link,*jlink   //分别指向依附这两个顶点的下一条边
+    }EBox;
+
+    typedef struct VexBox{
+        VertexType data;
+        EBox *firstedge;            //指向第一条依附该顶点的边
     }VexBox;
 
     typedef struct{
         VexBox  adjmulist[MAX_VERTEX_NUM];
         int  vexnum,edgenum;                //无向图的当前定点数       
-    }
-    
-    
+    }AMLGraph;
 
 \end{lstlisting}
 
