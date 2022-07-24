@@ -459,7 +459,7 @@ n边2e顶点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
         VisitFunc=Visit;                            //使用全局变量VisitFunc,使DFS不必使用函数指针参数
         for(v=0;v<G.vexnum;++v) visited[v]=FALSE;   //访问标志数组初始化
         for(v=0;v<G.vexnum;++v) 
-            if(!visited[w]) DFS(G,v);               //对尚未访问的顶点调用DFS
+            if(!visited[v]) DFS(G,v);               //对尚未访问的顶点调用DFS
     }
 
     void DFS(Graph G,int v){
@@ -518,6 +518,41 @@ n边2e顶点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
 
 深度优先生成森林
 
+孩子兄弟链表
+
+\begin{lstlisting}[style=v1]
+    void DFSForest(Graph G,CSTree &T){
+        //建立无向图G的深度优先生成森林的孩子兄弟链表T
+        T=NULL;
+        for(v=0;v<G.vexnum;++v) visited[v]=FALSE;
+        for(v=0;v<G.vexnum;++v){
+            if(!visited[v]){                        //第v顶点为新的生成树的根结点
+                p=(CSTree) malloc(sizeof(CSTree));  //分配根结点
+                *p={GetVex(G,v),NULL,NULL};         //结点赋值   
+                if(!T) T=p;                         //是第一课生成树的根
+                else q->nextsibling=p;              //是其他生成树的根
+                q=p;                                //q指向当前生成树的根
+                DFSTree(G,v,p);                     //建立以p为根的生成树
+            }
+        }
+    }
+
+    void DFSTree(Graph G,int v,CSTree &T){
+        //从第v个顶点出发深度优先遍历图G，建立以T为根的生成树
+        visited[v]=TRUE;first=TRUE;
+        for(w=FirstAdjVex(G,b);w>=0;w=NextAdjVex(G,v,w))
+            if(!visited[w]){
+                p=(CSTree) malloc(sizeof(CSTree));  //分配孩子结点
+                *p={GetVex(G,w),NULL,NULL};
+
+                if(first) T->lchild=p;first=false;  //w是v的第一个未被访问的邻接点，是根的左孩子节点    
+                else q->nextsibling=p;              //w是v的其他未被访问的邻接点，是上一邻接点的右兄弟节点     
+
+                q=p;
+                DFSTree(G,w,q)                      //从第w个顶点出发深度优先遍历图G，建立生成子树q
+            }
+    }  
+\end{lstlisting}
 
 
 
@@ -526,9 +561,147 @@ n边2e顶点$e \ll \frac{n(n+1)}{2} $时比邻接表矩阵节省
 
 \subsubsection{有向图的强连通分量}
 
+\begin{lstlisting}[style=v1] 
 
 
+    //--------step1 get finished数组------------
+    void DFSTraverse1(Graph G,Status (* Visit)(int v)){
+        //对图作深度优先遍历
+        count=0;
+        VisitFunc=Visit;                            //使用全局变量VisitFunc,使DFS不必使用函数指针参数
+        for(v=0;v<G.vexnum;++v) visited[v]=FALSE;   //访问标志数组初始化
+        for(v=0;v<G.vexnum;++v) 
+            if(!visited[v]) DFS1(G,v);               //对尚未访问的顶点调用DFS
+    }
 
+    void DFS1(Graph G,int v){
+        //从第v个顶点出发递归地深度优先遍历图G
+        visited[v]=TRUE;VisitFunc(v);                       //访问第v个顶点
+        for(w=FirstAdjVex1(G,v);w>=0; w=NextAdjVex1(G,v,w))  //以v为弧尾深度优先
+            if(!visited[w]) DFS1(G,w);                       //对v的未访问的邻接点w递归调用DFS
+            finished[count++]=v;
+    }
+
+    //--------step1 use finished数组---------
+
+    void DFSTraverse2(Graph G,Status (* Visit)(int v)){
+        //用finished数组对图作逆向深度优先遍历
+        flag=0;                                     //记录第flag个分量
+        VisitFunc=Visit;                            //使用全局变量VisitFunc,使DFS不必使用函数指针参数
+        for(v=0;v<G.vexnum;++v) visited[v]=FALSE;   //访问标志数组初始化
+        for(v=finished[num],num=G.vexnum-1;num>=0;v=finished[--num]) 
+            if(!visited[v]){flag++; DFS2(G,v);  }             //对尚未访问的顶点调用DFS
+    }
+
+    void DFS2(Graph G,int v){
+        //从第v个顶点出发递归地深度优先遍历图G
+        visited[v]=TRUE;VisitFunc(v);                       //访问第v个顶点
+        for(w=FirstAdjVex2(G,v);w>=0; w=NextAdjVex2(G,v,w))   //以v为弧头逆向深度优先    
+            if(!visited[w]) DFS2(G,w);                       //对v的未访问的邻接点w递归调用DFS
+    }
+
+\end{lstlisting}
+
+
+\subsubsection{最小生成树}
+
+构造网的最小代价生成树
+
+MST性质:$N=(V,\{E\}),U \subseteq V,u\in U,v \in V-U,(u,v)$是具有最小权值的边，则存在最小生成树包含$(u,v)$
+
+\tp{
+    \node[scale=.6,black,draw,shape=circle,name=a] at (0,0) {$u^{'}$};
+    \node[scale=.6,black,draw,shape=circle,name=b] at (0,1) {$u$};
+    \node[scale=.6,black,draw,shape=circle,name=c] at (1,0) {$c$};
+    \node[scale=.6,black,draw,shape=circle,name=d] at (1,1) {$v$};
+    \node[scale=.6,black,draw,shape=circle,name=e] at (.5,.5) {$v^{'}$};
+
+    \draw (a)--(b);
+    \draw (a)--(e);
+    \draw (e)--(d);
+    \draw (c)--(d);
+    \draw [loosely dashed] (b)--(d);
+
+    \draw [ color=red ,dashed](.25,-.2) --(.25,1.2);
+}
+
+普里姆(Prim)
+
+\q 连通网$N=(V,\{E\})$
+
+\q 初始状态$U=\{ u_0 \},TE=\{ \}$，
+
+\q 选择 $u\in U,v_1\in V-U, min\{ (u,v_1) \}$，
+
+\q 更新$U=\{ u_0 ,v_1\},TE=\{(u,v_1) \}$,
+
+\q 重复选择至U=V
+
+\q $closedge[i-1].lowcost=Min\{cost(u,v_i) | u \in U \}$
+
+\q 时间复杂度$o(n^2)$ 
+
+克鲁斯卡尔(Kruskal)
+
+\q 连通网$N=(V,\{E\})$
+
+\q 初始状态 $T=(V,\{  \})$,每个顶点自成连通分量
+
+\q 选择 $e_i=MIN(E),e_i$ 若属于不同连通分量更新，否则舍弃
+
+\q 更新$E=e-e_i,T=(V,\{ e_i \})$
+
+\q 舍弃$E=e-e_i$ 
+
+\q 重复选择至T中所有顶点在一个连通分量上
+
+\q 时间复杂度$o(e \log e)$
+
+
+\newpage
+
+\begin{lstlisting}[style=v1]
+
+    typedef struct{
+        VertexType adjvex;
+        VRType lowcost;
+    }closedge[MAX_VERTEX_NUM]       //记录U到V-U最小代价边的辅助数组定义
+
+
+    void MiniSpanTree_PRIM(MGraph G,VertexType u){
+        //用普里姆算法从第u个顶点构造网G的最小生成树T，输出T的个边
+        k=LocateVex(G,u);
+
+        for(j=0;j<G.vexnum;++j)         //辅助数组初始化   
+            if(j!=k) closedge[j]={u,G.arcnum[k][j].adj};    //{adjvex,lowcost}
+        closedge[k].lowcost=0;                              //初始，U={u}    
+        for(i=1;i<G.vexnum;++i){                            //选择其余G.vexnum-1个顶点
+            k=minimum(closedge);                            //求出k的下一个节点
+            //此时 closedge[k].lowcost=MIN{closedge[v_i].lowcost | closedge[v_i].lowcost>0,v_i \in V-U}
+            printf(closedge[k].adjvex,G,vexs[k]);           //输出生成树的边
+            closedge[k].lowcost=0;                          //第k顶点并入U集
+            for(j=0;j<G.vexnum;++j){
+                if(G.arcs[k][j].adj<closedge[j].lowcost)
+                    closedge[j]={G.vexs[k],G.arcs[k][j].adj };  //新顶点并入U后重新选择最小边
+            }
+        }
+    }//MiniSpanTree
+
+\end{lstlisting}
+ 
+\subsubsection{关节点和重连通分量}
+
+删除点和依附点的边生成两个或者以上的连通分量，\mb{关节点}
+
+没有关节点的图，任意一对顶点间存在不止一条路径，\mb{重连通图}
+
+删除k个顶点才破坏连通性，连通度k
+
+关节点特性
+
+    \q 生成树的根右两个及以上子树，根节点为关节点
+    
+    \q 非叶子节点v，及其子树，没有指向双亲回边,v为关节点
 
 
 
