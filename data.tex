@@ -107,6 +107,14 @@ rulesepcolor=\color{gray}
         \begin{array}{llll} #1 \end{array}
     \right.
 }
+
+\newcommand{\fcza}[1] {
+    \left |
+        \begin{array}{llll} #1 \end{array}
+    \right.
+}
+
+
 \newcommand{\hls}[1] {
     \left|
         \begin{array}{llll} #1 \end{array}
@@ -703,17 +711,68 @@ MST性质:$N=(V,\{E\}),U \subseteq V,u\in U,v \in V-U,(u,v)$是具有最小权�
     
     \q 非叶子节点v，及其子树，没有指向双亲回边,v为关节点
 
+$low(v)=Min\mfb{visited[v],visited[k],low[w]  
+\fcza{
+    w\mt{是}v\mt{在生成树上孩子节点}\\
+    k\mt{是}v\mt{在生成树上回边连接组选节点}\\
+    (v,w),(v,k) \in Edge
+}
+}$
 
+顶点v，孩子节点w，若$low[w] \geqslant visited[v]$,则w及其子孙均无指向v的回边
+
+\begin{lstlisting}[style=v1]
+    void FindArticul(ALGraph G){
+        //连通图G以邻接表存储，查找输出关节点，全局变量count对方问记数
+        count=1;visited[0]=1;                   //设定邻接表上0号顶点为生成树的根  
+        for(i=1;i<G.vexnum;++i) visited[i]=0;   //初始化，其余节点未访问
+        p=G.vertices[0],firstarc; v=p->adjvex;  
+        DFSArticul(G,v);                    //从第v点出发深度优先查找关节点
+        if(count<G.vertices[0].data){       //生成树至少有两棵子树
+            printf(0,G,vertices[0].data);   //根节点是关节点
+            while(p->nextarc){
+                p=p->next;v=p->adjvex;
+                if(visited[v]==0) DFSArticul(G,v);
+            }
+        }
+    }
+
+    void DFSArticul(ALGraph G,int v0){
+        //从第v0个顶点出发深度优先遍历图G，查找并输出关节点
+        visited[v0]=min=++count;        //v0是第count个访问的顶点
+        for(p=G.vertices[v0].firstarc;p;p=p->nextarc){   //对v0的每个邻接顶点检查
+            w=p->adjvex;                                 //w为v0的邻接点
+            if(visited[w]==0){                           //w未曾访问，是v0的孩子   
+                DFSArticul(G,w);                         //返回前求得low[w]   
+                if(low[w]<min) min=low[w];
+                if(low[]>=visited[v0]) printf(v0,G.vertices[v0].data);  //关节点
+            }else if{visited[w]<min} min=visited[w];       //w已访问，w是v0在生成树上的祖先 
+        }
+        low[v0]=min;
+    }
+ 
+\end{lstlisting}
+
+时间复杂度$o(n+e)$
 
 \subsection{有向无环图及其应用}
+有向无环图(directed acycline graph /DAG)
+
+\subsubsection{拓扑排序}
+
+偏序，全序
+
+\subsubsection{关键路径}
+
 
 
 \subsection{最短路径}
 
+\subsubsection{从某个源点到其余各顶点的最短路径}
 
+\subsubsection{每一对顶点之间的最短路径}
 
-
-
+\subsubsection{关键路径}
 
 
 \newpage
