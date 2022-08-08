@@ -775,8 +775,86 @@ $low(v)=Min\mfb{visited[v],visited[k],low[w]
     \q (3)重复(1) (2)
 
     
+
+
+\begin{lstlisting}[style=v1]
+    Status TopologicalSort(ALGraph G){
+        //有向圖G採用鄰接表存儲結構
+        //若G無迴路，則輸出G的頂點的一個拓撲序列並返回OK，否則返回ERROR
+        FindInDegree(G,indegree);       //對個點求入度 indegree[0~vernum-1]
+        for(i=0;i<G.vexnum;++i)         //零入度頂點棧
+            if(!indegree[i]) Push(S,i); //入度為0者入棧
+        count=0;                        //對輸出點計數
+        while(!StackEmpty(S)){
+            Pop(S,i); printf(i,G.vertices[i].data); ++count;  //輸出i號頂點並計數
+            for(p=G.vertices[i].firstarc ;p;p=p->nextarc){
+                k=p->adjvex;
+                if(!(--indegree[k])) Push(S,k);     //若入度減為0,則入棧
+            }   
+        }    
+        if(count<G.vexnum) return ERROR;            //該有向圖有迴路
+        else return OK;
+    }
+\end{lstlisting}
+
+n頂點e邊圖,時間複雜度$o(n+e)$
+
+
+\newpage
+
 \subsubsection{关键路径}
 
+邊表活动的有向图，帶權有向無環圖(Activity On Edge Network /AOE)
+
+
+完成的最短時間，路徑長度最長的 路徑的長度
+
+路徑長度最長的路徑 \mb{關鍵路徑}
+
+\begin{lstlisting}[style=v1]
+    Status TopologicalOrder(ALGraph G,Stack &T){
+        //有向網G採用鄰接表存儲結構，求各頂點事件的最早發生時間 ve全局變量
+        //T為拓撲序列頂點棧，S為零入度頂點棧
+        //若G無迴路，則用棧T返回G的一個拓撲序列，且函數值為OK，否則為ERROR
+        FindInDegree(G,indegree);       //對個頂點求入度indegree[0~vernum-1]
+        //建零入度頂點棧
+        InitStack(T);count=0;ve[0..G.vexnum-1]=0;   //初始化
+        while(!StackEmpty(S)){
+            Pop(S,j);Push(T,j); ++count;    //j號頂點入T棧並計數
+            for(p=G.vertices[j].firstarc;p;p=p->nextarc){
+                k=p->adjvex;                        //對j號頂點的各個鄰接點的入度減1
+                if(--indegree[k]==0) Push(S,k);     //若入度減為0，則入棧
+                if(ve[j]+ *(p->info) >ve[k])  ve[k]=ve[j] + *(p->info);  
+            }
+        }
+        if(count<G.vexnum) return ERROR;    //該有向圖有迴路
+        else return OK;
+    }
+
+    Status CriticalPath(ALGraph G){
+        //G為有向網，輸出G的各項關鍵活動
+        if(!TopologicalOrder(G,T)) return ERROR;
+        vl[0..G.vexnum-1]=ve[0..G.vexnum-1];        //初始化頂點事件的最遲發生時間
+        while(!StackEmpty(T))                       //按拓撲逆序求各頂點的vl值
+            for(Pop(T,j),p=G.vertices[j].firstarc;p;p=p->nextarc){
+                k=p->adjvex; dut=*(p->info);        //dut<j,k>
+                if(vl[k]-dut < vl[j])  vl[j]=vl[k]-dut;
+            }
+        for(j=0;j<G.vexnum;++j)             //求ee,el和關鍵活動
+            for(p=G.vertices.firstarc;p;p=p->nextarc){
+                k=p->adjvex;dut=*(p->info);
+                ee=ve[j];el=ve[k]-dut;
+                tag=(ee==el)? '*' : '' ;
+                printf(j,k,dut,ee,el,tag);  //輸出關鍵活動
+            }
+    }
+ 
+\end{lstlisting}
+
+
+n頂點e邊圖,時間複雜度$o(n+e)$
+
+ 
 
 
 \subsection{最短路径}
