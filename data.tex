@@ -8,7 +8,7 @@
 
 \usepackage{pgf}
 \usepackage{tikz} % Required for drawing custom shapes
-\usetikzlibrary{shapes,backgrounds,arrows,automata,decorations.pathreplacing,calligraphy}
+\usetikzlibrary{shapes,backgrounds,arrows,automata,decorations.pathreplacing,calligraphy,calc}
 % \usetikzlibrary{arrows,backgrounds}
 % \usepackage{tikz}
 
@@ -757,6 +757,95 @@ $low(v)=Min\mfb{visited[v],visited[k],low[w]
 
 \subsection{有向无环图及其应用}
 有向无环图(directed acycline graph /DAG)
+
+
+\tp{
+    \coordinate (o) at (0,0);
+    \coordinate (l) at (270-20:1cm);
+    \coordinate (r) at (270+20:1cm);
+
+   
+    \coordinate (fl) at ($(o)+(l)$) ;
+    \coordinate (fr) at ($(o)+(r)$) ;
+    \coordinate (sl) at ($(o)+(l)+(l)$) ;
+    \coordinate (sr) at ($(o)+(l)+(r)$) ;
+
+
+    \node[black,draw,shape=circle,name=no] at (o) {$$};
+    \node[black,draw,shape=circle,name=nfl] at (fl) {$$};
+    \node[black,draw,shape=circle,name=nfr] at (fr) {$$};
+    \node[black,draw,shape=circle,name=nsl] at (sl) {$$};
+    \node[black,draw,shape=circle,name=nsr] at (sr) {$$};
+
+
+    \draw [->] (no)--(nfl); 
+    \draw [->](no)--(nfr); 
+    \draw [->](nfl)--(nsl);
+    \draw [->](nfl)--(nsr);   
+}\q\q\q
+\tp{
+    \coordinate (o) at (0,0);
+    \coordinate (l) at (270-20:1cm);
+    \coordinate (r) at (270+20:1cm);
+
+   
+    \coordinate (fl) at ($(o)+(l)$) ;
+    \coordinate (fr) at ($(o)+(r)$) ;
+    \coordinate (sl) at ($(o)+(l)+(l)$) ;
+    \coordinate (sr) at ($(o)+(l)+(r)$) ;
+
+
+    \node[black,draw,shape=circle,name=no] at (o) {$$};
+    \node[black,draw,shape=circle,name=nfl] at (fl) {$$};
+    \node[black,draw,shape=circle,name=nfr] at (fr) {$$};
+    \node[black,draw,shape=circle,name=nsl] at (sl) {$$};
+    \node[black,draw,shape=circle,name=nsr] at (sr) {$$};
+
+
+    \draw [->] (no)--(nfl); 
+    \draw [->](no)--(nfr); 
+    \draw [->](nfl)--(nsl);
+    \draw [->](nfl)--(nsr);   
+    \draw [->](nfr)--(nsr); 
+
+
+
+}\q\q\q
+\tp{
+    \coordinate (o) at (0,0);
+    \coordinate (l) at (270-20:1cm);
+    \coordinate (r) at (270+20:1cm);
+
+   
+    \coordinate (fl) at ($(o)+(l)$) ;
+    \coordinate (fr) at ($(o)+(r)$) ;
+    \coordinate (sl) at ($(o)+(l)+(l)$) ;
+    \coordinate (sr) at ($(o)+(l)+(r)$) ;
+
+
+    \node[black,draw,shape=circle,name=no] at (o) {$$};
+    \node[black,draw,shape=circle,name=nfl] at (fl) {$$};
+    \node[black,draw,shape=circle,name=nfr] at (fr) {$$};
+    \node[black,draw,shape=circle,name=nsl] at (sl) {$$};
+    \node[black,draw,shape=circle,name=nsr] at (sr) {$$};
+
+
+    \draw [->] (no)--(nfl); 
+    \draw [->](no)--(nfr); 
+    \draw [->](nfl)--(nsl);
+    \draw [->](nsr)--(nfl);
+    \draw [->](nsl)--(nsr);
+    \draw [->](nfr)--(nsr); 
+
+
+
+}
+
+
+
+
+
+
 
 \subsubsection{拓扑排序}
 
