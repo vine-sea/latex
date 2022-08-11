@@ -778,10 +778,10 @@ $low(v)=Min\mfb{visited[v],visited[k],low[w]
     \node[black,draw,shape=circle,name=nsr] at (sr) {$$};
 
 
-    \draw [->] (no)--(nfl); 
-    \draw [->](no)--(nfr); 
-    \draw [->](nfl)--(nsl);
-    \draw [->](nfl)--(nsr);   
+    \draw [-latex] (no)--(nfl); 
+    \draw [-latex] (no)--(nfr); 
+    \draw [-latex] (nfl)--(nsl);
+    \draw [-latex] (nfl)--(nsr);   
 }\q\q\q
 \tp{
     \coordinate (o) at (0,0);
@@ -802,14 +802,11 @@ $low(v)=Min\mfb{visited[v],visited[k],low[w]
     \node[black,draw,shape=circle,name=nsr] at (sr) {$$};
 
 
-    \draw [->] (no)--(nfl); 
-    \draw [->](no)--(nfr); 
-    \draw [->](nfl)--(nsl);
-    \draw [->](nfl)--(nsr);   
-    \draw [->](nfr)--(nsr); 
-
-
-
+    \draw [-latex] (no)--(nfl); 
+    \draw [-latex] (no)--(nfr); 
+    \draw [-latex] (nfl)--(nsl);
+    \draw [-latex] (nfl)--(nsr);   
+    \draw [-latex] (nfr)--(nsr); 
 }\q\q\q
 \tp{
     \coordinate (o) at (0,0);
@@ -830,16 +827,20 @@ $low(v)=Min\mfb{visited[v],visited[k],low[w]
     \node[black,draw,shape=circle,name=nsr] at (sr) {$$};
 
 
-    \draw [->] (no)--(nfl); 
-    \draw [->](no)--(nfr); 
-    \draw [->](nfl)--(nsl);
-    \draw [->](nsr)--(nfl);
-    \draw [->](nsl)--(nsr);
-    \draw [->](nfr)--(nsr); 
-
-
-
+    \draw [-latex] (no)--(nfl); 
+    \draw [-latex] (no)--(nfr); 
+    \draw [-latex] (nfl)--(nsl);
+    \draw [-latex] (nsr)--(nfl);
+    \draw [-latex] (nsl)--(nsr);
+    \draw [-latex] (nfr)--(nsr); 
 }
+
+
+有向樹，有向無環圖，有向圖
+
+
+
+
 
 
 
@@ -854,6 +855,12 @@ $low(v)=Min\mfb{visited[v],visited[k],low[w]
 偏序+人为=全序，拓扑有序
 
 顶点活动，弧表优先关系的有向图(Activity On Vertex Network /AOV)
+
+
+
+
+
+
 
 拓扑排序
 
@@ -894,6 +901,10 @@ n頂點e邊圖,時間複雜度$o(n+e)$
 \subsubsection{关键路径}
 
 邊表活动的有向图，帶權有向無環圖(Activity On Edge Network /AOE)
+
+事件i最早發生時間e(i)，事件i最遲發生時間,不影響進度l(i),時間余裕l(i)-e(i) 
+
+關鍵活動 l(i)=e(i)
 
 
 完成的最短時間，路徑長度最長的 路徑的長度

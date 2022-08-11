@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.4.22)  10 AUG 2022 09:27
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.4.22)  10 AUG 2022 16:08
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -826,15 +826,15 @@ LaTeX Font Info:    Font shape `TU/lmtt/bx/n' in size <6.52437> not available
 (Font)              Font shape `TU/lmtt/b/n' tried instead on input line 284.
  [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 1230.
+LaTeX Font Warning: Command \small invalid in math mode on input line 1220.
 
 [22] [23]
 Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 1389.
+LaTeX Font Warning: Command \small invalid in math mode on input line 1379.
 
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 1408.
+LaTeX Font Warning: Command \small invalid in math mode on input line 1398.
 
 Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
 [24] [25] [26] [27] [28]
@@ -844,23 +844,23 @@ Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=t
 Missing character: There is no ， (U+FF0C) in font [lmroman9-regular]:mapping=tex-text;!
 [30]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 2004.
+LaTeX Font Warning: Command \small invalid in math mode on input line 1994.
 
 [31]
 
-LaTeX Font Warning: Command \small invalid in math mode on input line 2028.
+LaTeX Font Warning: Command \small invalid in math mode on input line 2018.
 
 
-Overfull \hbox (6.6268pt too wide) in paragraph at lines 2028--2056
+Overfull \hbox (6.6268pt too wide) in paragraph at lines 2018--2046
 []$[]$ 
  []
 
 [32] [33] [34] [35] [36] [37] [38] [39] (./data.aux) ) 
 Here is how much of TeX's memory you used:
- 26660 strings out of 476179
- 623296 string characters out of 5813072
+ 26669 strings out of 476179
+ 623456 string characters out of 5813072
  1219623 words of memory out of 5000000
- 46911 multiletter control sequences out of 15000+600000
+ 46920 multiletter control sequences out of 15000+600000
  481863 words of font info for 119 fonts, out of 8000000 for 9000
  1348 hyphenation exceptions out of 8191
  89i,26n,97p,1190b,1200s stack positions out of 10000i,1000n,20000p,200000b,200000s
