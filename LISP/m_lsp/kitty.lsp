@@ -4,7 +4,9 @@
 (setq 
     kpl "C:\\Program Files\\Autodesk\\AutoCAD 2014\\Support\\m_lsp\\"
     kpd "C:\\Program Files\\Autodesk\\AutoCAD 2014\\Support\\m_dcl\\"
-    kpf "E:\\ZCM\\ALL\\"
+    kpf (getvar "dwgprefix")
+    kpn (nth 0 (n_strsplice "." (getvar "dwgname")))
+    ;; "E:\\ZCM\\ALL\\"
 
     k_l1 0
     k_LayList nil
@@ -167,7 +169,7 @@
     ((= std2 19) (n_d1))
     ((= std2 20) (n_d2s (if (= k_t5 "") nil T )))
     ((= std2 21) (n_brex (ssget) (ssget)))
-
+    ((= std2 22) (n_noff))
 
   )
 )
@@ -240,7 +242,7 @@
 )
 (defun m_poScaSC( p1 sc / len alp ) (mapcar '* p1 (m_poRep sc (length p1))))
 (defun m_change (p3 lay) (vl-cmdf  "change" p3 "" "p" "la"  lay  ""))
-(defun m_poMo( p1 / re) (sqrt (apply '+ (mapcar 'expt p1 (m_porep 2 (length p1))))) )
+(defun m_poMoex( p1 / re) (sqrt (apply '+ (mapcar 'expt p1 (m_porep 2 (length p1))))) )
 (defun m_poSca( p1 sc / len alp ) (mapcar '*  p1 (m_poRep (/ sc (m_poMo p1)) (length p1)) )
 )
 ;; atoi atof itoa  
@@ -287,6 +289,16 @@
 
         (entmod new_line_data)
         ))
+
+      
+       ((= (cdr (assoc 0 line_data))  "MULTILEADER")
+        (progn
+        (setq old_spoint (assoc 8 line_data))
+        (setq new_spoint (cons 8 "DIM"))
+        (setq new_line_data (subst new_spoint old_spoint line_data))
+        (entmod new_line_data)
+        ))
+
 
         ((= (cdr (assoc 0 line_data))  "LEADER")
         (progn
@@ -952,7 +964,6 @@
 
 )
 
-
 (defun n_trimex( a b ) (vl-cmdf  "trim"  "" "c" a b ""))
 
 (defun n_brex(ss a / )
@@ -974,12 +985,38 @@
 
 
 )
-(defun n_joinpo( a b)
- (inters (nth 0 a) (nth 1 a) (nth 0 b) (nth 1 b) nil) 
+
+(defun n_brexa(ss p1 p2 / )
+    (setq x 0
+          n (sslength ss)
+          ;; buf2 (entget (ssname a 0))
+          buf2 (list p1 p2)
+    )
+
+    (repeat n
+          (setq buf (entget (ssname ss x))
+                buf (n_gd10ex3 buf '(10 11))
+                x (1+ x)
+                a (n_joinpo buf buf2)
+          )
+
+        (if (not (= nil a)) (vl-cmdf "break" (ssname ss (1- x)) "" "F"  a  a ))
+    )
+
+
 )
 
 
+(defun c:brr() (n_brex  (ssget) (ssget) )    )
 
+(defun c:brra() (n_brexa  (ssget) (getpoint "1")  (getpoint "2") )    )
+
+
+
+
+(defun n_joinpo( a b)
+ (inters (nth 0 a) (nth 1 a) (nth 0 b) (nth 1 b) nil) 
+)
 
 (defun gl( / a) 
   (setq a (ssadd)
@@ -989,7 +1026,16 @@
   a
 )
 
+(defun gle( / a) 
+  (setq 
+        ;; a (ssadd)
+        a (ssget) 
+  ) 
+  (sssetfirst   nil a)
+  a
+)
 
+//獲取單個p
 (defun n_gd10( p )
 
     (setq  elist (vl-remove-if-not
@@ -1009,8 +1055,7 @@
 )
 
 
-
-
+//去除單個p
 (defun n_gd11( p )
 
     (setq  elist (vl-remove-if
@@ -1053,7 +1098,7 @@
 
 
 
-
+//獲取p去除序號
 
 (defun n_gd10ex2( p )
 
@@ -1073,7 +1118,7 @@
 
 )
 
-
+//k中獲取p
 (defun n_gd10ex( k p )
 
     (setq  elist (vl-remove-if-not
@@ -1092,6 +1137,7 @@
 
 )
 
+//去除序號
 (defun n_gd10ex3( k p )
 
     (setq  elist (vl-remove-if-not
@@ -1448,8 +1494,432 @@
 )
  
 
+(defun c:a`()(vl-cmdf "IsolateObjects"))
+
+(defun c:a1() (vl-cmdf "HideObjects"))
+
+(defun c:a2()(vl-cmdf "UnIsolateObjects"))
+
+(defun c:c1() (vl-cmdf "layoff" (k_ssl) ""))
+
+(defun c:c2() (vl-cmdf "layon" ))
+
+
+(defun c:nlbre( /  base buf bufs nl i pos pob poc dis alp pos2 pos3 newp oldp)
+
+  (setq buf 
+      (list 
+      '(0 . "LWPOLYLINE")  
+      '(100 . "AcDbEntity")   
+      '(8 . "P") 
+      '(100 . "AcDbPolyline") 
+      '(90 . 4) 
+      )
+      nl 0
+      i -1
+      pos (list )
+      pob (gp)
+      poc (gp)
+      dis (distance pob poc)
+      alp  (/ dis 100.0 (if (> (nth 1 pob) (nth 1 poc)) -1 1) )
+  )
+  
+  (setq  
+    pos2 (list '(0.0 0.0 0.0) '(0.0 45.0 0.0) '(10.0 50.0 0.0) '(-10.0 55.0 0.0) '(0.0 60.0 0.0) '(0.0 100.0 0.0))
+    pos3  (mapcar '(lambda (e1) (m_poScasc e1 alp)) pos2)
+    pos3  (mapcar '(lambda (e1) (m_poAdd pob e1)) pos3)
+    pos pos3
+  )
+
+  ;; draw
+  (repeat (length pos)      
+    (setq 
+      i (1+ i)
+      nl (1+ nl)
+      bufs (append (list 10) (nth i pos))
+      buf (append buf (list bufs))
+    )
+  )
+  
+ 
+
+  (setq 
+    newp (cons 90  nl) 
+    oldp (assoc 90 buf)
+    buf (subst newp oldp  buf)
+  )
+
+  
+  (entmake buf)
+  
+  (vl-cmdf "rotate" (entlast) ""  pob "r" pob  (if (> alp 0 )(mapcar '+ pob '(0 1 0)) (mapcar '+ pob '(0 -1 0)) ) poc )
+
+
+)
+
+;; (1 . "{\\W0.6;<>}")  
+
+(defun c:nlbre1()
+
+  (setq 
+      po (gp)
+      po2 (gp)
+      dis (distance po po2)
+      alp (/ dis 4.0)
+
+      p1 (m_poAdd po (list 0 (- (* alp 1)) 0))
+      p2 (m_poAdd po (list 0 (- (* alp 3)) 0))
+      p3 (m_poAdd po (list 0 (- (* alp 4)) 0))
+
+      buf (list 
+      '(0 . "ELLIPSE")
+      '(100 . "AcDbEntity") 
+      '(8 . "p")
+      '(100 . "AcDbEllipse") 
+      ;; '(10 -8.83087e+006 7.07261e+007 0.0) 
+      (append '(10) p1)
+      (list 11 0.0 alp 0.0) 
+      '(210 0.0 0.0 1.0)
+      '(40 . 0.24) 
+      '(41 . 0.0) 
+      '(42 . 3.14159)
+      )
+      ss (ssadd)
+
+  )
+  (entmake buf)
+  (ssadd (entlast) ss )
+
+
+  (setq 
+    newp '(210 0.0 0.0 -1.0) 
+    oldp (assoc 210 buf)
+    buf (subst newp oldp  buf)
+  )
+  (entmake buf)
+  (ssadd (entlast) ss )
+
+
+
+  (setq 
+    newp (append '(10) p2)
+    oldp (assoc 10 buf)
+    buf (subst newp oldp  buf)
+  )
+  (entmake buf)
+  (ssadd (entlast) ss )
+
+  (vl-cmdf "rotate" ss ""  po "r" po  p3  po2 )
+
+)
+
+
+(defun n_cube( / a b c d a1 b1 c1  a2 c2)
+
+  (setq 
+    a (ssget)
+    b (ssget)
+    c (ssget)
+    d (distance (getpoint "d1") (getpoint "d2"))
+
+    a1 (getpoint "a1")
+    b1 (getpoint "b1")
+    c1 (getpoint "c1")
+
+    a2 (getpoint "a2")
+    c2 (getpoint "c2")
+  )
+
+
+
+  (vl-cmdf "rotate3d"   a  "" "y" a1 90)
+  (vl-cmdf "rotate3d"   b  "" "y" b1 180)
+  (vl-cmdf "rotate3d"   c  "" "y" c1 270)
+
+  (vl-cmdf "move" a  "" a1 a2)
+  (vl-cmdf "move" b  "" b1 a2)
+  (vl-cmdf "move" b  "" '(0 0 0) (list 0 0 (- d)))
+  (vl-cmdf "move" c  "" c1 c2)
+  (vl-cmdf "move" c  "" '(0 0 0) (list 0 0 (- d)))
+
+
+  (vl-cmdf "rotate3d"   (ssget)  "" "x" a1 90)
+ 
+)
+
+
+
+(defun n_lays( / a a1 a2 base)
+  (setq base nil)
+
+   (while (and  (setq a (ssget))  (setq a1 (getpoint "a1") ) (setq a2 (getpoint "a1") ) )
+        (if (= base nil) (setq base a2))
+        (vl-cmdf "rotate3d"   a  "" "x" a1 -90)
+        (vl-cmdf "move" a  "" a1 a2)
+   ) 
+  (vl-cmdf "rotate3d"   (ssget)  "" "x" base 90)
+)
+
+
+(defun n_theta( theta r / )
+    ;; (setq theta  (* pi (/ theta 180.0))  )
+    (list (* r (cos theta)) (* r (sin theta)) 0)
+)
+
+
+(defun n_thetas(n r p / theta)
+  (setq dtheta (/ (* 2.0 pi) n)
+        theta 0
+        thetas (list )
+  )
+
+  (repeat (+ 1 n) 
+      (setq thetas    (append thetas (list (m_poAdd (n_theta theta r) p)))
+            theta (+ theta dtheta)  
+      )
+  )
+
+  thetas
+
+)
+
+
+(defun n_ccut( n / 
+;; pf  flag  cir cdata poa r base data pos x ep  )
+)
+    (setq cir (ssget)
+          cdata (entget (ssname cir 0))
+          pf (car (n_gd10ex3 cdata '(0)))
+    )
+
+    (if (= "CIRCLE" pf)
+        (progn 
+          (setq poa  (car (n_gd10ex3 cdata '(10)))
+                pob (gp)
+                r   (car (n_gd10ex3 cdata '(40)))
+                flag (if (> (distance poa pob) r) 0 1)
+          )
+          
+          (if (= 1 flag )(vl-cmdf "POLYGON" n poa "i"  r ) (vl-cmdf "POLYGON" n poa "c"  r ))
+          (setq  ep (entlast)) 
+          
+          (vl-cmdf "offset" 0.1 (entlast) pob "") 
+          (vl-cmdf "erase" ep "")
+
+          (setq 
+                ep (entlast)  
+                base (entlast)
+                data (entget base)
+                pos (n_gd10ex3 data '(10))
+                x 0
+          )
+          (vl-cmdf "erase" ep "")
+
+
+        )
+        (progn 
+          (setq 
+                pob (gp)
+          )
+          (vl-cmdf "offset" 0.1 cir pob "")        
+
+          (setq 
+                ep (entlast)  
+                base (entlast)
+                data (entget base)
+                pos (n_gd10ex3 data '(10))
+                x 0
+          )
+
+          (vl-cmdf "erase" ep "")
+        )
+
+
+    )
+    
+
+          (setq n (length pos))
+
+          (repeat (1- n)
+              (vl-cmdf "trim" cir  "" "F"  (nth x pos ) (nth (1+ x) pos) "" "")
+              (setq x (1+ x))
+          )   
+          
+          (vl-cmdf "trim" cir  "" "F"  (nth (1- n) pos ) (nth 0 pos) "" "")
+
+    
 
  
+
+ 
+
+    (princ )
+
+
+)
+
+(defun c:ccut() (n_ccut 30))
+
+
+(defun c:cr()
+
+    (setq ss (ssget)
+          ssad (ssadd)  
+          x 0
+          p1  (getpoint "p1")
+          p2  (getpoint "p2")
+
+    )
+
+    (repeat (sslength ss)
+        (setq ssad (ssadd (ssname ss x) ssad)
+              x (1+ x)
+        )
+
+    )
+
+    (while (and  (setq p3  (getpoint "p3"))  (setq p4  (getpoint "p4"))   )
+
+
+            (vl-cmdf "copy" ssad "" '(0 0 0) '(0 0 0))
+            (vl-cmdf "move" ssad "" p1 p3 )
+            (vl-cmdf "rotate" ssad  "" p3 "r" p1 p2 p4 )
+            ;; (if (< K_c7 0) (vl-cmdf "mirror" ssad  "" p3 p4 "y"))
+
+            (setq  p1 p3
+                   p2 p4)
+
+    )
+
+
+
+
+)
+
+
+(defun c:oa() (oaex k_c1) )
+(defun oaex( dis  /
+ buf li data p1 p2 pd pd2 alp  nd1 ne1 e)
+    (setq 
+          buf (ssget)
+          li (ssget)
+          data (entget (ssname li 0))
+          p1  (cdr (assoc 10 data))
+          p2  (cdr (assoc 11 data))
+          pd  (m_posub p2 p1)
+          
+    )
+
+
+    (setq p1 (getpoint "p1\n")
+          p2 (getpoint "p2\n")
+          pd2 (m_posub p2 p1)
+
+    )
+
+    (if (= 0 (car pd)) 
+      ;; dx=0
+      (progn
+
+          (if (> (car (cdr (assoc 10 data))) (car p1))
+            
+                (setq 
+                  alp (/ (- (car (cdr (assoc 10 data))) (car p1) dis) (car pd2))    
+                  pd2 (m_poScaSC pd2 alp)
+                )
+          
+             
+                (setq 
+                  alp (/ (+ (- (car (cdr (assoc 10 data))) (car p1) ) dis) (car pd2))    
+                  pd2 (m_poScaSC pd2 alp)
+                )
+            
+          )
+
+          (vl-cmdf "move" buf "" p1 (m_poadd p1 pd2))
+
+      )
+     
+    )
+
+
+    (if (= 0 (cadr pd))
+      
+      ;; dy=0
+      (progn
+          (if (> (cadr (cdr (assoc 10 data))) (cadr p1))    
+            (setq 
+                alp (/ (- (cadr (cdr (assoc 10 data))) (cadr p1) dis) (cadr pd2))    
+                pd2 (m_poScaSC pd2 alp)
+            )
+            (setq 
+                alp (/ (+ (- (cadr (cdr (assoc 10 data))) (cadr p1) ) dis) (cadr pd2))    
+                pd2 (m_poScaSC pd2 alp)
+            )
+
+          )
+ 
+          (vl-cmdf "move" buf "" p1 (m_poadd p1 pd2))
+      )
+
+
+    )
+
+    ;; dx,dy neq 0
+    (if  (and (not (= 0 (cadr pd))) (not (= 0 (car pd))) ) 
+        ;; d1= 
+        ;; D1=
+        ;; D=D1*(/ (- d1 15) d1)
+        ;; alp =(/ D mopd2)  
+
+        (progn
+            (setq 
+              nd1 1
+              nd1 (n_dpl p1  (cdr (assoc 10 data)) (cdr (assoc 11 data)) )
+              ne1 (distance p1 (inters  p1 p2  (cdr (assoc 10 data)) (cdr (assoc 11 data)) nil) )
+              e (* ne1 (/ (- nd1 dis) nd1 ))
+              pd2 (m_poSca pd2 e)
+            )
+
+            (vl-cmdf "move" buf "" p1 (m_poadd p1 pd2))
+        )
+
+
+
+    )
+
+
+
+
+)
+
+(defun n_dpl( p l1 l2 / )
+    ;; Ax+By+C=0
+    ;; A=ly1-ly2,B=-(lx1-lx2),C=(lx1-lx2)-(ly1-ly2)
+    ;; d1=(/ (abs (+ A*px B*py c) (+ (*A A) (* B B))))
+    (setq A 1
+          B (-  (/ (- (car l1) (car l2) ) (- (cadr l1) (cadr l2))))
+          C (- (* (- B) (cadr l1)) (car l1)) 
+          d (/ (abs (+ (* A (car p) ) (* B (cadr p)) C))  (sqrt (+ (* A A) (* B B))))
+    )
+)
+
+
+(defun C:ol()
+  (setq po (gp)
+        lb (ssget)
+        lo (entget (ssname lb 0))
+        l1 (cdr (assoc 10 lo))
+        l2 (cdr (assoc 11 lo))
+        dpl (n_dpl po l1 l2)  
+  )
+
+  (vl-cmdf "offset" (- dpl k_c1) lb po "")  
+
+
+)
+
+
 
 (defun c:as( / )
   (k_cond)
@@ -1457,6 +1927,206 @@
 
 (defun c:ad( / )
   (apply 'vl-cmdf  (read k_t4) )
+)
+
+
+(defun m_dot( p1 p2 / p3 p4)
+    (setq p3 (mapcar '* p1 p2)
+          p4 (apply '+ p3)
+    )
+
+)
+
+
+(defun m_xot( p1 p2 / a b c d e f p3)
+  (setq 
+        a (nth 0 p1)
+        b (nth 1 p1)
+        c (nth 2 p1)
+        d (nth 0 p2)
+        e (nth 1 p2)
+        f (nth 2 p2)
+        p3 (list (- (* b f) (* e c)) (- (* d c) (* a f)) (- (* a e) (* d b)))
+  )
+
+)
+
+(defun m_2ll( len / l1 l2 data1 data2 buf1 buf2 p1 p2 n1 n2 dcos kdcos )
+    (setq l1 (ssget)
+          l2 (ssget)
+          data1 (entget (ssname l1 0))
+          data2 (entget (ssname l2 0))
+          buf1 (m_posub (cdr (assoc 10 data1)) (cdr (assoc 11 data1)) ) 
+          buf2 (m_posub (cdr (assoc 10 data2)) (cdr (assoc 11 data2)) ) 
+
+          p1 (list (nth 0 buf1) 0 (nth 1 buf1))
+          p2 (list  0 (nth 0 buf2) (nth 1 buf2))
+
+          n1 (m_xot p1 p2)
+          n2 (list 0 0 1)
+
+          dcos (/ (abs (m_dot n1 n2)) (* (sqrt (abs (apply '+ (mapcar '* n1 n1))) ) (sqrt (abs (apply '+ (mapcar '* n2 n2))) )))
+
+          kdcos (/ len dcos)
+    )
+
+
+)
+
+(defun n_bolts( st len / pe pf nl buf res )
+
+    (if (= (type 6) (type st ))
+
+        (progn
+          (setq pe (strcat kpl "bolts.csv")
+                pf (open pe "r")
+          )
+
+          (while (setq nl (read-line pf))
+
+              ;; M6	5	11	100	M6*20*18
+              (setq buf (n_strsplice "," nl))
+              (if  (= st (atof (nth 3 buf)))  
+                  (setq res buf)
+              ) 
+
+          )
+
+        )
+        (progn
+          (setq pe (strcat kpl "bolts.csv")
+                pf (open pe "r")
+          )
+
+          (while (setq nl (read-line pf))
+
+              ;; M6	5	11	100	M6*20*18
+              (setq buf (n_strsplice "," nl))
+              (if (and (= st (nth 0 buf)) (> len (atof (nth 1 buf))) (< len (atof (nth 2 buf))) )
+                  (setq res buf)
+              ) 
+
+          )
+        )
+    )
+
+
+
+    res 
+)
+
+(defun C:og()
+  
+    (vl-cmdf "offset" k_c1  (ssget) (getpoint ) "")
+    (m_change (entlast) "D")
+)
+
+(defun C:ogT()
+  
+    (vl-cmdf "offset" "T"  (ssget) (getpoint ) "")
+    (m_change (entlast) "D")
+)
+
+
+
+
+(defun C:tag()
+  (vl-cmdf "insert"  k_t1  (gp) k_c1 k_c1 0  )
+
+)
+
+
+
+(defun C:``()
+  (setq k_c7 (- k_c7))
+  (if (< k_c7 0 )
+      (progn
+        (setq p1 (getpoint "p1")
+              p2 (getpoint "p2"))
+        (setq ang (* 180 (/ (angle p1 p2 ) pi )) )
+        (vl-cmdf "ucs"  "z" ang )
+      )
+      (vl-cmdf "ucs"   "w" )
+  )
+)
+
+
+(defun cp()
+  (setq a (getpoint "1")
+        b (getpoint "2")
+        dab (m_posub b a)
+        dx (car dab)
+        dy (cadr dab)
+        a1 (m_poadd a (list (- dx) 0 0))
+        b1 (m_poadd b (list (+ dx) 0 0))
+  )
+  (ssget "wp" (list a a1 b b1))
+)
+
+
+
+
+
+
+(defun n_strfind(st sor / x res buf)
+
+  (setq x 0
+        res (list )
+  )
+
+  (repeat (strlen sor)
+      ;; (princ (substr sor (setq x (1+ x)) 1))
+      ;; (princ "\n")
+
+      (if (= st (setq buf (substr sor (setq x (1+ x)) 1)))
+          ;; (princ buf)
+          ;; (princ "\n")
+
+          (setq res (append res (list x)))
+      )
+  )
+
+  res
+
+)
+
+(defun n_strsplice(st sor / sp sp2 x p1 p2 dp str strs)
+  (setq sp (n_strfind st sor)
+        sp2 (append (list 0) sp (list (1+ (strlen sor)) ) )
+        x 0
+        
+  )
+
+  (repeat (1+ (length sp))
+      (setq p1 (1+ (nth x sp2))
+            p2 (1- (nth (setq x (1+ x) ) sp2))
+            dp (- p2 p1 -1)
+            str (substr sor p1 dp)
+            strs (append strs (list str))
+      )
+      
+      ;; (princ str)
+      ;; (princ "\n")
+  )
+
+  ;; (princ )
+
+)
+
+(defun n_tex()
+  (setq ss (ssget)
+        n (sslength ss)
+        x -1
+        fp (open (strcat kpf   kpn ".csv") "a")      
+  )
+
+  (while (< (setq x (1+ x)) n) 
+      (princ (strcat (cdr (assoc 1 (entget (ssname ss x))))  "\n") fp)
+  )
+
+
+  (close fp)
+
 )
 
 
@@ -1468,6 +2138,7 @@
 (defun c:kload()
     ;; full path
     (vl-load-all (strcat kpl "kitty.lsp") )
+    (vl-load-all (strcat kpl "acad2014.lsp") )
     (princ )
 )
 

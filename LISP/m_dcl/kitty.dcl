@@ -223,7 +223,7 @@ kitty : dialog{
                 action="(setq std2 21 )";
             }
             :radio_button{
-                label="xx";
+                label="noff";
                 key="k_r22";
                 action="(setq std2 22 )";
             }

@@ -1074,7 +1074,7 @@
                   )) 
             ((= std 3) 
             (progn
-            (vl-cmdf "amdimbreak" "m" (ssget) "" "a" )
+            (vl-cmdf "dimbreak" "m" (ssget) "" "a" )
             (setq std 0)
                   )) 
             ((= std 4) 
@@ -2114,6 +2114,14 @@
             (setq new_spoint (cons 8 "DIM"))
             (setq new_line_data (subst new_spoint old_spoint new_line_data))
 
+            (entmod new_line_data)
+            ))
+
+            ((= (cdr (assoc 0 line_data))  "MULTILEADER")
+            (progn
+            (setq old_spoint (assoc 8 line_data))
+            (setq new_spoint (cons 8 "DIM"))
+            (setq new_line_data (subst new_spoint old_spoint line_data))
             (entmod new_line_data)
             ))
 
